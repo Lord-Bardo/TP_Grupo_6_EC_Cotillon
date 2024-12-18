@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Producto;
+use App\Models\Categoria;
 
 class ProductoController extends Controller
 {
@@ -13,14 +15,29 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        
+        $productos = Producto::paginate(3);
+
+        return view('welcome', [
+            'productos' => $productos,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Deprecated
+    public function productosPorCategoria($id)
+    {
+
+        $productos = Producto::where('id_categoria', $id)->paginate(6);
+
+        $categoria = Categoria::findOrFail($id);
+
+
+        return view('productos-filtrados', [
+            'productos' => $productos,
+            'categoria' => $categoria,
+        ]);
+    }
+
     public function create()
     {
         //
