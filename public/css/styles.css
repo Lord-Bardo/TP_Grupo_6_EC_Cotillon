@@ -124,3 +124,62 @@ h1 {
     font-weight: 600;
 }
 
+/* ESTILOS PARA EL FORMULARIO DE CREAR CATEGORÍA */
+
+/* Color y espaciado de los títulos */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #28a745;
+}
+
+/* Botón "Agregar Categoría" */
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+.btn-success:hover {
+    background-color: #218838;
+    transition: background-color 0.3s ease;
+}
+
+/* Botón "Cancelar" */
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para las alertas */
+.alert-success {
+    background-color: #28a745;
+    color: white;
+    border-radius: 0.25rem;
+}
+
+.alert-warning {
+    background-color: #ffc107;
+    color: white;
+    border-radius: 0.25rem;
+}
+
+/* Espaciado y alineación de los elementos del formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Fuentes y espaciado adicionales */
+.form-control {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+/* Estilo para los botones */
+.btn {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+

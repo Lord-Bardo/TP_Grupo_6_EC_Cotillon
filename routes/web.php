@@ -22,8 +22,10 @@ Route::get('/categorias/{id}/productos', [ProductoController::class, 'productosP
 Route::get('/admin/categorias', [CategoriaController::class, 'adminIndex'])->name('admin.categorias');
 
 Route::get('/admin/categorias/create', [CategoriaController::class, 'create'])->name('admin.categorias.create');
-Route::post('/admin/categorias', [CategoriaController::class, 'store'])->name('admin.categorias.store');
+
 Route::get('/admin/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('admin.categorias.edit');
+
+Route::post('/admin/categorias', [CategoriaController::class, 'store'])->name('admin.categorias.store');
 Route::put('/admin/categorias/{id}', [CategoriaController::class, 'update'])->name('admin.categorias.update');
 Route::delete('/admin/categorias/{id}', [CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
 

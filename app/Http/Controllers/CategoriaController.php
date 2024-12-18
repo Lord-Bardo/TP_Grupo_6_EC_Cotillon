@@ -52,9 +52,26 @@ class CategoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    /* Esto solo retorna la vista */
     public function create()
     {
-        //
+        return view('admin.store-categoria');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nombre_categoria' => 'required|string|max:255',
+            'descripcion_categoria' => 'required|string',
+        ]);
+
+        
+        Categoria::create([
+            'nombre_categoria' => $request->nombre_categoria,
+            'descripcion_categoria' => $request->descripcion_categoria,
+        ]);
+
+        return redirect()->route('admin.categorias')->with('success', 'Categoría agregada exitosamente.');
     }
 
     /**
