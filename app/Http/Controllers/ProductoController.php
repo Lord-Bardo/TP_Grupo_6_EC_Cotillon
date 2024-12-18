@@ -38,6 +38,27 @@ class ProductoController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        $producto = $request->input('producto');
+
+        if ($producto) {
+            $productos = Producto::where('nombre_producto', 'like', "%$producto%")->paginate(3);
+
+            if ($productos->isEmpty()) {
+                $productos = Producto::paginate(3);
+            }
+        } else {
+            /* Si no se puso nada en la busqueda */
+            $productos = Producto::paginate(3);
+        }
+
+        return view('welcome', [
+            'productos' => $productos,
+        ]);
+    }
+
+
     public function create()
     {
         //

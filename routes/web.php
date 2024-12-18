@@ -29,3 +29,6 @@ Route::post('/admin/categorias', [CategoriaController::class, 'store'])->name('a
 Route::put('/admin/categorias/{id}', [CategoriaController::class, 'update'])->name('admin.categorias.update');
 Route::delete('/admin/categorias/{id}', [CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
 
+/* Busqueda de productos */
+Route::get('/search', [ProductoController::class, 'search'])->name('search_products');
+
