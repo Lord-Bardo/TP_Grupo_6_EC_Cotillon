@@ -22,7 +22,16 @@ class ProductoController extends Controller
             'productos' => $productos,
         ]);
     }
+    
+    public function admin_productos_index()
+    {
+        $productos = Producto::all();
 
+        return view('admin.abm-productos', [
+            'productos' => $productos,
+        ]);
+    }
+    
     // Deprecated
     public function productosPorCategoria($id)
     {

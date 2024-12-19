@@ -39,13 +39,13 @@
                     <td>{{ $categoria->descripcion_categoria }}</td>
                     <td>
                         <a href="{{ route('admin.categorias.edit', $categoria->id_categoria) }}" class="btn btn-warning btn-sm">
-                            <i class="fas fa-edit"></i> Editar
+                            <i class="fas fa-edit"></i>
                         </a>
                         <form action="{{ route('admin.categorias.destroy', $categoria->id_categoria) }}" method="POST" style="display: inline-block;">
                             @csrf <!-- Token de seguridad -->
                             @method('DELETE') <!-- Uso el metodo DELETE, ya que el HTML solo admite GET/POST -->
                             <button type="submit" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i> Eliminar
+                                <i class="fas fa-trash-alt"></i>
                             </button>
                         </form>
                     </td>
@@ -56,5 +56,3 @@
 </div>
 
 @include('footer')
-
-
