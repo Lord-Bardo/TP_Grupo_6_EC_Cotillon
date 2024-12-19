@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,15 @@ Route::delete('/admin/categorias/{id}', [CategoriaController::class, 'destroy'])
 /* Busqueda de productos */
 Route::get('/search', [ProductoController::class, 'search'])->name('search_products');
 
+Route::get('/user-log/login', [UserController::class, 'r_view_login'])->name('user-log.r_view_login');
+
+Route::get('/user-log/register', [UserController::class, 'r_view_register'])->name('user-log.r_view_register');
+
+// Tambien tiene sentido que esto hubiera sido un post-login
+Route::post('/user-log/authenticate', [UserController::class, 'authenticate'])->name('user-log.authenticate');
+
+Route::post('/user-log/register', [UserController::class, 'register'])->name('user-log.register');
+
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/admin/welcome', [UserController::class, 'index_abm'])->name('admin.welcome-admin');
