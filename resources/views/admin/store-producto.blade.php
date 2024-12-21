@@ -15,9 +15,9 @@
         </div>
     @endif
 
-    <form action="#" method="POST">
+    <form action="{{ route('admin.productos.store') }}" method="POST">
         @csrf
-
+        
         <div class="form-group mb-3">
             <label for="nombre_producto" class="font-weight-bold">Nombre del Producto</label>
             <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="{{ old('nombre_producto') }}" required>
@@ -25,7 +25,7 @@
 
         <div class="form-group mb-3">
             <label for="descripcion_producto" class="font-weight-bold">Descripción</label>
-            <textarea class="form-control" id="descripcion_producto" name="descripcion_producto" required>{{ old('descripcion_producto') }}</textarea>
+            <textarea class="form-control" id="descripcion_producto" name="descripcion_producto" required> {{ old('descripcion_producto') }}</textarea>
         </div>
 
         <div class="form-group mb-3">
@@ -58,7 +58,7 @@
         </div>
 
         <button type="submit" class="btn btn-success btn-lg w-100 mb-3">Agregar Producto</button>
-        <a href="#" class="btn btn-secondary btn-lg w-100">Cancelar</a>
+        <a href="{{ route('admin.productos') }}" class="btn btn-secondary btn-lg w-100">Cancelar</a>
     </form>
 </div>
 

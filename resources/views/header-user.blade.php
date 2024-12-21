@@ -17,6 +17,7 @@
                 </a>
                 <a class="nav-link" href="{{ route('welcome') }}" style="color: white;">Home</a>
                 <a class="nav-link" href="{{ route('index_cat') }}" style="color: white;">All categories</a>
+                <a class="nav-link" href="{{ route('about-us') }}" style="color: white;">About Us</a>
                 @if(auth()->check() && auth()->user()->role == 'admin')
                     <a class="nav-link" href="{{ route('admin.abm-list') }}" style="color: white;">ABM</a>
                 @endif

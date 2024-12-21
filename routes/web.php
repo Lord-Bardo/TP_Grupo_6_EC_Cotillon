@@ -43,11 +43,9 @@ Route::delete('/admin/categorias/{id}', [CategoriaController::class, 'destroy'])
 
 Route::get('/', [ProductoController::class, 'index'])->name('welcome'); //indice vista inicial
 
-Route::get('/admin/productos', [ProductoController::class, 'admin_productos_index'])->name('admin.productos'); //indice de abm de producto
+Route::get('/admin/productos', [ProductoController::class, 'admin_productos_index'])->name('admin.productos'); // indice de abm de producto
 
 Route::get('/search', [ProductoController::class, 'search'])->name('search_products');
-
-Route::get('/admin/productos/create', [ProductoController::class, 'create'])->name('admin.productos.create');
 
 Route::delete('/admin/productos/{id}', [ProductoController::class, 'destroy'])->name('admin.productos.destroy');
 
@@ -57,8 +55,7 @@ Route::get('/admin/productos/{id}/edit', [ProductoController::class, 'edit'])->n
 
 Route::post('/admin/productos', [ProductoController::class, 'store'])->name('admin.productos.store');
 
-
-
+Route::get('/admin/productos/create', [ProductoController::class, 'create'])->name('admin.productos.create');
 
 
 /* ROUTES DE LOGIN */
@@ -77,3 +74,8 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/admin/welcome', [UserController::class, 'index_abm'])->name('admin.welcome-admin');
 
 Route::get('/abm', [abmController::class, 'abm_list'])->name('admin.abm-list');
+
+// Enrutamiento view about-us
+Route::get('/about-us', function () {
+    return view('about-us');
+})->name('about-us');

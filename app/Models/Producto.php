@@ -12,7 +12,7 @@ class Producto extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nombre',
+        'nombre_producto',
         'descripcion_producto',
         'precio',
         'stock',

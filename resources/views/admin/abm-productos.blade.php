@@ -17,7 +17,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="titulo-productos">Administración de Productos</h1>
 
-        <a href="#" class="btn btn-success btn-sm">
+        <a href="{{ route('admin.productos.create') }}" class="btn btn-success btn-sm">
             <i class="fas fa-plus"></i> Agregar Producto
         </a>
     </div>
@@ -49,9 +49,9 @@
                         <a href="#" class="btn btn-warning btn-sm">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <form action="#" method="POST" style="display: inline-block;">
-                            @csrf
-                            @method('DELETE')
+                        <form action="{{ route('admin.productos.destroy', $producto->id_producto) }}" method="POST" style="display: inline-block;">
+                            @csrf <!-- Token de seguridad -->
+                            @method('DELETE') <!-- Uso el metodo DELETE, ya que el HTML solo admite GET/POST -->
                             <button type="submit" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i>
                             </button>

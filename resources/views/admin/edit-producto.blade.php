@@ -59,7 +59,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">Actualizar Producto</button>
-        <a href="#" class="btn btn-secondary btn-lg w-100">Cancelar</a>
+        <a href="{{ route('admin.productos') }}" class="btn btn-secondary btn-lg w-100">Cancelar</a>
     </form>
 </div>
 
