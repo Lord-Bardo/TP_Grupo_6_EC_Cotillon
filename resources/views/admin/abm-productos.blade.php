@@ -46,7 +46,7 @@
                     <td>{{ $producto->estado ? 'Activo' : 'Inactivo' }}</td>
                     <td>{{ $producto->categoria->nombre_categoria }}</td> <!-- Mostrar categoría -->
                     <td>
-                        <a href="#" class="btn btn-warning btn-sm">
+                        <a href="{{ route('admin.productos.edit', $producto->id_producto) }}"  class="btn btn-warning btn-sm">
                             <i class="fas fa-edit"></i>
                         </a>
                         <form action="{{ route('admin.productos.destroy', $producto->id_producto) }}" method="POST" style="display: inline-block;">

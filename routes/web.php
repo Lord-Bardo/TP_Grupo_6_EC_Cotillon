@@ -41,6 +41,10 @@ Route::delete('/admin/categorias/{id}', [CategoriaController::class, 'destroy'])
 /* ROUTES PRODUCTO */
 //Route::resource("producto", ProductoController::class);
 
+Route::get('/admin/productos/{id}/edit', [ProductoController::class, 'edit'])->name('admin.producto.edit');
+
+Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('admin.productos.update');
+
 Route::get('/', [ProductoController::class, 'index'])->name('welcome'); //indice vista inicial
 
 Route::get('/admin/productos', [ProductoController::class, 'admin_productos_index'])->name('admin.productos'); // indice de abm de producto
@@ -56,7 +60,6 @@ Route::get('/admin/productos/{id}/edit', [ProductoController::class, 'edit'])->n
 Route::post('/admin/productos', [ProductoController::class, 'store'])->name('admin.productos.store');
 
 Route::get('/admin/productos/create', [ProductoController::class, 'create'])->name('admin.productos.create');
-
 
 /* ROUTES DE LOGIN */
 Route::get('/user-log/login', [UserController::class, 'r_view_login'])->name('user-log.r_view_login');

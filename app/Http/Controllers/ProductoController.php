@@ -101,6 +101,48 @@ class ProductoController extends Controller
         return redirect()->route('admin.productos')->with('success', 'Producto agregado exitosamente.');
     }
     
+    public function edit($id_producto) {
+        $producto = Producto::findOrFail($id_producto);
+        $categorias = Categoria::all();
+    
+        return view('admin.edit-producto', compact('producto', 'categorias'));
+    }
+
+    public function update(Request $request, $id_producto) {
+        
+        $producto = Producto::findOrFail($id_producto);
+
+        $request->validate([
+            'nombre_producto' => 'required|string|max:255',
+            'descripcion_producto' => 'required|string',
+            'precio' => 'required',
+            'stock' => 'required',
+            'estado' => 'required',
+            'id_categoria' => 'required|integer', // Cambiado a id_categoria
+        ]);
+
+        $categoria = Categoria::find($request->id_categoria);
+
+        if (!$categoria) {
+            return redirect()->back()->with('warning', 'La categoría seleccionada no existe.');
+        }
+
+        $producto->update([
+            'nombre_producto' => $request->nombre_producto,
+            'descripcion_producto' => $request->descripcion_producto,
+            'precio' => $request->precio,
+            'stock' => $request->stock,
+            'estado' => $request->estado,
+            'id_categoria' => $categoria->id_categoria,
+        ]);
+
+        return redirect()->route('admin.productos')->with('success', 'Producto actualizado exitosamente.');
+    }
+
+
+
+
+
     /**
      * Display the specified resource.
      *
@@ -108,29 +150,6 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
     {
         //
     }
