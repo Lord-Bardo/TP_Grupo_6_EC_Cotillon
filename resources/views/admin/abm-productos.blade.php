@@ -61,6 +61,24 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="dropdown mb-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Exportar Listado
+        </button>
+        <div class="dropdown-menu" aria-labelledby="exportDropdown">
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-file-csv text-success"></i> Exportar como CSV
+            </a>
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-file-excel text-success"></i> Exportar como XLS
+            </a>
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-file-pdf text-danger"></i> Exportar como PDF
+            </a>
+        </div>
+    </div>
+
 </div>
 
 <input type="file" />
