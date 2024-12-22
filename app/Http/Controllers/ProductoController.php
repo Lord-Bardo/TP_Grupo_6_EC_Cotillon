@@ -13,26 +13,18 @@ class ProductoController extends Controller
     
     public function exportPDF() {
         $productos = Producto::all();
-        $pdf = PDF::loadView('admin.productos-export-pdf', compact('productos'));
-        return $pdf->download('productos.pdf');
 
-
-        
-
-        
-        /* 
         // Crear una instancia de mPDF
         $mpdf = new Mpdf();
 
         // Contenido HTML para el PDF
-        $html = view("admin.");
+        $html = view("admin.productos-export-pdf", ['productos' => $productos])->render();
 
         // Escribir el contenido HTML al PDF
         $mpdf->WriteHTML($html);
 
         // Salida: Descargar el archivo como "mi_documento.pdf"
         $mpdf->Output("mi_documento.pdf", \Mpdf\Output\Destination::DOWNLOAD);
-        */
     }
 
     public function index()

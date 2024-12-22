@@ -73,22 +73,12 @@
             <a class="dropdown-item" href="#">
                 <i class="fas fa-file-excel text-success"></i> Exportar como XLS
             </a>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{route('productos.export.pdf')}}">
                 <i class="fas fa-file-pdf text-danger"></i> Exportar como PDF
             </a>
         </div>
     </div>
 </div>
-
-<input type="file" />
-
-<script>
-    // Get a reference to the file input element
-    const inputElement = document.querySelector('input[type="file"]');
-
-    // Create a FilePond instance
-    const pond = FilePond.create(inputElement);
-</script>
 
 @include('footer')
 
