@@ -41,6 +41,8 @@ Route::delete('/admin/categorias/{id}', [CategoriaController::class, 'destroy'])
 /* ROUTES PRODUCTO */
 //Route::resource("producto", ProductoController::class);
 
+Route::get('/admin/export/pdf', [ProductoController::class, 'exportPDF'])->name('productos.export.pdf');
+
 Route::get('/admin/productos/{id}/edit', [ProductoController::class, 'edit'])->name('admin.producto.edit');
 
 Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('admin.productos.update');
