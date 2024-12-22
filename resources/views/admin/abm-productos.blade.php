@@ -63,5 +63,7 @@
     </table>
 </div>
 
+<input type="file" />
+
 @include('footer')
 
