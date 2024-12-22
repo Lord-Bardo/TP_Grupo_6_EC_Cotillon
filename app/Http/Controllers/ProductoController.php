@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
 use Barryvdh\DomPDF\Facade as PDF;
+use Mpdf\Mpdf;
 
 class ProductoController extends Controller
 {
@@ -14,6 +15,24 @@ class ProductoController extends Controller
         $productos = Producto::all();
         $pdf = PDF::loadView('admin.productos-export-pdf', compact('productos'));
         return $pdf->download('productos.pdf');
+
+
+        
+
+        
+        /* 
+        // Crear una instancia de mPDF
+        $mpdf = new Mpdf();
+
+        // Contenido HTML para el PDF
+        $html = view("admin.");
+
+        // Escribir el contenido HTML al PDF
+        $mpdf->WriteHTML($html);
+
+        // Salida: Descargar el archivo como "mi_documento.pdf"
+        $mpdf->Output("mi_documento.pdf", \Mpdf\Output\Destination::DOWNLOAD);
+        */
     }
 
     public function index()
