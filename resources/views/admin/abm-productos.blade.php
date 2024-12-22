@@ -67,10 +67,10 @@
             Exportar Listado
         </button>
         <div class="dropdown-menu" aria-labelledby="exportDropdown">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{route('productos.export.csv')}}">
                 <i class="fas fa-file-csv text-success"></i> Exportar como CSV
             </a>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{route('productos.export.excel')}}">
                 <i class="fas fa-file-excel text-success"></i> Exportar como XLS
             </a>
             <a class="dropdown-item" href="{{route('productos.export.pdf')}}">

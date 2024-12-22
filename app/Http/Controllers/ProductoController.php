@@ -7,10 +7,56 @@ use App\Models\Producto;
 use App\Models\Categoria;
 use Barryvdh\DomPDF\Facade as PDF;
 use Mpdf\Mpdf;
+use Illuminate\Support\Facades\Response;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductoController extends Controller
 {
-    
+
+    public function exportExcel() {
+        // Obtener los datos de la base de datos
+        $productos = Producto::all();
+
+        // Crear una nueva hoja de cálculo
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Encabezados de las columnas
+        $headers = ['Nombre', 'Descripción', 'Precio', 'Stock'];
+
+        // Escribir los encabezados en la primera fila
+        foreach ($headers as $index => $header) {
+            $sheet->setCellValueByColumnAndRow($index + 1, 1, $header);
+        }
+
+        // Escribir los datos
+        $row = 2; // Comenzamos desde la fila 2
+        foreach ($productos as $producto) {
+            $sheet->setCellValueByColumnAndRow(1, $row, $producto->nombre_producto);
+            $sheet->setCellValueByColumnAndRow(2, $row, $producto->descripcion_producto);
+            $sheet->setCellValueByColumnAndRow(3, $row, $producto->precio);
+            $sheet->setCellValueByColumnAndRow(4, $row, $producto->stock);
+            $row++;
+        }
+
+        // Crear un escritor para el archivo Excel
+        $writer = new Xlsx($spreadsheet);
+
+        // Nombre del archivo Excel
+        $fileName = "productos.xlsx";
+
+        // Crear un archivo temporal en memoria
+        $tempFile = tmpfile();
+        $tempFilePath = stream_get_meta_data($tempFile)['uri'];
+
+        // Guardar el contenido del archivo temporal
+        $writer->save($tempFilePath);
+
+        // Enviar el archivo como respuesta para descargar
+        return Response::download($tempFilePath, $fileName)->deleteFileAfterSend(true);
+    }
+
     public function exportPDF() {
         $productos = Producto::all();
 
@@ -27,6 +73,48 @@ class ProductoController extends Controller
         $mpdf->Output("mi_documento.pdf", \Mpdf\Output\Destination::DOWNLOAD);
     }
 
+    public function exportCSV() {
+        $productos = Producto::all();
+
+        // Crear el contenido del CSV
+        $callback = function () use ($productos) {
+            // Abrir un stream de salida para escribir el CSV
+            $file = fopen('php://output', 'w');
+
+            // Escribir la primera fila (encabezados)
+            fputcsv($file, mb_convert_encoding(['Nombre', 'Descripción', 'Precio', 'Stock'], 'UTF-16', 'auto'), ';');
+
+            // Escribir los datos de cada producto
+            foreach ($productos as $producto) {
+                $row = [
+                    $producto->nombre_producto,
+                    $producto->descripcion_producto,
+                    $producto->precio,
+                    $producto->stock,
+                ];
+
+                // Convierto los caracteres a UTF-8
+                fputcsv($file, mb_convert_encoding($row, 'UTF-16', 'auto'), ';');
+            }
+
+            // Cerrar el archivo
+            fclose($file);
+        };
+
+        // Nombre del archivo CSV
+        $fileName = "productos.csv";
+
+        // Configurar los encabezados para descarga
+        $headers = [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+            "Content-Disposition" => "attachment; filename=$fileName",
+        ];
+
+        // Retornar la respuesta con el archivo CSV
+        return response()->stream($callback, 200, $headers);
+    }
+
+    
     public function index()
     {
         
