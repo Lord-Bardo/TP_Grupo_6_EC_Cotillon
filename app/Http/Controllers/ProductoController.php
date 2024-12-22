@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function exportPDF() {
+        $productos = Producto::all();
+        $pdf = PDF::loadView('admin.productos-export-pdf', compact('productos'));
+        return $pdf->download('productos.pdf');
+    }
+
     public function index()
     {
         
