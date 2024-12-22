@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $producto->nombre_producto }}</h5>
                         <p class="card-text">{{ $producto->descripcion_producto }}</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
+                        <a href="{{ route('producto.show', $producto->id_producto) }}" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>

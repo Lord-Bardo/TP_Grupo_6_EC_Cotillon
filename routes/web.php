@@ -61,6 +61,8 @@ Route::post('/admin/productos', [ProductoController::class, 'store'])->name('adm
 
 Route::get('/admin/productos/create', [ProductoController::class, 'create'])->name('admin.productos.create');
 
+Route::get('/productos/{id}', [ProductoController::class, 'show'])->name('producto.show');
+
 /* ROUTES DE LOGIN */
 Route::get('/user-log/login', [UserController::class, 'r_view_login'])->name('user-log.r_view_login');
 

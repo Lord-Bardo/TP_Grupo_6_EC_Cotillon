@@ -139,19 +139,17 @@ class ProductoController extends Controller
         return redirect()->route('admin.productos')->with('success', 'Producto actualizado exitosamente.');
     }
 
-
-
-
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_producto)
     {
-        //
+        $producto = Producto::findOrFail($id_producto);
+        //$producto = Producto::where('nombre_producto',$nombre_producto)->get();
+        return view('producto-ver-mas', ['producto' => $producto]);
     }
 
     /**
