@@ -1,5 +1,5 @@
 @include('header-user')
-<body>
+
 <div class="container mt-5">
 
     @if (session('success'))
@@ -80,14 +80,5 @@
     </div>
 
 </div>
-<input type="file" />
-<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-<script>
-    // Get a reference to the file input element
-    const inputElement = document.querySelector('input[type="file"]');
 
-    // Create a FilePond instance
-    const pond = FilePond.create(inputElement);
-</script>
-</body>
 @include('footer')
