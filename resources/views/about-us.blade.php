@@ -35,10 +35,9 @@
     <div class="row text-center">
 
         <div class="col-md-3 mb-4">
-            <img src="{{ asset('images/the-goat.png') }}" alt="Integrante 1" class="img-fluid rounded-circle mb-3" style="width: 60%;">
+            <img src="{{ asset('images/facu.png') }}" alt="Integrante 1" class="img-fluid rounded-circle mb-3" style="width: 60%;">
             <h5 class="font-weight-bold">Facundo Bove Hernandez</h5>
             <p class="text-muted">Estudiante de Ingenieria en Sistemas</p>
-            <img src="{{ asset('images/goat.png') }}" alt="goat" class="img-fluid mb-3" style="width: 40px;">
         </div>
     
         <div class="col-md-3 mb-4">
@@ -84,4 +83,3 @@
 </div>
 
 @include('footer-us')
-
