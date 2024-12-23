@@ -1,0 +1,233 @@
+/* Global reset for consistent margin, padding, and box-sizing across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling the body to center content with a background gradient */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg,  #6e6e6e, #ffffff);
+} 
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el navbar esté encima del contenido */
+}
+
+/* Ajustes opcionales */
+.navbar .navbar-brand img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Container to center the login card on the page */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 992px;
+    padding: 20px;
+}
+
+/* Login card that holds both the image and the form */
+.login-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Left side of the login card containing the image */
+.card-left {
+    width: 50%;
+    overflow: hidden;
+}
+
+/* Styling the image to cover the entire left side */
+.card-left .image-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Right side of the login card containing the form */
+.card-right {
+    width: 50%;
+    padding: 50px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Title of the form */
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    color: #91837d;
+    text-align: center;
+}
+
+/* Welcome message below the title */
+.welcome {
+    font-size: 20px;
+    margin-top: -10px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Grouping label and input fields together */
+.input-group {
+    margin-bottom: 16px;
+}
+
+/* Styling the labels above input fields */
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #898989;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Styling the input fields */
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Actions section containing buttons and links */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Primary button styling */
+.actions .btn {
+    padding: 10px 20px;
+    background-color: #686767;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.actions .btn:hover {
+    background-color: #bebbb9;
+    transform: scale(1.05);
+}
+
+/* Styling for the forgot password link */
+.actions .forgot-password {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for the forgot password link */
+.actions .forgot-password:hover {
+    color: #0056b3;
+}
+
+/* Styling the Create Account section */
+.create-account {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;    
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Styling the Create Account link */
+.create-account a {
+    font-family: 'Roboto', sans-serif;
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for the Create Account link */
+.create-account a:hover {
+    font-family: 'Roboto', sans-serif;
+    color: #0056b3;
+}
+
+/* Styling for the image credit section */
+.image-credit {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.image-credit a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.image-credit a:hover {
+    text-decoration: underline;
+}
+
+/* Media Query for responsiveness on smaller screens */
+@media (max-width: 930px) {
+    /* Stacking the login card vertically on small screens */
+    .login-card {
+        flex-direction: column;
+    }
+
+    /* Hiding the left side image on small screens */
+    .card-left {
+        display: none;
+    }
+
+    /* Making the right side form full-width */
+    .card-right {
+        width: 100%;
+        padding: 30px 72px;
+    }
+
+    /* Adjusting title size for smaller screens */
+    .title {
+        font-size: 28px;
+    }
+
+    /* Adjusting welcome text size for smaller screens */
+    .welcome {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    /* Adjusting input padding for smaller screens */
+    .input-group input {
+        padding: 8px;
+    }
+}

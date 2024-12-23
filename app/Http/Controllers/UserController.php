@@ -16,6 +16,11 @@ class UserController extends Controller
         return view('user-log.login');
     }
 
+    public function r_view_login_remake()
+    {
+        return view('user-log.login-remake');
+    }
+
     public function register(Request $request) {
         $datos = $request->validate([
             "register_username" => ['required', 'unique:usuarios,username', 'min:3', 'max:255'], 

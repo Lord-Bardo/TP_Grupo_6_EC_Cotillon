@@ -39,7 +39,7 @@
                     </div>
                 @else
                     <!-- Si no está logueado, mostrar botón de Login -->
-                    <a href="{{ route('user-log.r_view_login') }}" class="btn btn-outline-light mr-3">Ingresá</a>
+                    <a href="{{ route('user-log.r_view_login_remake') }}" class="btn btn-outline-light mr-3">Ingresá</a>
                 @endif
 
                 <form class="search-form" action="{{ route('search_products') }}" method="GET">

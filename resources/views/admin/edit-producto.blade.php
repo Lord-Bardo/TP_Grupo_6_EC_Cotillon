@@ -21,22 +21,34 @@
 
         <div class="form-group mb-3">
             <label for="nombre_producto" class="font-weight-bold">Nombre del Producto</label>
-            <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="{{ old('nombre_producto', $producto->nombre_producto) }}" required>
+            <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="{{ old('nombre_producto', $producto->nombre_producto) }}">
+            @error('nombre_producto')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group mb-3">
             <label for="descripcion_producto" class="font-weight-bold">Descripción</label>
             <textarea class="form-control" id="descripcion_producto" name="descripcion_producto" required>{{ old('descripcion_producto', $producto->descripcion_producto) }}</textarea>
+            @error('descripcion_producto')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group mb-3">
             <label for="precio" class="font-weight-bold">Precio</label>
             <input type="number" class="form-control" id="precio" name="precio" value="{{ old('precio', $producto->precio) }}" required>
+            @error('precio')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group mb-3">
             <label for="stock" class="font-weight-bold">Stock</label>
             <input type="number" class="form-control" id="stock" name="stock" value="{{ old('stock', $producto->stock) }}" required>
+            @error('stock')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group mb-3">

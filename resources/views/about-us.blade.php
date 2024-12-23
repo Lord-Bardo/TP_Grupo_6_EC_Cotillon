@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-6 order-md-1 text-center text-md-left">
             <h2 class="font-weight-bold">Nuestra Historia</h2>
-            <p class="lead text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, illum, perferendis, quis fuga unde vero neque rerum cumque totam quaerat voluptas facilis? Accusantium excepturi quas molestias velit numquam, ea impedit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi explicabo sit numquam, quod, culpa esse distinctio dolore quaerat ducimus quisquam quia officiis voluptas. Quos libero quidem, officiis rerum consequuntur nemo? Lore</p>
+            <p class="lead text-muted">"En 2015, en el corazón de CABA, nació nuestra tienda de cotillón con un sueño: hacer de cada celebración un momento inolvidable. Empezamos con una pequeña selección de artículos y, con el tiempo, nos hemos convertido en el destino online para todo tipo de fiestas. Desde cumpleaños hasta bodas, ofrecemos productos de calidad y diversión, entregados directamente a tu puerta para que disfrutes sin preocupaciones. ¡Celebra con nosotros y haz que tu fiesta sea única!"</p>
         </div>
     </div>
 
@@ -82,4 +82,4 @@
     </div>
 </div>
 
-@include('footer-us')
+@include('footer')

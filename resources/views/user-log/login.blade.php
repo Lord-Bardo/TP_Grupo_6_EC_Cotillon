@@ -44,5 +44,5 @@
     </div>
 </div>
 
-@include ('footer')
+@include ('user-log.footer-log-in')
 

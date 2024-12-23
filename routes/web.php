@@ -72,6 +72,8 @@ Route::get('/productos/{id}', [ProductoController::class, 'show'])->name('produc
 /* ROUTES DE LOGIN */
 Route::get('/user-log/login', [UserController::class, 'r_view_login'])->name('user-log.r_view_login');
 
+Route::get('/user-log/login', [UserController::class, 'r_view_login_remake'])->name('user-log.r_view_login_remake');
+
 Route::get('/user-log/register', [UserController::class, 'r_view_register'])->name('user-log.r_view_register');
 
 // Tambien tiene sentido que esto hubiera sido un post-login
@@ -90,3 +92,9 @@ Route::get('/abm', [abmController::class, 'abm_list'])->name('admin.abm-list');
 Route::get('/about-us', function () {
     return view('about-us');
 })->name('about-us');
+
+/*
+Route::get('/abm', function () {
+    return view('abm');
+})->name('admin.abm-list');
+*/

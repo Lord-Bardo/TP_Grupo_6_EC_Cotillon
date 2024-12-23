@@ -13,7 +13,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductoController extends Controller
 {
-
+    /* 
     public function exportExcel() {
         // Obtener los datos de la base de datos
         $productos = Producto::all();
@@ -56,7 +56,8 @@ class ProductoController extends Controller
         // Enviar el archivo como respuesta para descargar
         return Response::download($tempFilePath, $fileName)->deleteFileAfterSend(true);
     }
-
+    */
+    
     public function exportPDF() {
         $productos = Producto::all();
 
@@ -70,7 +71,7 @@ class ProductoController extends Controller
         $mpdf->WriteHTML($html);
 
         // Salida: Descargar el archivo como "mi_documento.pdf"
-        $mpdf->Output("mi_documento.pdf", \Mpdf\Output\Destination::DOWNLOAD);
+        $mpdf->Output("listado_productos.pdf", \Mpdf\Output\Destination::DOWNLOAD);
     }
 
     public function exportCSV() {
@@ -176,13 +177,17 @@ class ProductoController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
-            'nombre_producto' => 'required|string|max:255',
-            'descripcion_producto' => 'required|string',
+        $datos = $request->validate([
+            'nombre_producto' => 'required|string|max:100',
+            'descripcion_producto' => 'required|string|max:255',
             'precio' => 'required',
             'stock' => 'required',
             'estado' => 'required',
             'id_categoria' => 'required|integer', // Cambiado a id_categoria
+        ], [
+            "required" => "Este campo es obligatorio!",
+            "nombre_producto.max" => "La cantidad máxima de caracteres son 100!",
+            "descripcion_producto.max" => "La cantidad máxima de caracteres son 255!"
         ]);
     
         $categoria = Categoria::find($request->id_categoria);
@@ -191,14 +196,7 @@ class ProductoController extends Controller
             return redirect()->back()->with('warning', 'La categoría seleccionada no existe.');
         }
     
-        Producto::create([
-            'nombre_producto' => $request->nombre_producto,
-            'descripcion_producto' => $request->descripcion_producto,
-            'precio' => $request->precio,
-            'stock' => $request->stock,
-            'estado' => $request->estado,
-            'id_categoria' => $categoria->id_categoria,
-        ]);
+        Producto::create($datos);
     
         return redirect()->route('admin.productos')->with('success', 'Producto agregado exitosamente.');
     }
@@ -215,12 +213,16 @@ class ProductoController extends Controller
         $producto = Producto::findOrFail($id_producto);
 
         $request->validate([
-            'nombre_producto' => 'required|string|max:255',
-            'descripcion_producto' => 'required|string',
+            'nombre_producto' => 'required|string|max:100',
+            'descripcion_producto' => 'required|string|max:255',
             'precio' => 'required',
             'stock' => 'required',
             'estado' => 'required',
             'id_categoria' => 'required|integer', // Cambiado a id_categoria
+        ], [
+            "required" => "Este campo es obligatorio!",
+            "nombre_producto.max" => "La cantidad máxima de caracteres son 100!",
+            "descripcion_producto.max" => "La cantidad máxima de caracteres son 255!"
         ]);
 
         $categoria = Categoria::find($request->id_categoria);
