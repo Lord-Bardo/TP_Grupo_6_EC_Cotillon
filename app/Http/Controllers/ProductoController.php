@@ -17,45 +17,45 @@ class ProductoController extends Controller
     public function exportExcel() {
         // Obtener los datos de la base de datos
         $productos = Producto::all();
-
+    
         // Crear una nueva hoja de cálculo
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
-
+    
         // Encabezados de las columnas
         $headers = ['Nombre', 'Descripción', 'Precio', 'Stock'];
-
+    
         // Escribir los encabezados en la primera fila
         foreach ($headers as $index => $header) {
-            $sheet->setCellValueByColumnAndRow($index + 1, 1, $header);
+            $sheet->setCellValue(chr(65 + $index) . '1', $header);  // Usar A1, B1, C1, etc.
         }
-
+    
         // Escribir los datos
         $row = 2; // Comenzamos desde la fila 2
         foreach ($productos as $producto) {
-            $sheet->setCellValueByColumnAndRow(1, $row, $producto->nombre_producto);
-            $sheet->setCellValueByColumnAndRow(2, $row, $producto->descripcion_producto);
-            $sheet->setCellValueByColumnAndRow(3, $row, $producto->precio);
-            $sheet->setCellValueByColumnAndRow(4, $row, $producto->stock);
+            $sheet->setCellValue('A' . $row, $producto->nombre_producto); // Columna A
+            $sheet->setCellValue('B' . $row, $producto->descripcion_producto); // Columna B
+            $sheet->setCellValue('C' . $row, $producto->precio); // Columna C
+            $sheet->setCellValue('D' . $row, $producto->stock); // Columna D
             $row++;
         }
-
+    
         // Crear un escritor para el archivo Excel
         $writer = new Xlsx($spreadsheet);
-
+    
         // Nombre del archivo Excel
         $fileName = "productos.xlsx";
-
-        // Crear un archivo temporal en memoria
-        $tempFile = tmpfile();
-        $tempFilePath = stream_get_meta_data($tempFile)['uri'];
-
+    
+        // Crear un archivo temporal en disco
+        $tempFilePath = storage_path('app/public/productos.xlsx');
+    
         // Guardar el contenido del archivo temporal
         $writer->save($tempFilePath);
-
+    
         // Enviar el archivo como respuesta para descargar
-        return Response::download($tempFilePath, $fileName)->deleteFileAfterSend(true);
+        return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
+    
     */
     
     public function exportPDF() {
