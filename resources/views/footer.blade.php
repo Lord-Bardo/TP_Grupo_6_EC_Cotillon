@@ -1,5 +1,5 @@
 <!-- Footer-us -->
-<footer class="bg-dark text-white py-5 mt-5">
+<footer class="bg-dark text-white py-4 mt-5">
     <div class="container">
         <div class="row">
             <div class="col-md-4 d-flex flex-column align-items-center text-center">
@@ -35,6 +35,31 @@
     </div>
 </footer>
 
-<script src="https://kit.fontawesome.com/a076d05399.js">
+<style> 
     
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper('.swiper', {
+        loop: true, // Habilitar el loop
+        effect: "fade", // Efecto de transición
+        clickable: true, // Habilitar la navegación por clic
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        scrollbar: {
+            el: '.swiper-scrollbar',
+            draggable: true,
+        },
+    });
 </script>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>

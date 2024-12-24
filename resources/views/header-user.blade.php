@@ -6,18 +6,21 @@
     <title>Navbar</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Biblioteca fantasma -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-pastel mb-4">
         <div class="d-flex w-100 justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand" href="{{ route('welcome') }}">
-                    <img src="https://via.placeholder.com/30" alt="Logo" style="width: 30px; height: 30px;">
+                    <img src="{{ asset('images/logocotymania.png') }}" alt="Logo" style="width: 30px; height: 30px;">
                 </a>
-                <a class="nav-link" href="{{ route('welcome') }}" style="color: white;">Home</a>
-                <a class="nav-link" href="{{ route('index_cat') }}" style="color: white;">All categories</a>
-                <a class="nav-link" href="{{ route('about-us') }}" style="color: white;">About Us</a>
+                <a class="nav-link" href="{{ route('welcome') }}">Home</a>
+                <a class="nav-link" href="{{ route('index_cat') }}">All categories</a>
+                <a class="nav-link" href="{{ route('about-us') }}">About Us</a>
                 @if(auth()->check() && auth()->user()->role == 'admin')
                     <a class="nav-link" href="{{ route('admin.abm-list') }}" style="color: white;">ABM</a>
                 @endif
@@ -54,6 +57,16 @@
 
     <!-- Estilos específicos -->
     <style>
+        .navbar .nav-link {
+            color: #ffffff !important; /* Blanco puro */
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Sombra sutil para resaltar */
+        }
+
+        .bg-pastel {
+        background-color: #a2cadf; /* Tonalidad pastel melón */
+        color: #e46363; /* Texto oscuro para contraste */
+        }
+
         /* Estilo del formulario de búsqueda */
         .search-form {
             max-width: 500px;
@@ -67,25 +80,25 @@
         }
         .search-form button {
             border-radius: 0 0.25rem 0.25rem 0;
-            background-color: #616662;
+            background-color: #eb9ac0;
             color: white;
             border: none;
         }
         .search-form button:hover {
-            background-color: #3d413e;
+            background-color: #ffcbdb;
             transition: background-color 0.3s ease;
         }
 
         /* Estilo para el botón de Login */
         .btn-outline-light {
-            background-color: #616662; /* Un color que combine con el navbar */
+             /* Un color que combine con el navbar */
             color: white;
             border: none;
             border-radius: 0.25rem;
         }
 
         .btn-outline-light:hover {
-            background-color: #4e504f; /* Color ligeramente más oscuro para el hover */
+            background-color: #ffcbdb; /* Color ligeramente más oscuro para el hover */
         }
 
         /* Estilo para el dropdown (no funciona) */
@@ -115,6 +128,7 @@
             display: none; /* Esto elimina la flecha */
         }
     </style>
+
 
 
 
