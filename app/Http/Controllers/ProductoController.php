@@ -12,7 +12,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductoController extends Controller
-{
+{   
+    /* ESTO A MI NO ME FUNCIONA, PERO MATI LO TIENE OK */
     /* 
     public function exportExcel() {
         // Obtener los datos de la base de datos

@@ -71,8 +71,6 @@
 
 <!-- Estilos específicos -->
 <style>
-    /* Contenedor principal del slider */
-    /* Fondo del body con gradiente */
     body {
         margin: 0; /* Elimina el margen por defecto */
         padding: 0;
@@ -80,56 +78,6 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-    }
-
-    .swiper {
-        width: 100%;
-        max-width: 900px; /* Ajusta el ancho máximo del slider */
-        height: 400px; /* Altura fija para el slider */
-        margin: 0 auto; /* Centrar horizontalmente */
-        position: relative; /* Para posicionar los controles */
-        background-color: #f8f9fa; /* Fondo claro como fallback */
-    }
-
-    /* Estilo de las imágenes dentro del slider */
-    .swiper-slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 2%;
-        border: 2px solid #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Controles de las flechas */
-    .swiper-button-prev,
-    .swiper-button-next {
-        color: #ffffff; /* Blanco para las flechas */
-        border-radius: 50%; /* Forma circular */
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute; /* Se posicionan relativas al contenedor */
-        top: 50%;
-        transform: translateY(-50%); /* Centrar verticalmente */
-        z-index: 10;
-    }
-
-    /* Posición específica de cada flecha */
-    .swiper-button-prev {
-        left: 10px; /* Ajusta la separación del borde izquierdo */
-    }
-    .swiper-button-next {
-        right: 10px; /* Ajusta la separación del borde derecho */
-    }
-
-    /* Scrollbar del slider */
-    .swiper-scrollbar {
-        background-color: #ddd; /* Color de fondo del scrollbar */
-        height: 5px; /* Altura del scrollbar */
-        border-radius: 5px;
     }
 </style>
 

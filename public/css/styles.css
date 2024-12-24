@@ -1,227 +1,174 @@
 /* Odio CSS, gracias CHATGPT */
 
-body {
-    margin-top: 80px;
-}
+    .navbar .nav-link {
+        color: #ffffff !important; /* Blanco puro */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); /* Sombra sutil para resaltar */
+    }
 
-.container {
-    padding-top: 20px;
-}
+    .bg-pastel {
+        background-color: #a2cadf; /* Tonalidad pastel melón */
+        color: #e46363; /* Texto oscuro para contraste */
+    }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding-left: 0;
-}
+    /* Estilo del formulario de búsqueda */
+    .search-form {
+        max-width: 500px;
+        display: flex;
+        align-items: center;
+        margin-left: auto; /* Mueve el formulario completamente a la derecha */
+    }
+    .search-form input {
+        border-radius: 0.25rem 0 0 0.25rem;
+        border: 1px solid #4e504f;
+    }
+    .search-form button {
+        border-radius: 0 0.25rem 0.25rem 0;
+        background-color: #eb9ac0;
+        color: white;
+        border: none;
+    }
+    .search-form button:hover {
+        background-color: #ffcbdb;
+        transition: background-color 0.3s ease;
+    }
 
-.pagination .page-item {
-    margin: 0 5px;
-}
+    /* Estilo para el botón de Login */
+    .btn-outline-light {
+            /* Un color que combine con el navbar */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+        color: white;
+        border: none;
+        border-radius: 0.25rem;
+    }
 
-.pagination .page-link {
-    padding: 8px 16px;
-    border-radius: 5px;
-    background-color: #f1f1f1;
-    color: #333;
-    font-weight: bold;
-    text-decoration: none;
-}
+    /* Esto evita el cambio de color al clickear */
+    .btn-outline-light:focus {
+        color: white !important; /* Mantiene el color blanco del texto */
+        background-color: transparent !important; /* Sin cambio en el fondo */
+        box-shadow: none !important; /* Elimina el contorno */
+        outline: none !important; /* Elimina el borde adicional */
+    }
 
-.pagination .page-item.active .page-link {
-    background-color: #007bff;
-    color: #fff;
-}
+    /* Esto evita el cambio de color al pasar por arriba */
+    .btn-outline-light:hover {
+        color: white !important;
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
 
-.pagination .page-item.disabled .page-link {
-    background-color: #ddd;
-    color: #bbb;
-}
+    /* Estilo para el dropdown (no funciona) */
+    .dropdown {
+        margin-right: 20px; /* Ajusta este valor según sea necesario */
+    }
 
-.pagination .page-link:hover {
-    background-color: #007bff;
-    color: #fff;
-}
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0; /* Asegura que no haya un desplazamiento raro */
+    }
 
-.pagination .page-link:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, .5);
-}
+    .dropdown-menu {
+        min-width: 200px;
+    }
+    .dropdown-item {
+        color: #333;
+        background-color: #fff;
+    }
 
-.card img {
-    transition: transform 0.3s ease;
-}
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+        color: #000;
+    }
 
-.card img:hover {
-    transform: scale(1.05); /* Aumenta ligeramente la imagen al pasar el mouse */
-    cursor: pointer;
-}
+    /* Eliminar la flecha del dropdown */
+    .dropdown-toggle::after {
+        display: none; /* Esto elimina la flecha */
+    }
 
-/* - No funcion - */
-.titulo-categoria {
-    font-size: 2rem; /* Puedes ajustar el tamaño aquí */
-    font-weight: bold;
-    color: #007bff; /* Cambia el color si lo deseas */
-}
+    /* LO USA EL ABOUT-US*/
 
+    .btn-pastel {
+        background-color: #b3e5fc; /* Azul pastel */
+        color: white; /* Texto blanco */
+        border: none; /* Sin borde */
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
 
-/* Color y espaciado de los títulos, -no me funciona- */
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #007bff;
-}
+    .btn-pastel:hover {
+        background-color: #81d4fa; /* Azul pastel más oscuro */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-/* TODO ESTO ES PARA CATEGORIAS */
+    .btn-pastel:active {
+        background-color: #4fc3f7; /* Azul pastel aún más oscuro */
+        transform: scale(0.98); /* Ligero efecto de pulsación */
+    }
+    
+    .text-pastel {
+        color: #a2cadf; /* Color pastel para los títulos */
+    }
 
-/* Botón "Actualizar Categoría" */
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-}
-.btn-primary:hover {
-    background-color: #0056b3;
-    transition: background-color 0.3s ease;
-}
+    /* Ajuste de las imágenes en círculos y botones */
+    .col-md-3 .img-fluid {
+        border-radius: 50%;
+        border: 5px solid #f9f6f0;
+    }
 
-/* Botón "Cancelar" */
-.btn-secondary {
-    background-color: #6c757d;
-    border: none;
-}
-.btn-secondary:hover {
-    background-color: #5a6268;
-    transition: background-color 0.3s ease;
-}
+    /* Ajuste de las imágenes en las filas */
+    .row.align-items-center img {
+        max-width: 100%;
+        margin-left: 0;
+    }
 
-/* Estilo para las alertas */
-.alert-success {
-    background-color: #28a745;
-    color: white;
-    border-radius: 0.25rem;
-}
+    /* LO USA EL WELCOME */
 
-.alert-danger {
-    background-color: #dc3545;
-    color: white;
-    border-radius: 0.25rem;
-}
+    .swiper {
+        width: 100%;
+        max-width: 900px; /* Ajusta el ancho máximo del slider */
+        height: 400px; /* Altura fija para el slider */
+        margin: 0 auto; /* Centrar horizontalmente */
+        position: relative; /* Para posicionar los controles */
+        background-color: #f8f9fa; /* Fondo claro como fallback */
+    }
 
-/* Espaciado y alineación de los elementos del formulario */
-.form-group {
-    margin-bottom: 20px;
-}
+    /* Estilo de las imágenes dentro del slider */
+    .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 2%;
+        border: 2px solid #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-/* Fuentes y espaciado adicionales */
-.form-control {
-    font-size: 1rem;
-    padding: 10px;
-}
+    /* Controles de las flechas */
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #ffffff; /* Blanco para las flechas */
+        border-radius: 50%; /* Forma circular */
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute; /* Se posicionan relativas al contenedor */
+        top: 50%;
+        transform: translateY(-50%); /* Centrar verticalmente */
+        z-index: 10;
+    }
 
-/* Estilo para los botones */
-.btn {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
+    /* Posición específica de cada flecha */
+    .swiper-button-prev {
+        left: 10px; /* Ajusta la separación del borde izquierdo */
+    }
+    .swiper-button-next {
+        right: 10px; /* Ajusta la separación del borde derecho */
+    }
 
-/* ESTILOS PARA EL FORMULARIO DE CREAR CATEGORÍA */
-
-/* Color y espaciado de los títulos */
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #28a745;
-}
-
-/* Botón "Agregar Categoría" */
-.btn-success {
-    background-color: #28a745;
-    border: none;
-}
-.btn-success:hover {
-    background-color: #218838;
-    transition: background-color 0.3s ease;
-}
-
-/* Botón "Cancelar" */
-.btn-secondary {
-    background-color: #6c757d;
-    border: none;
-}
-.btn-secondary:hover {
-    background-color: #5a6268;
-    transition: background-color 0.3s ease;
-}
-
-/* Estilo para las alertas */
-.alert-success {
-    background-color: #28a745;
-    color: white;
-    border-radius: 0.25rem;
-}
-
-.alert-warning {
-    background-color: #ffc107;
-    color: white;
-    border-radius: 0.25rem;
-}
-
-/* Espaciado y alineación de los elementos del formulario */
-.form-group {
-    margin-bottom: 20px;
-}
-
-/* Fuentes y espaciado adicionales */
-.form-control {
-    font-size: 1rem;
-    padding: 10px;
-}
-
-/* Estilo para los botones */
-.btn {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-/* form de busqueda del main */
-
-/* Centrado del formulario y fondo oscuro */
-body {
-    background-color: #f7f7f7;
-}
-
-.container {
-    max-width: 100%; /* Permite que ocupe más espacio en la pantalla */
-    width: 1100px;    /* Tamaño fijo más amplio */
-}
-
-/* Estilo para el formulario */
-.form-control {
-    border-radius: 0.25rem;
-}
-
-.btn-dark {
-    background-color: #616662;
-    border: none;
-    border-radius: 0.25rem;
-}
-
-.btn-dark:hover {
-    background-color: #4e504f;
-}
-
-/* Estilo para los enlaces */
-a {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.carousel-item img {
-    width: 100%; /* Hace que la imagen ocupe el 100% del ancho del contenedor */
-    height: 500px; /* Ajusta la altura a un valor fijo */
-    object-fit: cover; /* Asegura que la imagen cubra completamente el contenedor sin distorsionarse */
-}
+    /* Scrollbar del slider */
+    .swiper-scrollbar {
+        background-color: #ddd; /* Color de fondo del scrollbar */
+        height: 5px; /* Altura del scrollbar */
+        border-radius: 5px;
+    }
 

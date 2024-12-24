@@ -8,15 +8,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <!-- Biblioteca fantasma -->
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-pastel mb-4">
         <div class="d-flex w-100 justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand" href="{{ route('welcome') }}">
-                    <img src="{{ asset('images/logocotymania.png') }}" alt="Logo" style="width: 30px; height: 30px;">
+                    <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" style="width: 30px; height: 30px;">
                 </a>
                 <a class="nav-link" href="{{ route('welcome') }}">Home</a>
                 <a class="nav-link" href="{{ route('index_cat') }}">All categories</a>
@@ -55,79 +55,6 @@
         </div>
     </nav>
 
-    <!-- Estilos específicos -->
-    <style>
-        .navbar .nav-link {
-            color: #ffffff !important; /* Blanco puro */
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Sombra sutil para resaltar */
-        }
-
-        .bg-pastel {
-        background-color: #a2cadf; /* Tonalidad pastel melón */
-        color: #e46363; /* Texto oscuro para contraste */
-        }
-
-        /* Estilo del formulario de búsqueda */
-        .search-form {
-            max-width: 500px;
-            display: flex;
-            align-items: center;
-            margin-left: auto; /* Mueve el formulario completamente a la derecha */
-        }
-        .search-form input {
-            border-radius: 0.25rem 0 0 0.25rem;
-            border: 1px solid #4e504f;
-        }
-        .search-form button {
-            border-radius: 0 0.25rem 0.25rem 0;
-            background-color: #eb9ac0;
-            color: white;
-            border: none;
-        }
-        .search-form button:hover {
-            background-color: #ffcbdb;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Estilo para el botón de Login */
-        .btn-outline-light {
-             /* Un color que combine con el navbar */
-            color: white;
-            border: none;
-            border-radius: 0.25rem;
-        }
-
-        .btn-outline-light:hover {
-            background-color: #ffcbdb; /* Color ligeramente más oscuro para el hover */
-        }
-
-        /* Estilo para el dropdown (no funciona) */
-        .dropdown {
-            margin-right: 20px; /* Ajusta este valor según sea necesario */
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            margin-top: 0; /* Asegura que no haya un desplazamiento raro */
-        }
-
-        .dropdown-menu {
-            min-width: 200px;
-        }
-        .dropdown-item {
-            color: #333;
-            background-color: #fff;
-        }
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
-            color: #000;
-        }
-
-        /* Eliminar la flecha del dropdown */
-        .dropdown-toggle::after {
-            display: none; /* Esto elimina la flecha */
-        }
-    </style>
 
 
 

@@ -43,9 +43,9 @@
 
 <script>
     const swiper = new Swiper('.swiper', {
-        loop: true, // Habilitar el loop
+        loop: true, 
         effect: "fade", // Efecto de transición
-        clickable: true, // Habilitar la navegación por clic
+        clickable: true, // Habilitar la navegación por click
 
         navigation: {
             nextEl: '.swiper-button-next',
