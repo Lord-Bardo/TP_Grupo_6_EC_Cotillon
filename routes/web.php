@@ -37,15 +37,21 @@ Route::put('/admin/categorias/{id}', [CategoriaController::class, 'update'])->na
 
 Route::delete('/admin/categorias/{id}', [CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
 
+Route::get('/admin/categorias/export/excel', [CategoriaController::class, 'exportExcel'])->name('admin.categorias.export.excel');
+
+Route::get('/admin/categorias/export/pdf', [CategoriaController::class, 'exportPDF'])->name('admin.categorias.export.pdf');
+
+Route::get('/admin/categorias/export/csv', [CategoriaController::class, 'exportCSV'])->name('admin.categorias.export.csv');
+
 
 /* ROUTES PRODUCTO */
 //Route::resource("producto", ProductoController::class);
 
-Route::get('/productos/export/excel', [ProductoController::class, 'exportExcel'])->name('productos.export.excel');
+Route::get('/admin/productos/export/excel', [ProductoController::class, 'exportExcel'])->name('admin.productos.export.excel');
 
-Route::get('/admin/export/pdf', [ProductoController::class, 'exportPDF'])->name('productos.export.pdf');
+Route::get('/admin/productos/export/pdf', [ProductoController::class, 'exportPDF'])->name('admin.productos.export.pdf');
 
-Route::get('/admin/export/csv', [ProductoController::class, 'exportCSV'])->name('productos.export.csv');
+Route::get('/admin/productos/export/csv', [ProductoController::class, 'exportCSV'])->name('admin.productos.export.csv');
 
 Route::get('/admin/productos/{id}/edit', [ProductoController::class, 'edit'])->name('admin.producto.edit');
 
@@ -70,16 +76,14 @@ Route::get('/admin/productos/create', [ProductoController::class, 'create'])->na
 Route::get('/productos/{id}', [ProductoController::class, 'show'])->name('producto.show');
 
 /* ROUTES DE LOGIN */
-Route::get('/user-log/login', [UserController::class, 'r_view_login'])->name('user-log.r_view_login');
-
 Route::get('/user-log/login', [UserController::class, 'r_view_login_remake'])->name('user-log.r_view_login_remake');
 
-Route::get('/user-log/register', [UserController::class, 'r_view_register'])->name('user-log.r_view_register');
+Route::get('/user-log/register', [UserController::class, 'r_view_register_remake'])->name('user-log.r_view_register_remake');
 
 // Tambien tiene sentido que esto hubiera sido un post-login
 Route::post('/user-log/authenticate', [UserController::class, 'authenticate'])->name('user-log.authenticate');
 
-Route::post('/user-log/register', [UserController::class, 'register'])->name('user-log.register');
+Route::post('/user-log/register', [UserController::class, 'register'])->name('user-log.register_remake');
 
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 

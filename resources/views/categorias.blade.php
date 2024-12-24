@@ -1,6 +1,6 @@
 @include('header-user') 
 
-<div class="container mt-5">
+<main class="container mt-5 flex-grow-1">
     <h1>Categorías</h1>
 
     @if($categorias->isEmpty())
@@ -60,6 +60,31 @@
             </nav>
         </div>
     @endif
-</div>
+</main>
+
+<!-- ESTO ESTA REPETIDO CON PRODUCTO, HABIRA QUE PASARLO A UN .CSS GENERICO -->
+
+<style> 
+    .pagination .page-item.active .page-link {
+        background-color: #9cd2eb;
+        border-color: #a9dcf3;
+        color: white;
+    }
+
+    .pagination .page-item.active .page-link:hover {
+        background-color: #81d4fa;
+        border-color: #81d4fa;
+    }
+
+    .pagination .page-link {
+        color: black; /* Default text color */
+        font-size: 1rem;
+    }
+
+    .pagination .page-item:hover .page-link {
+        background-color: #f5f5f5; /* Light gray background on hover */
+        color: black;
+    }
+</style>
 
 @include('footer') 

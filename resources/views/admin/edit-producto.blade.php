@@ -1,7 +1,7 @@
 @include('header-user')
 
 <div class="container mt-5">
-    <h1 class="text-center text-primary mb-4">Editar Producto</h1>
+    <h1 class="text-center text-info mb-4">Editar Producto</h1> <!-- Cambiado a azul más claro -->
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -70,9 +70,29 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">Actualizar Producto</button>
+        <button type="submit" class="btn pastel-primary btn-lg w-100 mb-3">Actualizar Producto</button>
         <a href="{{ route('admin.productos') }}" class="btn btn-secondary btn-lg w-100">Cancelar</a>
     </form>
 </div>
 
+<style>
+    .text-info {
+        color: #5bc0de !important; /* Azul más claro para el título */
+    }
+
+    .pastel-primary {
+        background-color: #5bc0de !important; /* Azul más claro para el botón */
+        color: #fff !important;
+        font-size: 1.2rem;
+        padding: 0.75rem;
+        border: none; /* Sin bordes */
+    }
+
+    .pastel-primary:hover {
+        background-color: #46a1c4 !important; /* Azul más oscuro en hover */
+        transition: background-color 0.3s ease; /* Transición suave */
+    }
+</style>
+
 @include('footer')
+

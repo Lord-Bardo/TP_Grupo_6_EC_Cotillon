@@ -1,7 +1,7 @@
 @include('header-user')
 
 <div class="container mt-5">
-    <h1 class="text-center text-success mb-4">Agregar Nuevo Producto</h1>
+    <h1 class="text-center text-pastel mb-4">Agregar Nuevo Producto</h1>
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -28,7 +28,7 @@
 
         <div class="form-group mb-3">
             <label for="descripcion_producto" class="font-weight-bold">Descripción</label>
-            <textarea class="form-control" id="descripcion_producto" name="descripcion_producto"> {{ old('descripcion_producto') }}</textarea>
+            <textarea class="form-control" id="descripcion_producto" name="descripcion_producto">{{ old('descripcion_producto') }}</textarea>
             @error('descripcion_producto')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -36,7 +36,7 @@
 
         <div class="form-group mb-3">
             <label for="precio" class="font-weight-bold">Precio</label>
-            <input type="number" class="form-control" id="precio" name="precio" value="{{ old('precio') }}" >
+            <input type="number" class="form-control" id="precio" name="precio" value="{{ old('precio') }}">
             @error('precio')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -69,9 +69,26 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-success btn-lg w-100 mb-3">Agregar Producto</button>
+        <button type="submit" class="btn btn-pastel btn-lg w-100 mb-3">Agregar Producto</button>
         <a href="{{ route('admin.productos') }}" class="btn btn-secondary btn-lg w-100">Cancelar</a>
     </form>
 </div>
+
+<style>
+    .text-pastel {
+        color: #8bd3f7; /* Color pastel verde agua */
+    }
+
+    /* Clase para el botón pastel */
+    .btn-pastel {
+        background-color: #8bd3f7; /* Verde pastel */
+        color: white;
+        border: none;
+    }
+
+    .btn-pastel:hover {
+        background-color: #b8def0; /* Color más oscuro al pasar el mouse */
+    }
+</style>
 
 @include('footer')

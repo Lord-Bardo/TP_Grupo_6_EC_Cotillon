@@ -13,8 +13,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductoController extends Controller
 {   
-    /* ESTO A MI NO ME FUNCIONA, PERO MATI LO TIENE OK */
-    /* 
+    /* ESTO A MI NO ME FUNCIONA, PERO MATI LO TIENE OK 
     public function exportExcel() {
         // Obtener los datos de la base de datos
         $productos = Producto::all();
@@ -45,10 +44,10 @@ class ProductoController extends Controller
         $writer = new Xlsx($spreadsheet);
     
         // Nombre del archivo Excel
-        $fileName = "productos.xlsx";
+        $fileName = "listado_productos.xlsx";
     
         // Crear un archivo temporal en disco
-        $tempFilePath = storage_path('app/public/productos.xlsx');
+        $tempFilePath = storage_path('app/public/listado_productos.xlsx');
     
         // Guardar el contenido del archivo temporal
         $writer->save($tempFilePath);
@@ -56,7 +55,6 @@ class ProductoController extends Controller
         // Enviar el archivo como respuesta para descargar
         return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
-    
     */
     
     public function exportPDF() {

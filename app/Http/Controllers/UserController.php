@@ -21,6 +21,16 @@ class UserController extends Controller
         return view('user-log.login-remake');
     }
 
+    public function r_view_register()
+    {
+        return view ('user-log.register');
+    }
+
+    public function r_view_register_remake()
+    {
+        return view('user-log.register-remake');
+    }
+
     public function register(Request $request) {
         $datos = $request->validate([
             "register_username" => ['required', 'unique:usuarios,username', 'min:3', 'max:255'], 
@@ -46,18 +56,15 @@ class UserController extends Controller
         ]);
 
         // Redirigir al login con un mensaje de éxito
-        return redirect()->route('user-log.r_view_login')->with("success", "Registro exitoso. Ahora puedes iniciar sesión.");
-    }
-
-    public function r_view_register()
-    {
-        return view ('user-log.register');
+        return redirect()->route('user-log.r_view_login_remake')->with("success", "Registro exitoso. Ahora puedes iniciar sesión.");
     }
 
     public function authenticate(Request $request) {
         $datos = $request->validate([
             'login_username' => 'required|string',  
             'login_password' => 'required|string',  
+        ], [
+            "required" => "Este campo es obligatorio!"
         ]);
 
         if (auth()->attempt(['username' => $datos['login_username'], 'password' => $datos['login_password']])) {

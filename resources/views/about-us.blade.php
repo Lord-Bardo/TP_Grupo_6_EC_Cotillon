@@ -1,6 +1,6 @@
 @include('header-user')
 
-<div class="container my-5">
+<main class="container mt-5 flex-grow-1">
     
     <div class="row align-items-center mb-5">
         <div class="col-md-6 text-center">
@@ -33,25 +33,33 @@
     <div class="row text-center">
 
         <div class="col-md-3 mb-4">
-            <img src="{{ asset('images/facu.png') }}" alt="Integrante 1" class="img-fluid rounded-circle mb-3" style="width: 60%; ">
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('images/facu.png') }}" alt="Integrante 2" class="img-fluid rounded-circle mb-3 fixed-size-img">
+            </div>
             <h5 class="font-weight-bold">Facundo Bove Hernandez</h5>
             <p class="text-muted">Estudiante de Ingenieria en Sistemas</p>
         </div>
     
         <div class="col-md-3 mb-4">
-            <img src="https://via.placeholder.com/150" alt="Integrante 2" class="img-fluid rounded-circle mb-3" style="width: 60%; ">
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('images/chad.png') }}" alt="Integrante 2" class="img-fluid rounded-circle mb-3 fixed-size-img">
+            </div>
             <h5 class="font-weight-bold">Juan Garrone</h5>
             <p class="text-muted">Estudiante de Ingenieria en Sistemas</p>
         </div>
     
         <div class="col-md-3 mb-4">
-            <img src="https://via.placeholder.com/150" alt="Integrante 3" class="img-fluid rounded-circle mb-3" style="width: 60%; ">
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('images/mati.png') }}" alt="Integrante 2" class="img-fluid rounded-circle mb-3 fixed-size-img">
+            </div>
             <h5 class="font-weight-bold">Matias Tort</h5>
             <p class="text-muted">Estudiante de Ingenieria en Sistemas</p>
         </div>
     
         <div class="col-md-3 mb-4">
-            <img src="https://via.placeholder.com/150" alt="Integrante 4" class="img-fluid rounded-circle mb-3" style="width: 60%; ">
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('images/fabri.png') }}" alt="Integrante 2" class="img-fluid rounded-circle mb-3 fixed-size-img">
+            </div>
             <h5 class="font-weight-bold">Fabrizio Lombardo</h5>
             <p class="text-muted">Estudiante de Ingenieria en Sistemas</p>
         </div>
@@ -78,7 +86,7 @@
             </form>
         </div>
     </div>
-</div>
+</main>
 
 @include('footer')
 
@@ -89,20 +97,27 @@
     }
     
     .btn-pastel {
-        background-color: transparent; /* Sin fondo inicial */
-        color: #000000; /* Color de texto pastel */
+        background: linear-gradient(90deg, #fcb3c7, #ffb6c1); /* Degradado pastel */
+        color: #fff; /* Texto blanco */
         font-size: 1.2rem; /* Tamaño del texto */
+        font-weight: bold; /* Texto en negrita */
         padding: 0.75rem 1.5rem; /* Espaciado interno */
         border: none; /* Sin bordes */
-        border-radius: 2px; /* Bordes redondeados */
+        border-radius: 50px; /* Bordes completamente redondeados */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        transition: all 0.3s ease; /* Transición suave para hover */
         cursor: pointer; /* Mano al pasar el cursor */
-        transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
     }
 
-    /* Estilo al pasar el cursor (hover) */
     .btn-pastel:hover {
-        background-color: #ffb6c1; /* Color pastel suave */
-        color: white; /* Texto blanco */
+        background: linear-gradient(90deg, #ff9da3, #ffa3ad); /* Degradado más oscuro al pasar el cursor */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Incrementa la sombra al hover */
+        transform: translateY(-3px); /* Efecto de levantamiento */
+    }
+
+    .btn-pastel:active {
+        transform: translateY(1px); /* Efecto de presión */
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Sombra reducida */
     }
 
     /* Centrar el botón */
@@ -111,6 +126,13 @@
         margin: 2rem auto 0; /* Margen arriba y centrado */
         width: fit-content; /* Tamaño ajustado al contenido */
     }
+
+    .fixed-size-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+
 </style>
 
 

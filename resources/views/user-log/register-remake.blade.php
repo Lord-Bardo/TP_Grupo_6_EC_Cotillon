@@ -4,7 +4,7 @@
         <div id="loginCard" class="row">
             <div id="cardLeft" class="col-6">
                 <div id="imageCover">
-                    <img src="{{ asset('images/login-r2.png') }}" alt="Decorative Furniture Image" id="decorativeImage">
+                    <img src="{{ asset('images/register.png') }}" alt="Decorative Furniture Image" id="decorativeImage">
                 </div>
             </div>
             <div id="cardRight" class="col-6">
@@ -24,40 +24,52 @@
                     </div>
                 @endif
 
-                <form action="{{ route('user-log.authenticate') }}" method="POST" id="loginForm">
-                    <!-- Input group for username or email -->
+                <form action="{{ route('user-log.register_remake') }}" method="POST" id="registerForm">
+                    @csrf
+
+                    <!-- Nombre de Usuario -->
                     <div id="inputGroupUsername">
-                        <label for="login_username" id="labelUsername">Username</label>
-                        <input type="text" id="username" name="login_username" placeholder="Ingrese un usuario">
+                        <label for="register_username" id="labelUsername">Nombre de Usuario</label>
+                        <input type="text" name="register_username" id="register_username" placeholder="Elige un nombre de usuario" value="{{ old('register_username') }}">
 
-                        @error('login_username')
+                        @error('register_username')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+
                     </div>
 
-                    <!-- Input group for password -->
-
+                    <!-- Contraseña -->
                     <div id="inputGroupPassword">
-                        <label for="login_password" id="labelPassword">Password</label>
-                        <input type="password" id="password" name="login_password" placeholder="Ingrese una constraseña">
+                        <label for="register_password" id="labelPassword">Contraseña</label>
+                        <input type="password" name="register_password" id="register_password" placeholder="Crea una contraseña">
 
-                        @error('login_password')
+                        @error('register_password')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
 
                     </div>
 
-                    <div id="actions" class="mb-3">
-                        @csrf
+                    <!-- Confirmar Contraseña -->
+                    <div id="inputGroupConfirmPassword">
+                        <label for="register_password_confirmation" id="labelConfirmPassword">Confirmar Contraseña</label>
+                        <input type="password" name="register_password_confirmation" id="register_password_confirmation" placeholder="Confirma tu contraseña">
 
-                        <button type="submit" id="boton" class="btn">Ingresá</button>
-
-                        <a href="" id="forgotPassword">Olvidaste tu contraseña?</a>
+                        @error('register_password_confirmation')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        
                     </div>
 
-                    <div id="createAccount" class="d-flex align-items-center justify-content-center">
-                        <p id="accountText">No tenes cuenta? <a href="{{ route('user-log.r_view_register_remake') }}" id="registerLink">Registrate</a></p>
+                    <!-- Botón de Registro -->
+                    <button type="submit" id="boton" class="btn btn-dark btn-block mt-4">Registrarse</button>
+
+                    <!-- Enlace a Login -->
+                    <div class="mt-3 text-center">
+                        <p class="text-dark">¿Ya tienes cuenta? <a href="{{ route('user-log.r_view_login_remake') }}" class="text-info">Inicia sesión aquí</a></p>
                     </div>
+
+                <!-- ====================================================================== -->
+
                 </form>
             </div>
         </div>
@@ -141,17 +153,17 @@
         }
     
         /* Input groups */
-        #inputGroupUsername, #inputGroupPassword {
+        #inputGroupUsername, #inputGroupPassword, #inputGroupConfirmPassword {
             margin-bottom: 20px;
         }
     
-        #labelUsername, #labelPassword {
+        #labelUsername, #labelPassword, #labelConfirmPassword {
             font-weight: bold;
             color: #333;
             display: block;
         }
     
-        #username, #password {
+        #register_username, #register_password, #register_password_confirmation {
             width: 100%;
             padding: 10px;
             font-size: 16px;
@@ -212,5 +224,3 @@
         }
         
     </style>
-    
-      

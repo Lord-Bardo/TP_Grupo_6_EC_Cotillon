@@ -1,7 +1,7 @@
 @include('header-user')
 
-<div class="container mt-5">
-    <h1 class="text-center text-primary mb-4">Editar Categoría</h1>
+<main class="container mt-5 flex-grow-1">
+    <h1 class="text-center text-info mb-4">Editar Categoría</h1>
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -30,11 +30,30 @@
             <textarea class="form-control" id="descripcion_categoria" name="descripcion_categoria" required title="Llena el campo boludazo">{{ old('descripcion_categoria', $categoria->descripcion_categoria) }}</textarea>
         </div>
         
-        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">Actualizar Categoría</button>
+        <button type="submit" class="btn pastel-primary btn-lg w-100 mb-3">Actualizar Categoría</button>
 
         <!-- Botón de cancelar -->
         <a href="{{ route('admin.categorias') }}" class="btn btn-secondary btn-lg w-100">Cancelar</a>
     </form>
-</div>
+</main>
+
+<style>
+    .text-info {
+        color: #5bc0de !important; /* Azul más claro para el título */
+    }
+
+    .pastel-primary {
+        background-color: #5bc0de !important; /* Azul más claro para el botón */
+        color: #fff !important;
+        font-size: 1.2rem;
+        padding: 0.75rem;
+        border: none; /* Sin bordes */
+    }
+
+    .pastel-primary:hover {
+        background-color: #46a1c4 !important; /* Azul más oscuro en hover */
+        transition: background-color 0.3s ease; /* Transición suave */
+    }
+</style>
 
 @include('footer')

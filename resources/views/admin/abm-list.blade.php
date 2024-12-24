@@ -1,6 +1,6 @@
 @include('header-user')
 
-<div class="container mt-5">
+<main class="container mt-5 flex-grow-1">
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -48,7 +48,6 @@
             </div>
         </div>
     </div>
+</main>
 
-</div>
-
-@include('footer')
+ @include('footer')

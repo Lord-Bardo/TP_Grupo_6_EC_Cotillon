@@ -1,7 +1,7 @@
 @include('header-user')
 
-<div class="container mt-5">
-    <h1 class="text-center text-success mb-4">Agregar Nueva Categoría</h1>
+<main class="container mt-5 flex-grow-1">
+    <h1 class="text-center text-pastel mb-4">Agregar Nueva Categoría</h1>
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -28,11 +28,28 @@
             <textarea class="form-control" id="descripcion_categoria" name="descripcion_categoria" required title="Llena el campo boludazo">{{ old('descripcion_categoria') }}</textarea>
         </div>
         
-        <button type="submit" class="btn btn-success btn-lg w-100 mb-3">Agregar Categoría</button>
+        <button type="submit" class="btn btn-pastel btn-lg w-100 mb-3">Agregar Categoría</button>
 
         <!-- Botón de cancelar -->
         <a href="{{ route('admin.categorias') }}" class="btn btn-secondary btn-lg w-100">Cancelar</a>
     </form>
-</div>
+</main>
+
+<style> 
+    .text-pastel {
+        color: #8bd3f7; /* Color pastel verde agua */
+    }
+
+    /* Clase para el botón pastel */
+    .btn-pastel {
+        background-color: #8bd3f7; /* Verde pastel */
+        color: white;
+        border: none;
+    }
+
+    .btn-pastel:hover {
+        background-color: #b8def0; /* Color más oscuro al pasar el mouse */
+    }
+</style>
 
 @include('footer')
