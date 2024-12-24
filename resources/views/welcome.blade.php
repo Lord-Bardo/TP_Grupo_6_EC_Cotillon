@@ -4,12 +4,24 @@
 
     <div class="swiper mb-5">
 
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="{{ asset('images/promo-cotillon.png') }}" alt=""></div>
-        <div class="swiper-slide"><img src="{{ asset('images/promo-cotillon.png') }}" alt=""></div>
-        <div class="swiper-slide"><img src="{{ asset('images/promo-cotillon.png') }}" alt=""></div>
-      </div>
-    
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="{{ asset('images/promo-cotillon.png') }}" alt="Promoción Cotillón">
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <img src="{{ asset('images/carrousel2.png') }}" alt="Promoción Cotillón">
+            </div>
+        
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="{{ asset('images/carrousel-navidad.png') }}" alt="Promoción Cotillón">
+                </div>
+            </div>
+        </div>
+        
       <div class="swiper-pagination"></div>
     
       <div class="swiper-button-prev"></div>

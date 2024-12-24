@@ -14,12 +14,12 @@ class CategoriaController extends Controller
      */
     public function index_cat()
     {
-        $categorias = Categoria::paginate(3);
+        $categorias = Categoria::paginate(6);
 
         $parametros = [
             "categorias" => $categorias
         ];
-
+        
         return view('categorias', $parametros);
     }
 

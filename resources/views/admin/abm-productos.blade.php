@@ -15,7 +15,7 @@
     @endif
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="titulo-productos">Administración de Productos</h1>
+        <h1 class="titulo-productos">Administracion de Productos</h1>
 
         <a href="{{ route('admin.productos.create') }}" class="btn btn-success btn-sm">
             <i class="fas fa-plus"></i> Agregar Producto

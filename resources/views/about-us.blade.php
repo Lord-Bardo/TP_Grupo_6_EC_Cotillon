@@ -87,6 +87,30 @@
     body {
         background-color: #f8f9fa; 
     }
+    
+    .btn-pastel {
+        background-color: transparent; /* Sin fondo inicial */
+        color: #000000; /* Color de texto pastel */
+        font-size: 1.2rem; /* Tamaño del texto */
+        padding: 0.75rem 1.5rem; /* Espaciado interno */
+        border: none; /* Sin bordes */
+        border-radius: 2px; /* Bordes redondeados */
+        cursor: pointer; /* Mano al pasar el cursor */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+    }
+
+    /* Estilo al pasar el cursor (hover) */
+    .btn-pastel:hover {
+        background-color: #ffb6c1; /* Color pastel suave */
+        color: white; /* Texto blanco */
+    }
+
+    /* Centrar el botón */
+    .form-group + .btn-pastel {
+        display: block; /* Lo convertimos en bloque */
+        margin: 2rem auto 0; /* Margen arriba y centrado */
+        width: fit-content; /* Tamaño ajustado al contenido */
+    }
 </style>
 
 

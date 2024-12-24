@@ -5,6 +5,10 @@
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); /* Sombra sutil para resaltar */
     }
 
+    .navbar-brand {
+        margin-left: 15px; /* Aleja el logo del margen izquierdo */
+    }
+
     .bg-pastel {
         background-color: #a2cadf; /* Tonalidad pastel melón */
         color: #e46363; /* Texto oscuro para contraste */
@@ -16,6 +20,7 @@
         display: flex;
         align-items: center;
         margin-left: auto; /* Mueve el formulario completamente a la derecha */
+        margin-right: 20px;
     }
     .search-form input {
         border-radius: 0.25rem 0 0 0.25rem;
@@ -103,7 +108,7 @@
         background-color: #4fc3f7; /* Azul pastel aún más oscuro */
         transform: scale(0.98); /* Ligero efecto de pulsación */
     }
-    
+
     .text-pastel {
         color: #a2cadf; /* Color pastel para los títulos */
     }
@@ -172,3 +177,30 @@
         border-radius: 5px;
     }
 
+    /* LO USA EL FOOTER */
+    
+    .bg-light-dark {
+        background-color: #333; /* Negro más claro */
+    }
+    
+    .bg-light-dark a {
+        color: #ccc; /* Opcional: Cambiar el color de los enlaces a un gris más claro */
+    }
+
+    .bg-light-dark a:hover {
+        color: #fff; /* Opcional: Cambiar el color al pasar el mouse */
+    }
+
+    .bg-light-dark .mx-2 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .card-img-top {
+        width: 100%;
+        max-height: 150px; 
+        object-fit: cover; 
+    } 
+
+
+    

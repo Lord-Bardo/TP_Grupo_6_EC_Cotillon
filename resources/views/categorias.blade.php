@@ -4,23 +4,26 @@
     <h1>Categorías</h1>
 
     @if($categorias->isEmpty())
-        <p>No hay categorías disponibles.</p> 
+        <p>No hay categorías disponibles.</p>
     @else
         <div class="row">
             @foreach($categorias as $categoria)
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <a href="{{ route('productos_por_categoria', $categoria->id_categoria) }}">
-                            <img src="{{ $categoria->image_url ?? 'https://via.placeholder.com/150' }}" class="card-img-top" alt="{{ $categoria->name }}">
-                        </a>
+                            <img src="{{ $categoria->image_url ?? 'https://via.placeholder.com/50x50' }}" class="card-img-top" alt="{{ $categoria->nombre_categoria }}">
+                        </a> 
                         <div class="card-body">
-                            <h5 class="card-title">{{ $categoria->name }}</h5>
+                            <h5 class="card-title">{{ $categoria->nombre_categoria }}</h5>
+                            <!-- Descripción de la categoría -->
+                            <p class="card-text">{{ $categoria->descripcion_categoria }}</p>
                         </div>
                     </div>
-                    
                 </div>
             @endforeach
         </div>
+
+        <!-- Paginación aquí -->
 
         <div class="d-flex justify-content-center mt-4">
             <nav>

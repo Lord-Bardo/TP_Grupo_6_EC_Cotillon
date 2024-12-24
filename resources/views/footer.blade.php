@@ -1,5 +1,4 @@
-<!-- Footer-us -->
-<footer class="bg-dark text-white py-4 mt-5">
+<footer class="bg-light-dark text-white py-4 mt-5">
     <div class="container">
         <div class="row">
             <div class="col-md-4 d-flex flex-column align-items-center text-center">
@@ -20,10 +19,10 @@
             <div class="col-md-4 d-flex flex-column align-items-center text-center">
                 <h5 class="font-weight-bold">Seguinos</h5>
                 <div>
-                    <a href="https://facebook.com" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/juangarrone_/" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com" class="text-white"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://facebook.com" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/juangarrone_/" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>            
         </div>
@@ -36,13 +35,36 @@
 </footer>
 
 <style> 
+    .bg-light-dark {
+        background-color: #333; /* Negro más claro */
+    }
     
+    .bg-light-dark a {
+        color: #ccc; /* Opcional: Cambiar el color de los enlaces a un gris más claro */
+    }
+
+    .bg-light-dark a:hover {
+        color: #fff; /* Opcional: Cambiar el color al pasar el mouse */
+    }
+
+    .bg-light-dark .mx-2 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
     const swiper = new Swiper('.swiper', {
+        autoplay: {
+            delay: 5000,
+        },
+
+        zoom: {
+            maxRatio: 1.5, // Limitar el zoom máximo a 1.5x
+        },
+
         loop: true, 
         effect: "fade", // Efecto de transición
         clickable: true, // Habilitar la navegación por click

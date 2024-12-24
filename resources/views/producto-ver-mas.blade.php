@@ -1,33 +1,36 @@
 @include('header-user')
 
-<body>
-    <div class="container">
-        <div class="image-section">
-            <img src="your_image_url_here" alt="{{$producto->nombre_producto}}">
+<main class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="image-section col-6">
+            <img src="{{ asset('images/globo_metalico_helio.png') }}" alt="{{$producto->nombre_producto}}">
         </div>
-        <div class="details-section">
-            <div class="price-section">
-                <div class="price">{{$producto->precio}}</div>
+        <div class="details-section col-6 mt-4">
+            <div class="name-section">
+                <h1>{{$producto->nombre_producto}}</h1>
+            </div>
+            <div class="price-section mb-2">
+                <div class="fs-3 text-muted">${{$producto->precio}}</div>
+            </div>
+            <div class="description">
+                <h2 class="fs-4">Descripción:</h2>
+                <p>{{$producto->descripcion_producto}}</p>
             </div>
             {{-- FALTA AGREGAR EL FORMULARIO PARA EL CARRITO --}}
             <form action="">
-                <div class="quantity-section">
-                    <label for="quantity">Cantidad: </label>
-                    <select id="quantity">
+                <div class="quantity-section mb-3 d-flex align-items-center">
+                    <label for="quantity" class="me-2">Cantidad:</label>
+                    <select id="quantity" class="form-select w-auto ">
                         @for ($i = 1; $i <= min($producto->stock, 5); $i++){
                             <option value = {{$i}}> {{$i}} unidad</option> 
                         }
                         @endfor
                     </select>
                 </div>
-                <button>Agregar al carrito</button>
+                <button class="btn btn-outline-primary">Agregar al carrito</button>
             </form>
-            <div class="description">
-                <h3>Descripción:</h3>
-                <p>{{$producto->descripcion_producto}}</p>
-            </div>
         </div>
     </div>
-</body>
+</main>
 
-@include('footer-us')
+@include('footer')
