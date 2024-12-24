@@ -11,8 +11,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-pastel mb-4">
+<body class="d-flex flex-column vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-pastel mb-0">
         <div class="d-flex w-100 justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand me-3" href="{{ route('welcome') }}">
@@ -55,6 +55,12 @@
         </div>
     </nav>
 
+<style>
+    .bg-pastel {
+        background-color: #8eb5ca; /* Tonalidad pastel melón */
+        color: #e46363; /* Texto oscuro para contraste */
+    }
+</style>
 
 
 

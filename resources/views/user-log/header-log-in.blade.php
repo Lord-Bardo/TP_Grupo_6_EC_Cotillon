@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap">
-
-    <link rel="stylesheet" href="../css/log-in.css">
-
+    
+    <link rel="stylesheet" href="{{ asset('css/log-in.css') }}">
 </head>
-<body>
+<body></body>
     <!-- Navbar básica -->
     <header>
         <nav class="navbar navbar-dark bg-pastel">
@@ -25,7 +24,9 @@
 
 <style>
     .bg-pastel {
-        background-color: #a2cadf; 
+        background-color: #f8c7de; 
         color: #e46363; */
     }
 </style>
+
+   

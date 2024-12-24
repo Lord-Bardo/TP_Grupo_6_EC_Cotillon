@@ -1,4 +1,16 @@
 /* Global reset for consistent margin, padding, and box-sizing across browsers */
+:root {
+    --primary-color: #b3e5fc; /* Celeste */
+    --secondary-color: #f5b0e7; /* Rosa */
+  }
+  
+  
+/*h1 {
+
+    color: var(--primary-color);
+  }
+*/
+  
 * {
     margin: 0;
     padding: 0;
@@ -13,9 +25,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg,  #6e6e6e, #ffffff);
+    background: linear-gradient(135deg,  #cc1919, #ffffff);
 } 
-
 
 .navbar {
     position: fixed;
@@ -46,7 +57,8 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: white;
+    height: 500px;
+    background-color: rgb(255, 38, 38);
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -55,7 +67,8 @@ body {
 /* Left side of the login card containing the image */
 .card-left {
     width: 50%;
-    overflow: hidden;
+    height: 100%;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
 }
 
 /* Styling the image to cover the entire left side */
@@ -79,7 +92,7 @@ body {
 .title {
     font-family: 'Poppins', sans-serif;
     font-size: 48px;
-    color: #91837d;
+    color: #38d308;
     text-align: center;
 }
 
@@ -137,7 +150,7 @@ body {
 
 /* Hover effect for buttons */
 .actions .btn:hover {
-    background-color: #bebbb9;
+    background-color: #eb5e00;
     transform: scale(1.05);
 }
 
@@ -230,4 +243,12 @@ body {
     .input-group input {
         padding: 8px;
     }
+}
+
+/* Title of the form */
+#titleLogin {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    color: #38d308;
+    text-align: center;
 }

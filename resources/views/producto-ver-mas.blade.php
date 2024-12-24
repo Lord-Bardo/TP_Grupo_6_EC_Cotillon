@@ -1,9 +1,9 @@
 @include('header-user')
 
-<main class="container">
+<main class="container flex-grow-1">
     <div class="row d-flex justify-content-center">
-        <div class="image-section col-6">
-            <img src="{{ asset('images/globo_metalico_helio.png') }}" alt="{{$producto->nombre_producto}}">
+        <div class="image-section col-6 d-flex justify-content-center align-items-center">
+            <img src="{{ asset('images/globo_metalico_helio.png') }}" alt="{{$producto->nombre_producto}}" class="img-fluid">
         </div>
         <div class="details-section col-6 mt-4">
             <div class="name-section">
