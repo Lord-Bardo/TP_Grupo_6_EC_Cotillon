@@ -1,7 +1,7 @@
 @include('header-user')
 
 <main class="container mt-5 flex-grow-1">
-    <div class="swiper mb-5">
+    <div class="swiper mb-5 bg-transparent">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
@@ -127,9 +127,4 @@
 
 </style>
 
-<script>
-    // Cuando yo busco algo, me muestra los productos que coinciden con la búsqueda, y esconde el slider
-
-    $()
-</script>
 @include('footer')

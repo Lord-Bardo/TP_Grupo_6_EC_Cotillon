@@ -9,6 +9,9 @@ use function Ramsey\Uuid\v1;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Producto;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -49,25 +52,117 @@ class UserController extends Controller
         $usuario = User::where('username', $data['reset_username'])->first();
 
         if(!$usuario) {
-            return back()->withErrors([
+            return redirect(route('user-log.olvidar_contrasena'))->withErrors([
                 'reset_error' => 'No se encontró un usuario con ese nombre.'
             ])->withInput();
         }
 
-        $codigo_unico = Str::random(6);  /* Podriamos poner otra funcion */
+        $token = Str::random(6);  /* Podriamos poner otra funcion */
+
+        DB::table('password_reset_tokens')->where('username', $usuario->username)->delete();
+
+        DB::table('password_reset_tokens')->insert([
+            'username' => $usuario->username,
+            'token' => $token,
+        ]);
 
         // Enviar el correo
-        Mail::send('user-log.email-reset-password', ['codigo' => $codigo_unico], function ($user) use ($usuario) {
+        Mail::send('user-log.email-reset-password', ['codigo' => $token], function ($user) use ($usuario) {
             $user->to($usuario->email)
                     ->subject('Recuperar contraseña');
         });
 
         // Redirigir con un mensaje de éxito
-        return redirect(route('user-log.codigo-verificacion', ['codigo' => $codigo_unico]))->with('success', 'Gracias por contactarnos. Te responderemos pronto.'); 
+        return view('user-log.codigo-verificacion', ['usuario' => $usuario]);
+        
+        // return redirect(route('user-log.codigo-verificacion', ['usuario' => $usuario]))->with('success', 'El código ha sido enviado!'); 
     }
 
-    public function verificar_codigo($codigo) {
-        return view('user-log.codigo-verificacion', ['codigo' => $codigo]);
+    /* 
+    public function reenviar_codigo($email){
+        // necesitamos el usuario
+        $codigo_unico = Str::random(6); 
+
+        // Enviar el correo
+        Mail::send('user-log.email-reset-password', ['codigo' => $codigo_unico], function ($user) use ($usuario) {
+            $user->to($mail)
+                    ->subject('Recuperar contraseña');
+        });
+
+        // Redirigir con un mensaje de éxito
+        return redirect(route('user-log.codigo-verificacion', ['codigo' => $codigo_unico]))->with('success', 'El código ha sido enviado!'); 
+    }
+    */
+
+    public function ingresar_codigo(User $usuario) {
+        return view('user-log.codigo-verificacion', ['usuario' => $usuario]);
+    }
+
+    public function verificar_codigo(Request $request, User $usuario) {
+        /* 
+        $codigo_usuario = $request->validate([  
+            'verification_code' => 'required|string|min:6|max:6'
+        ], [
+            "required" => "Este campo es obligatorio!",
+            "min" => "El código tiene 6 caracteres!",
+            "max" => "El código tiene 6 caracteres!"
+        ]);
+        
+        Hay un error que no entendemos porque nos redirecciona todo el tiempo a la misma pagina.
+        Haciendolo con valdiaror "manual" anda bien, asi que suponemos que debe haber un back detras de como lo hace laravel.
+        */
+
+        
+        $validator = Validator::make($request->all(), [
+            'verification_code' => 'required|string|min:6|max:6'
+        ], [
+            "required" => "Este campo es obligatorio!",
+            "min" => "El código tiene 6 caracteres!",
+            "max" => "El código tiene 6 caracteres!"
+        ]);
+    
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            // Si falla, redirigir con errores y los datos de entrada
+            return redirect()->route('user-log.ingresar_codigo', ['usuario' => $usuario])
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
+        $token = DB::table('password_reset_tokens')->where('username', $usuario->username)->value('token');
+
+        if( $token === ($request['verification_code']) ){
+            // si el codigo esta bien
+            return redirect(route('user-log.set_new_password', ['usuario' => $usuario]))->with('success', 'El código es correcto!');
+        }
+        
+        return redirect(route('user-log.ingresar_codigo', ['usuario' => $usuario]))->withErrors([
+            'code_error' => 'El código es incorrecto. Vuelva a intentarlo.'
+            ])->withInput();
+        
+    } 
+ 
+    public function showSetNewPasswordForm(User $usuario) {
+        return view('user-log.set-new-password', ['usuario' => $usuario]);
+    }
+
+    public function setNewPassword(Request $request, User $usuario)
+    {
+        // Validación de la nueva contraseña y confirmación
+        $datos = $request->validate([
+            "password" => ['required', 'confirmed', 'min:3', 'max:255']
+        ], [
+            "password.required" => "La contraseña es obligatoria.",
+            "password.confirmed" => "Las contraseñas no coinciden.",
+            "password.min" => "La contraseña debe tener al menos 6 caracteres.",
+            "password.max" => "La contraseña no puede exceder los 255 caracteres."
+        ]);
+
+        $usuario->password = bcrypt($datos['password']);
+        $usuario->save();
+
+        // Redirigir con mensaje de éxito
+        return redirect(route('user-log.r_view_login_remake'))->with('success', 'Tu contraseña ha sido actualizada correctamente.');
     }
 
     public function register(Request $request) {

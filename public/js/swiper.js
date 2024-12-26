@@ -1,26 +1,27 @@
-const swiper = new Swiper('.swiper', {
-    autoplay: {
-        delay: 5000,
-    },
+document.addEventListener('DOMContentLoaded', () => {
+    const swiper = new Swiper('.swiper', {
+        // Configuración de Swiper
+        loop: true,
+        effect: 'cube',
 
-    zoom: {
-        maxRatio: 1.5, // Limitar el zoom máximo a 1.5x
-    },
+        speed: 800,
 
-    loop: true, 
-    effect: "fade", // Efecto de transición
-    clickable: true, // Habilitar la navegación por click
+        autoplay: {
+            delay: 3000, 
+            disableOnInteraction: false, 
+        },
 
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    scrollbar: {
-        el: '.swiper-scrollbar',
-        draggable: true,
-    },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        scrollbar: {
+            el: '.swiper-scrollbar',
+            draggable: true,
+        },
+    });
 });

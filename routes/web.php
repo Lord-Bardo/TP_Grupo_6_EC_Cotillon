@@ -71,15 +71,23 @@ Route::get('/productos/{id}', [ProductoController::class, 'show'])->name('produc
 
 /* ROUTES DE LOGIN */
 
-Route::get('verificar-codigo/{codigo}', [UserController::class, 'verificar_codigo'])->name('user-log.codigo-verificacion');
-
 Route::get('/user-log/login', [UserController::class, 'r_view_login_remake'])->name('user-log.r_view_login_remake');
 
 Route::get('/user-log/register', [UserController::class, 'r_view_register_remake'])->name('user-log.r_view_register_remake');
 
 Route::get('/user-log/olvidar_contrasena', [UserController::class, 'olvidar_contrasena'])->name('user-log.olvidar_contrasena');
 
+Route::get('/user-log/restaurar_password', [UserController::class, 'restaurar_password'])->name('user-log.restaurar_password');
 Route::post('/user-log/restaurar_password', [UserController::class, 'restaurar_password'])->name('user-log.restaurar_password');
+
+// Route::get('/user-log/verificar_codigo/{usuario}', [UserController::class, 'ingresar_codigo'])->name('user-log.verificar_codigo');
+Route::post('/user-log/verificar_codigo/{usuario}', [UserController::class, 'verificar_codigo'])->name('user-log.verificar_codigo');
+
+Route::get('/user-log/ingresar_codigo/{usuario}', [UserController::class, 'ingresar_codigo'])->name('user-log.ingresar_codigo');
+
+Route::get('/user-log/set-new-password/{usuario}', [UserController::class, 'showSetNewPasswordForm'])->name('user-log.set_new_password');
+
+Route::post('/user-log/set-new-password/{usuario}', [UserController::class, 'setNewPassword'])->name('user-log.set_new_password');
 
 // Tambien tiene sentido que esto hubiera sido un post-login
 Route::post('/user-log/authenticate', [UserController::class, 'authenticate'])->name('user-log.authenticate');
@@ -91,15 +99,12 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 /* ROUTES DE ADMIN */
 Route::get('/admin/welcome', [UserController::class, 'index_abm'])->name('admin.welcome-admin');
 
-Route::get('/abm', [abmController::class, 'abm_list'])->name('admin.abm-list');
-
 // Enrutamiento view about-us
 Route::get('/about-us', function () {
     return view('about-us');
 })->name('about-us');
 
-/*
+// Enrutamiento abm
 Route::get('/abm', function () {
-    return view('abm');
+    return view('admin.abm-list');
 })->name('admin.abm-list');
-*/

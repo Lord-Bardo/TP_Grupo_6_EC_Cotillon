@@ -1,15 +1,15 @@
-@include ('user-log.header-log-in')
+@include('user-log.header-log-in')
 
 <main id="mainContainer" class="container">
     <div id="loginCard" class="row">
         <div id="cardLeft" class="col-6">
             <div id="imageCover">
-                <img src="{{ asset('images/register.png') }}" alt="Verification Code Image" id="decorativeImage">
+                <img src="{{ asset('images/register.png') }}" alt="Set New Password Image" id="decorativeImage">
             </div>
         </div>
         <div id="cardRight" class="col-6">
             <h1 id="titleLogin">EC-Cotillon</h1>
-            <h2 id="welcomeText">Ingresa el código de verificación</h2>
+            <h2 id="welcomeText">Establece tu nueva contraseña</h2>
 
             <!-- Mensaje -->
             @if (session('success'))
@@ -18,31 +18,41 @@
                 </div>
             @endif
 
-            @if ($errors->has('code_error'))
+            @if ($errors->has('password_error'))
                 <div class="alert alert-danger">
-                    {{ $errors->first('code_error') }}
+                    {{ $errors->first('password_error') }}
                 </div>
             @endif
 
-            <form action="{{ route('user-log.verificar_codigo', $usuario->id_usuario) }}" method="POST" id="verifyCodeForm">
+            <form action="{{ route('user-log.set_new_password', $usuario->id_usuario) }}" method="POST" id="setNewPasswordForm">
                 @csrf
 
-                <!-- Código de Verificación -->
-                <div id="inputGroupCode">
-                    <label for="verification_code" id="labelCode">Código de Verificación</label>
-                    <input type="text" id="verification_code" name="verification_code" placeholder="Ingresa el código de verificación">
+                <!-- Nueva Contraseña -->
+                <div id="inputGroupPassword">
+                    <label for="password" id="labelPassword">Nueva Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu nueva contraseña" autocomplete="new-password">
 
-                    @error('verification_code')
+                    @error('password')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <!-- Botón de Verificación -->
-                <button type="submit" id="boton" class="btn btn-block mt-4">Verificar Código</button>
+                <!-- Confirmar Contraseña -->
+                <div id="inputGroupConfirmPassword">
+                    <label for="password_confirmation" id="labelConfirmPassword">Confirmar Contraseña</label>
+                    <input type="password" id="confirm_password" name="password_confirmation" placeholder="Confirma tu nueva contraseña" autocomplete="new-password">
+
+                    @error('password_confirmation')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Botón de Establecer Contraseña -->
+                <button type="submit" id="boton" class="btn btn-dark btn-block mt-4">Establecer Contraseña</button>
 
                 <!-- Enlace a Login -->
                 <div class="mt-3 text-center">
-                    <p class="text-dark">¿No recibiste el código? <a href="#" class="text-info">Reenviar el código</a></p>
+                    <p class="text-dark">¿Ya tienes cuenta? <a href="#" class="text-info">Inicia sesión aquí</a></p>
                 </div>
             </form>
         </div>
@@ -123,17 +133,17 @@
     }
 
     /* Input groups */
-    #inputGroupUsername, #inputGroupCode {
+    #inputGroupPassword, #inputGroupConfirmPassword {
         margin-bottom: 20px;
     }
 
-    #labelUsername, #labelCode {
+    #labelPassword, #labelConfirmPassword {
         font-weight: bold;
         color: #333;
         display: block;
     }
 
-    #verification_code {
+    #password, #confirm_password {
         width: 100%;
         padding: 10px;
         font-size: 16px;
@@ -165,7 +175,6 @@
 
     .btn:hover {
         background-color: #f0dae5;
-        color: #fff;
         transform: scale(1.05);
     }
 

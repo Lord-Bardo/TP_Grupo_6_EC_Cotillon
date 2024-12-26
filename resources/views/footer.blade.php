@@ -54,9 +54,8 @@
         </style>
 
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="{{ asset('js/swiper.js') }}" defer></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
         <script src="{{ asset('js/display-new-image.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('js/swiper.js') }}" type="text/javascript"></script>
     </body>
 </html>
