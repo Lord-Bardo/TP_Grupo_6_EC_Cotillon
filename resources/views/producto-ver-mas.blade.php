@@ -3,7 +3,7 @@
 <main class="container flex-grow-1">
     <div class="row d-flex justify-content-center">
         <div class="image-section col-6 d-flex justify-content-center align-items-center">
-            <img src="{{ asset('images/globo_metalico_helio.png') }}" alt="{{$producto->nombre_producto}}" class="img-fluid product-image">
+            <img src="{{ asset($producto->url_producto) }}" alt="{{$producto->nombre_producto}}" class="img-fluid product-image">
         </div>
         <div class="details-section col-6 mt-4 p-3 line-p">
             <div class="name-section">

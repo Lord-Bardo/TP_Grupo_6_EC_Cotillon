@@ -68,19 +68,31 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h2 class="font-weight-bold text-center mb-4">Contactanos</h2>
-            <form action="#" method="POST">
+            <form action="{{ route('contacto.send') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Tu nombre" required>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre">
+                
+                    @error('nombre')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Tu correo electrónico" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Tu correo electrónico" >
+                
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    <label for="mensaje">Mensaje</label>
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." ></textarea>
+                
+                    @error('mensaje')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-pastel btn-block">Enviar</button>
             </form>

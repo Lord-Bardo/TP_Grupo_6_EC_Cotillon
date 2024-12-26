@@ -15,8 +15,21 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.categorias.store') }}" method="POST">
+    <form action="{{ route('admin.categorias.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+
+        <div class="form-group mb-3">
+            <label for="url_categoria" class="font-weight-bold">Imagen</label>
+            <input type="file" class="form-control" id="url_categoria" name="url_categoria" accept="image/*" onchange="previewImage(event)">
+           
+            @error('url_categoria')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3 new-image" id="preview-container">
+            <img id="nueva_imagen" src="#" alt="Imagen" class="img-fluid" style="max-width: 150px; max-height: 150px;">
+        </div>
 
         <div class="form-group mb-3">
             <label for="nombre_categoria" class="font-weight-bold">Nombre de la Categoría</label>
@@ -36,6 +49,11 @@
 </main>
 
 <style> 
+
+    .new-image {
+        display: none;
+    }
+
     .text-pastel {
         color: #8bd3f7; /* Color pastel verde agua */
     }

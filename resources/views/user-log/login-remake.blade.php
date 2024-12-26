@@ -52,7 +52,7 @@
 
                         <button type="submit" id="boton" class="btn">Ingresá</button>
 
-                        <a href="" id="forgotPassword">Olvidaste tu contraseña?</a>
+                        <a href="{{ route('user-log.olvidar_contrasena') }}" id="forgotPassword">Olvidaste tu contraseña?</a>
                     </div>
 
                     <div id="createAccount" class="d-flex align-items-center justify-content-center">

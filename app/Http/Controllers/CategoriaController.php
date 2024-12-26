@@ -63,16 +63,30 @@ class CategoriaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $datos = $request->validate([
             'nombre_categoria' => 'required|string|max:255',
             'descripcion_categoria' => 'required|string',
+            'url_categoria' => 'required|image'
+        ], [
+            "required" => "Este campo es obligatorio!",
+            "image" => "El archivo debe ser una imagen!"
         ]);
 
+        // Manejar la imagen 
+        $urlImagen = null;
+        if ($request->hasFile('url_categoria')) {
+            // Guardar la imagen en la carpeta 'images/categorias'
+            $archivo = $request->file('url_categoria');
+            $nombreArchivo = uniqid() . '.' . $archivo->getClientOriginalExtension();
+            $archivo->move(public_path('images/categorias'), $nombreArchivo);
+
+            // Generar la URL relativa para almacenar en la base de datos
+            $urlImagen = 'images/categorias/' . $nombreArchivo;
+        }
+ 
+        $datos["url_categoria"] = $urlImagen;
         
-        Categoria::create([
-            'nombre_categoria' => $request->nombre_categoria,
-            'descripcion_categoria' => $request->descripcion_categoria,
-        ]);
+        Categoria::create($datos);
 
         return redirect()->route('admin.categorias')->with('success', 'Categoría agregada exitosamente.');
     }
@@ -95,16 +109,36 @@ class CategoriaController extends Controller
         $categoria = Categoria::findOrFail($id_categoria);
 
         // Validaciones basicas, despues toca agregar mas
-        $request->validate([
+        $datos = $request->validate([
             'nombre_categoria' => 'required|string|max:255',
             'descripcion_categoria' => 'required|string',
+            'url_categoria' => 'image'
+        ], [
+            "required" => "Este campo es obligatorio!",
+            "image" => "El archivo debe ser una imagen!"
         ]);
 
+        // Manejar la imagen (si se sube una nueva)
+        if ($request->hasFile('url_categoria')) {
+            // Eliminar la imagen anterior si existe
+            if ($categoria->url_categoria && file_exists(public_path($categoria->url_categoria))) {
+                unlink(public_path($categoria->url_categoria));
+            }
+
+            // Guardar la nueva imagen
+            $archivo = $request->file('url_categoria');
+            $nombreArchivo = uniqid() . '.' . $archivo->getClientOriginalExtension();
+            $archivo->move(public_path('images/categorias'), $nombreArchivo);
+
+            // Generar la URL relativa para almacenar en la base de datos
+            $categoria->url_categoria = 'images/categorias/' . $nombreArchivo;
+        }
+
+        $categoria->nombre_categoria = $datos["nombre_categoria"];
+        $categoria->descripcion_categoria = $datos["descripcion_categoria"];
+
         // Actualizar la categoría
-        $categoria->update([
-            'nombre_categoria' => $request->nombre_categoria,
-            'descripcion_categoria' => $request->descripcion_categoria,
-        ]);
+        $categoria->save();
 
         // Redirigir con mensaje de éxito
         return redirect()->route('admin.categorias')->with('success', 'Categoría actualizada exitosamente.');

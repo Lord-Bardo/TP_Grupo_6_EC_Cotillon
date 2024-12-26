@@ -1,7 +1,7 @@
 @include('header-user') 
 
 <main class="container mt-5 flex-grow-1">
-    <h1>Categorías</h1>
+    <h1 class="mb-3">Categorías</h1>
 
     @if($categorias->isEmpty())
         <p>No hay categorías disponibles.</p>
@@ -11,7 +11,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <a href="{{ route('productos_por_categoria', $categoria->id_categoria) }}">
-                            <img src="{{ $categoria->image_url ?? 'https://via.placeholder.com/50x50' }}" class="card-img-top" alt="{{ $categoria->nombre_categoria }}">
+                            <img src="{{ asset($categoria->url_categoria) }}" class="card-img-top" alt="{{ $categoria->nombre_categoria }}">
                         </a> 
                         <div class="card-body">
                             <h5 class="card-title">{{ $categoria->nombre_categoria }}</h5>

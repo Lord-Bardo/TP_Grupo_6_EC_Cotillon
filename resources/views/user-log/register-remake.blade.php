@@ -38,6 +38,15 @@
 
                     </div>
 
+                    <div id="inputGroupEmail">
+                        <label for="register_email" id="labelEmail">Email</label>
+                        <input type="text" id="register_email" name="register_email" placeholder="Ingrese un email">
+
+                        @error('register_email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     <!-- Contraseña -->
                     <div id="inputGroupPassword">
                         <label for="register_password" id="labelPassword">Contraseña</label>
@@ -67,8 +76,6 @@
                     <div class="mt-3 text-center">
                         <p class="text-dark">¿Ya tienes cuenta? <a href="{{ route('user-log.r_view_login_remake') }}" class="text-info">Inicia sesión aquí</a></p>
                     </div>
-
-                <!-- ====================================================================== -->
 
                 </form>
             </div>
@@ -153,17 +160,17 @@
         }
     
         /* Input groups */
-        #inputGroupUsername, #inputGroupPassword, #inputGroupConfirmPassword {
+        #inputGroupUsername, #inputGroupEmail, #inputGroupPassword, #inputGroupConfirmPassword {
             margin-bottom: 20px;
         }
     
-        #labelUsername, #labelPassword, #labelConfirmPassword {
+        #labelUsername, #labelEmail, #labelPassword, #labelConfirmPassword {
             font-weight: bold;
             color: #333;
             display: block;
         }
     
-        #register_username, #register_password, #register_password_confirmation {
+        #register_username, #register_email, #register_password, #register_password_confirmation {
             width: 100%;
             padding: 10px;
             font-size: 16px;

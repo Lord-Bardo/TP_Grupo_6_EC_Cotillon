@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function Ramsey\Uuid\v1;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Producto;
 
 class UserController extends Controller
@@ -31,10 +33,48 @@ class UserController extends Controller
         return view('user-log.register-remake');
     }
 
+    public function olvidar_contrasena()
+    {
+        return view('user-log.olvidar-contrasena');
+    }
+
+    public function restaurar_password(Request $request) {
+        // Validar los datos del formulario
+        $data = $request->validate([
+            'reset_username' => 'required|string|max:255'
+        ], [
+            "required" => "Este campo es obligatorio!"
+        ]);
+
+        $usuario = User::where('username', $data['reset_username'])->first();
+
+        if(!$usuario) {
+            return back()->withErrors([
+                'reset_error' => 'No se encontró un usuario con ese nombre.'
+            ])->withInput();
+        }
+
+        $codigo_unico = Str::random(6);  /* Podriamos poner otra funcion */
+
+        // Enviar el correo
+        Mail::send('user-log.email-reset-password', ['codigo' => $codigo_unico], function ($user) use ($usuario) {
+            $user->to($usuario->email)
+                    ->subject('Recuperar contraseña');
+        });
+
+        // Redirigir con un mensaje de éxito
+        return redirect(route('user-log.codigo-verificacion', ['codigo' => $codigo_unico]))->with('success', 'Gracias por contactarnos. Te responderemos pronto.'); 
+    }
+
+    public function verificar_codigo($codigo) {
+        return view('user-log.codigo-verificacion', ['codigo' => $codigo]);
+    }
+
     public function register(Request $request) {
         $datos = $request->validate([
             "register_username" => ['required', 'unique:usuarios,username', 'min:3', 'max:255'], 
-            "register_password" => ['required', 'confirmed', 'min:6'], 
+            "register_password" => ['required', 'confirmed', 'min:6', 'max:255'],
+            "register_email" => ['required', 'email', 'max:255']
         ], [
             "register_username.required" => "El nombre de usuario es obligatorio.",
             "register_username.unique" => "Este nombre de usuario ya está en uso.",
@@ -43,6 +83,10 @@ class UserController extends Controller
             "register_password.required" => "La contraseña es obligatoria.",
             "register_password.confirmed" => "Las contraseñas no coinciden.",
             "register_password.min" => "La contraseña debe tener al menos 6 caracteres.",
+            "register_password.max" => "La contraseña no puede exceder los 255 caracteres.",
+            "register_email.required" => "El nombre de usuario es obligatorio.",
+            "email" => "Se debe utilizar un correo válido!",
+            "register_email.max" => "El email no puede exceder los 255 caracteres."
         ]);
 
         // Encriptar la contraseña usando bcrypt
@@ -53,6 +97,7 @@ class UserController extends Controller
             'username' => $datos['register_username'],
             'password' => $datos['register_password'],
             'role' => 'user',
+            'email' => $datos['register_email']
         ]);
 
         // Redirigir al login con un mensaje de éxito
@@ -82,62 +127,5 @@ class UserController extends Controller
     {
         Auth::logout(); 
         return redirect()->route('welcome'); 
-    }
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

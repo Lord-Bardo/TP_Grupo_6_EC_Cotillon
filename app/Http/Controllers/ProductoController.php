@@ -149,22 +149,16 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function search(Request $request)
-    {
+    public function search(Request $request) {
         $producto = $request->input('producto');
 
         if ($producto) {
-            $productos = Producto::where('nombre_producto', 'like', "%$producto%")->paginate(3);
-
-            if ($productos->isEmpty()) {
-                $productos = Producto::paginate(3);
-            }
+            $productos = Producto::where('nombre_producto', 'like', "%$producto%")->paginate(6);
         } else {
-            /* Si no se puso nada en la busqueda */
-            $productos = Producto::paginate(3);
+            $productos = Producto::paginate(6);
         }
 
-        return view('welcome', [
+        return view ('search-productos', [
             'productos' => $productos,
         ]);
     }
@@ -183,14 +177,31 @@ class ProductoController extends Controller
             'stock' => 'required',
             'estado' => 'required',
             'id_categoria' => 'required|integer', // Cambiado a id_categoria
+            'url_producto' => 'required|image',
         ], [
             "required" => "Este campo es obligatorio!",
             "nombre_producto.max" => "La cantidad máxima de caracteres son 100!",
-            "descripcion_producto.max" => "La cantidad máxima de caracteres son 255!"
+            "descripcion_producto.max" => "La cantidad máxima de caracteres son 255!",
+            "image" => "El archivo debe ser una imagen!"
         ]);
-    
-        $categoria = Categoria::find($request->id_categoria);
+        
+        // Manejar la imagen 
+        $urlImagen = null;
+        if ($request->hasFile('url_producto')) {
+            // Guardar la imagen en la carpeta 'images/productos'
+            $archivo = $request->file('url_producto');
+            $nombreArchivo = uniqid() . '.' . $archivo->getClientOriginalExtension();
+            $archivo->move(public_path('images/productos'), $nombreArchivo);
 
+            // Generar la URL relativa para almacenar en la base de datos
+            $urlImagen = 'images/productos/' . $nombreArchivo;
+        }
+
+        $datos["url_producto"] = $urlImagen;
+
+        // Buscamos la categoria asociada al id_categoria
+        $categoria = Categoria::find($request->id_categoria);
+        
         if (!$categoria) {
             return redirect()->back()->with('warning', 'La categoría seleccionada no existe.');
         }
@@ -211,18 +222,37 @@ class ProductoController extends Controller
         
         $producto = Producto::findOrFail($id_producto);
 
-        $request->validate([
+        $datos = $request->validate([
             'nombre_producto' => 'required|string|max:100',
             'descripcion_producto' => 'required|string|max:255',
             'precio' => 'required',
             'stock' => 'required',
             'estado' => 'required',
             'id_categoria' => 'required|integer', // Cambiado a id_categoria
+            'url_producto' => 'image'
         ], [
             "required" => "Este campo es obligatorio!",
             "nombre_producto.max" => "La cantidad máxima de caracteres son 100!",
-            "descripcion_producto.max" => "La cantidad máxima de caracteres son 255!"
+            "descripcion_producto.max" => "La cantidad máxima de caracteres son 255!",
+            "image" => "El archivo debe ser una imagen!"
         ]);
+
+    
+        // Manejar la imagen (si se sube una nueva)
+        if ($request->hasFile('url_producto')) {
+            // Eliminar la imagen anterior si existe
+            if ($producto->url_producto && file_exists(public_path($producto->url_producto))) {
+                unlink(public_path($producto->url_producto));
+            }
+
+            // Guardar la nueva imagen
+            $archivo = $request->file('url_producto');
+            $nombreArchivo = uniqid() . '.' . $archivo->getClientOriginalExtension();
+            $archivo->move(public_path('images/productos'), $nombreArchivo);
+
+            // Generar la URL relativa para almacenar en la base de datos
+            $producto->url_producto = 'images/productos/' . $nombreArchivo;
+        }
 
         $categoria = Categoria::find($request->id_categoria);
 
@@ -230,14 +260,14 @@ class ProductoController extends Controller
             return redirect()->back()->with('warning', 'La categoría seleccionada no existe.');
         }
 
-        $producto->update([
-            'nombre_producto' => $request->nombre_producto,
-            'descripcion_producto' => $request->descripcion_producto,
-            'precio' => $request->precio,
-            'stock' => $request->stock,
-            'estado' => $request->estado,
-            'id_categoria' => $categoria->id_categoria,
-        ]);
+        $producto->nombre_producto = $datos["nombre_producto"];
+        $producto->descripcion_producto = $datos["descripcion_producto"];
+        $producto->precio = $datos["precio"];
+        $producto->stock = $datos["stock"];
+        $producto->estado = $datos["estado"];
+        $producto->id_categoria = $datos["id_categoria"];
+
+        $producto->save();
 
         return redirect()->route('admin.productos')->with('success', 'Producto actualizado exitosamente.');
     }
@@ -265,6 +295,15 @@ class ProductoController extends Controller
     {
         $producto = Producto::findOrFail($id_producto); 
         $producto->delete(); 
+
+        // Obtener la ruta de la imagen desde la base de datos
+        $imagenRuta = public_path($producto->url_producto);
+
+        // Verificamos si la imagen existe en la ruta
+        if ($producto->url_producto && file_exists($imagenRuta)) {
+            // Eliminar la imagen del producto
+            unlink($imagenRuta);
+        }
 
         return redirect()->route('admin.productos')->with('success', 'Producto eliminado con éxito.');
     }

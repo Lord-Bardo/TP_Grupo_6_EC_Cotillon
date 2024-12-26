@@ -17,7 +17,8 @@ class Producto extends Model
         'precio',
         'stock',
         'estado',
-        'id_categoria'
+        'id_categoria',
+        'url_producto'
     ];
 
     public function categoria()

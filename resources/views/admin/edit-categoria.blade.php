@@ -16,9 +16,34 @@
     @endif
 
     <!-- TODO: Configurar el msg del campo con JS -->
-    <form action="{{ route('admin.categorias.update', $categoria->id_categoria) }}" method="POST">
+    <form action="{{ route('admin.categorias.update', $categoria->id_categoria) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT') <!-- Actualizo con metodo PUT idem DELETE -->
+
+        <div class="form-group mb-3">
+            <label for="url_categoria" class="font-weight-bold">Imagen del Producto</label>
+            <input type="file" class="form-control" id="url_categoria" name="url_categoria" accept="image/*" onchange="previewImage(event)">
+            
+            @error('url_categoria')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
+            <div class="row">
+                @if ($categoria->url_categoria)
+                    <div class="col-6 mt-3">
+                        <p>Imagen actual:</p>
+                        <img src="{{ asset($categoria->url_categoria) }}" alt="Imagen categoria" class="img-fluid" style="max-width: 150px; max-height: 150px;">
+                    </div>
+                @endif
+    
+                <div class="col-6 mt-3 new-image" id="preview-container">
+                    <p>Imagen nueva:</p>
+                    <img id="nueva_imagen" src="#" alt="Imagen nueva" class="img-fluid" style="max-width: 150px; max-height: 150px;">
+                </div>
+
+            </div>
+
+        </div>
 
         <div class="form-group mb-3">
             <label for="nombre_categoria" class="font-weight-bold">Nombre de la Categoría</label>
@@ -38,6 +63,10 @@
 </main>
 
 <style>
+    .new-image {
+        display: none;
+    }
+
     .text-info {
         color: #5bc0de !important; /* Azul más claro para el título */
     }

@@ -1,7 +1,7 @@
 @include('header-user')
 
 <main class="container mt-5 flex-grow-1">
-    <h1>Productos en {{ $categoria->nombre_categoria }}</h1>
+    <h1 class="mb-3">Productos en {{ $categoria->nombre_categoria }}</h1>
 
     @if($productos->isEmpty())
         <p>No hay productos disponibles en esta categoría.</p>
@@ -10,7 +10,7 @@
             @foreach($productos as $producto)
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="{{ $producto->image_url ?? 'https://via.placeholder.com/150' }}" class="card-img-top" alt="{{ $producto->name }}">
+                        <img src="{{ asset($producto->url_producto) }}" class="card-img-top object-fit-contain" alt="{{ $producto->nombre_producto }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $producto->nombre_producto }}</h5> <!-- Ver h5 -->
                             <p class="card-text">{{ $producto->descripcion_producto }}</p>
@@ -22,6 +22,41 @@
         </div>
         <!-- Add link para pasar a la siguiente página -->
     @endif
+
+    <div class="d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+
+                @if ($productos->onFirstPage())
+                    <li class="page-item disabled">
+                        <span class="page-link">Anterior</span>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a href="{{ $productos->previousPageUrl() }}" class="page-link">Anterior</a>
+                    </li>
+                @endif
+
+                @for ($i = 1; $i <= $productos->lastPage(); $i++)
+                    <li class="page-item {{ $i == $productos->currentPage() ? 'active pastel-page' : '' }}">
+                        <a href="{{ $productos->url($i) }}" class="page-link">{{ $i }}</a>
+                    </li>
+                @endfor
+
+                @if ($productos->hasMorePages())
+                    <li class="page-item">
+                        <a href="{{ $productos->nextPageUrl() }}" class="page-link">Siguiente</a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <span class="page-link">Siguiente</span>
+                    </li>
+                @endif
+
+            </ul>
+        </nav>
+    </div>
+    
 </main>
 
 <style>

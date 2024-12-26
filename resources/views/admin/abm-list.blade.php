@@ -20,13 +20,13 @@
     <div class="row">
         <!-- Sección de Productos -->
         <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-header">
+            <div class="card pastel-card">
+                <div class="card-header pastel-header">
                     <h4>Productos</h4>
                 </div>
                 <div class="card-body">
                     <p>Gestiona los productos disponibles en tu tienda.</p>
-                    <a href="{{ route('admin.productos') }}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('admin.productos') }}" class="btn pastel-btn">
                         Ver ABM Productos
                     </a>
                 </div>
@@ -35,13 +35,13 @@
 
         <!-- Sección de Categorías -->
         <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-header">
+            <div class="card pastel-card">
+                <div class="card-header pastel-header">
                     <h4>Categorías</h4>
                 </div>
                 <div class="card-body">
                     <p>Gestiona las categorías de los productos en tu tienda.</p>
-                    <a href="{{ route('admin.categorias') }}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('admin.categorias') }}" class="btn pastel-btn">
                         Ver ABM Categorías
                     </a>
                 </div>
@@ -50,4 +50,25 @@
     </div>
 </main>
 
- @include('footer')
+@include('footer')
+
+<style>
+
+    .pastel-header {
+        background-color: #a2cadf; /* Rosa pastel más intenso para el encabezado */
+        color: #fff; /* Blanco para el texto */
+    }
+
+    .pastel-btn {
+        background-color: #a2cadf; /* Rosa pastel para el botón */
+        color: #fff; /* Blanco para el texto del botón */
+        border: none;
+    }
+
+    .pastel-btn:hover {
+        background-color: #eec8d1; /* Rosa pastel más oscuro en hover */
+        transition: background-color 0.3s ease;
+    }
+
+</style>
+

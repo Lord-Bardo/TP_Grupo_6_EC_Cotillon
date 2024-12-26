@@ -1,6 +1,6 @@
 @include('header-user')
 
-<div class="container mt-5">
+<main class="container mt-5 flex-grow-1">
     <h1 class="text-center text-pastel mb-4">Agregar Nuevo Producto</h1>
 
     @if (session('success'))
@@ -15,9 +15,22 @@
         </div>
     @endif
         
-    <form action="{{ route('admin.productos.store') }}" method="POST">
+    <form action="{{ route('admin.productos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         
+        <div class="form-group mb-3">
+            <label for="url_producto" class="font-weight-bold">Imagen</label>
+            <input type="file" class="form-control" id="url_producto" name="url_producto" accept="image/*" onchange="previewImage(event)">
+           
+            @error('url_producto')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3 new-image" id="preview-container">
+            <img id="nueva_imagen" src="#" alt="Imagen" class="img-fluid" style="max-width: 150px; max-height: 150px;">
+        </div>
+
         <div class="form-group mb-3">
             <label for="nombre_producto" class="font-weight-bold">Nombre del Producto</label>
             <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="{{ old('nombre_producto') }}">
@@ -72,9 +85,13 @@
         <button type="submit" class="btn btn-pastel btn-lg w-100 mb-3">Agregar Producto</button>
         <a href="{{ route('admin.productos') }}" class="btn btn-secondary btn-lg w-100">Cancelar</a>
     </form>
-</div>
+</main>
 
 <style>
+    .new-image {
+        display: none;
+    }
+    
     .text-pastel {
         color: #8bd3f7; /* Color pastel verde agua */
     }

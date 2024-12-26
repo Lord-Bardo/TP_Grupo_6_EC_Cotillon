@@ -76,6 +76,10 @@
 </main>
 
 <style>
+    .new-image {
+        display: none;
+    }
+
     .pastel-success {
         background-color: #8bd3f7 !important;
         color: #fff !important;
