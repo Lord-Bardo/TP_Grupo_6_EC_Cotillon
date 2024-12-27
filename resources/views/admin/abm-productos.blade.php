@@ -1,6 +1,6 @@
 @include('header-user')
 
-<main class="container mt-5 flex-grow-1">
+<main class="container flex-grow-1" style="margin-top: 100px;">
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -63,7 +63,7 @@
             </tbody>
         </table>
 
-    <div class="dropdown mb-3">
+    <div class="dropdown mb-3" style="width: fit-content">
         <button class="btn pastel-warning dropdown-toggle" type="button" id="exportDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Exportar Listado
         </button>
@@ -81,68 +81,5 @@
     </div>
 </main>
 
-<!-- Estilos personalizados -->
-<style>
-    #productosTable td, #productosTable th {
-        border: 1px solid #ddd; 
-        padding: 12px; /* Espaciado dentro de las celdas */
-        text-align: left; 
-        max-width: 250px; 
-        width: auto; 
-    }
-
-    .dataTables_filter {
-        margin-bottom: 20px; 
-    }
-
-    .pastel-success {
-        background-color: #8bd3f7 !important;
-        color: #fff !important;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        border: none;
-    }
-
-    .pastel-success:hover {
-        background-color: #8cb3c7;
-        color: #fff;
-        transition: background-color 0.3s ease;
-    }
-
-    .pastel-warning {
-        background-color: #f0cede !important;
-        color: #333 !important;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        border: none;
-    }
-
-    .pastel-warning:hover {
-        background-color: #f0cede;
-        color: #333;
-        transition: background-color 0.3s ease;
-    }
-
-    #productosTable {
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-</style>
-
 @include('footer')
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#productosTable').DataTable({
-            language: {
-                url: "//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json"
-            },
-            pageLength: 10,
-            responsive: true,
-        });
-    });
-</script>

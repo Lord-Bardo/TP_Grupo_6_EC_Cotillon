@@ -1,6 +1,6 @@
 @include('header-user')
 
-<main class="container mt-5 flex-grow-1">
+<main class="container flex-grow-1" style="margin-top: 100px;">
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -16,13 +16,12 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="titulo-categoria">Administración de Categorías</h1>
-        
         <a href="{{ route('admin.categorias.create') }}" class="btn pastel-success btn-sm">
             <i class="fas fa-plus"></i> Agregar Categoría
         </a>
     </div>
 
-    <table class="table table-bordered table-hover">
+    <table id="categoriasTable" class="table table-bordered table-hover">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
@@ -43,8 +42,8 @@
                                 <i class="fas fa-edit"></i>
                             </a>
                             <form action="{{ route('admin.categorias.destroy', $categoria->id_categoria) }}" method="POST" style="display: inline;">
-                                @csrf <!-- Token de seguridad -->
-                                @method('DELETE') <!-- Uso el metodo DELETE, ya que el HTML solo admite GET/POST -->
+                                @csrf
+                                @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
@@ -56,7 +55,7 @@
         </tbody>
     </table>
 
-    <div class="dropdown mb-3">
+    <div class="dropdown mb-3" style="width: fit-content">
         <button class="btn pastel-warning dropdown-toggle" type="button" id="exportDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Exportar Listado
         </button>
@@ -72,43 +71,7 @@
             </a>
         </div>
     </div>
-    
 </main>
 
-<style>
-    .new-image {
-        display: none;
-    }
-
-    .pastel-success {
-        background-color: #8bd3f7 !important;
-        color: #fff !important;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        border: none; /* Evita cualquier borde que pueda heredar */
-    }
-
-    /* PISA OTROS ESTILOS DE HOVER  (CREO) */
-    .pastel-success:hover {
-        background-color: #8cb3c7; /* Color más oscuro */
-        color: #fff; /* Texto permanece blanco */
-        border: none; /* Evita bordes al pasar el mouse */
-        transition: background-color 0.3s ease; /* Transición suave */
-    }
-
-    .pastel-warning {
-        background-color: #f0cede !important; /* Amarillo pastel */
-        color: #333 !important; /* Texto oscuro para contraste */
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        border: none; /* Sin bordes */
-    }
-
-    .pastel-warning:hover {
-        background-color: #f0cede; /* Color más oscuro */
-        color: #333; /* Texto permanece oscuro */
-        transition: background-color 0.3s ease; /* Transición suave */
-    }
-</style>
-
 @include('footer')
+

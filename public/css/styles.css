@@ -1,4 +1,11 @@
-/* Odio CSS, gracias CHATGPT */
+    /* .header-gral {
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        z-index: 1000; 
+    } */
+
     .navbar .nav-link {
         color: #ffffff !important; /* Blanco puro */
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); /* Sombra sutil para resaltar */
@@ -201,6 +208,17 @@
         max-height: 150px; 
         object-fit: cover; 
     } 
+
+    /* Estilos para el header */
+    .bg-pastel {
+        background-color: #8eb5ca; /* Tonalidad pastel melón */
+        color: #e46363; /* Texto oscuro para contraste */
+    }
+    
+    /* No se mb como funciona esto, pero hace que se mantenga en todo momento */
+    /* body, html {
+        overflow-x: hidden; /* Evita el scroll horizontal 
+    } */
 
 
     

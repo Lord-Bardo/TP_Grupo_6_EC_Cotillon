@@ -1,10 +1,10 @@
 @include('header-user')
 
-<main class="container mt-5 flex-grow-1">
+<main class="container flex-grow-1" style="margin-top: 100px;">
     
     <div class="row align-items-center mb-5">
         <div class="col-md-6 text-center">
-            <img src="{{ asset('images/oso.png') }}" alt="Mission Image" 
+            <img src="{{ asset('images/oso-trasparente.png') }}" alt="Mission Image" 
                  class="img-fluid rounded-circle shadow animated-oso" 
                  id="oso">
         </div>
@@ -16,7 +16,7 @@
 
     <div class="row align-items-center mb-5">
         <div class="col-md-6 order-md-2 text-center">
-            <img src="{{ asset('images/pingu.png') }}" alt="Founding Story Image" class="img-fluid rounded-circle shadow">
+            <img src="{{ asset('images/pingu-transparente.png') }}" alt="Founding Story Image" class="img-fluid rounded-circle shadow">
         </div>
         <div class="col-md-6 order-md-1 text-center text-md-left">
             <h2 class="font-weight-bold text-pastel">Nuestra Historia</h2>
@@ -144,7 +144,6 @@
         height: 150px;
         object-fit: cover;
     }
-
 </style>
 
 

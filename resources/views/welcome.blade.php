@@ -1,6 +1,6 @@
 @include('header-user')
 
-<main class="container mt-5 flex-grow-1">
+<main class="container flex-grow-1" style="margin-top: 100px;">
     <div class="swiper mb-5 bg-transparent">
         <div class="swiper-wrapper">
             <div class="swiper-slide">

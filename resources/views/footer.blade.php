@@ -12,7 +12,7 @@
                     <div class="col-md-4 d-flex flex-column align-items-center text-center">
                         <h5 class="font-weight-bold">Contacto</h5>
                         <p><i class="fas fa-phone-alt"></i> Tel: +54 9 11 1234 5678</p>
-                        <p><i class="fas fa-envelope"></i> Email: utnfs@gmail.com</p>
+                        <p><i class="fas fa-envelope"></i> Email: ec-cotillon@gmail.com</p>
                     </div>
                     
                     <!-- Redes Sociales -->
@@ -21,7 +21,7 @@
                         <div>
                             <a href="https://facebook.com" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://twitter.com" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/juangarrone_/" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
                             <a href="https://linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>            
@@ -29,12 +29,16 @@
 
                 <!-- Copyright -->
                 <div class="text-center mt-4">
-                    <p>&copy; 2024 Nuestra Empresa. Todos los derechos reservados.</p>
+                    <p>&copy; 2024 EC-Cotillon. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>
 
         <style> 
+            a {
+                text-decoration: none;
+            }
+
             .bg-light-dark {
                 background-color: #333; /* Negro más claro */
             }
@@ -57,5 +61,13 @@
         <script src="{{ asset('js/swiper.js') }}" defer></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <script src="{{ asset('js/display-new-image.js') }}" type="text/javascript"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+        
+        <!-- Ahora incluyo los 2 js del public/js -->
+        <script src="{{ asset('js/datatable-cat.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/datatable-prod.js') }}" type="text/javascript"></script>
+
     </body>
 </html>

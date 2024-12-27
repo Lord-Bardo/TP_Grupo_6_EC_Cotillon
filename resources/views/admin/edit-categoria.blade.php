@@ -1,6 +1,6 @@
 @include('header-user')
 
-<main class="container mt-5 flex-grow-1">
+<main class="container flex-grow-1" style="margin-top: 100px;">
     <h1 class="text-center text-info mb-4">Editar Categoría</h1>
 
     @if (session('success'))
