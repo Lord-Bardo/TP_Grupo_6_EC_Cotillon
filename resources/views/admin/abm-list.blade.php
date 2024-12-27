@@ -53,20 +53,19 @@
 @include('footer')
 
 <style>
-
     .pastel-header {
-        background-color: #a2cadf; /* Rosa pastel más intenso para el encabezado */
-        color: #fff; /* Blanco para el texto */
+        background-color: #a2cadf; 
+        color: #fff; 
     }
 
     .pastel-btn {
-        background-color: #a2cadf; /* Rosa pastel para el botón */
-        color: #fff; /* Blanco para el texto del botón */
+        background-color: #a2cadf; 
+        color: #fff; 
         border: none;
     }
 
     .pastel-btn:hover {
-        background-color: #eec8d1; /* Rosa pastel más oscuro en hover */
+        background-color: #eec8d1; 
         transition: background-color 0.3s ease;
     }
 

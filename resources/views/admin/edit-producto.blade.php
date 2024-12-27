@@ -107,20 +107,20 @@
     }
 
     .text-info {
-        color: #5bc0de !important; /* Azul más claro para el título */
+        color: #5bc0de !important; 
     }
 
     .pastel-primary {
-        background-color: #5bc0de !important; /* Azul más claro para el botón */
+        background-color: #5bc0de !important; 
         color: #fff !important;
         font-size: 1.2rem;
         padding: 0.75rem;
-        border: none; /* Sin bordes */
+        border: none; 
     }
 
     .pastel-primary:hover {
-        background-color: #46a1c4 !important; /* Azul más oscuro en hover */
-        transition: background-color 0.3s ease; /* Transición suave */
+        background-color: #46a1c4 !important; 
+        transition: background-color 0.3s ease; 
     }
 </style>
 

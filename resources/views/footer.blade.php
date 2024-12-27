@@ -4,7 +4,7 @@
                     <div class="col-md-4 d-flex flex-column align-items-center text-center">
                         <h5 class="font-weight-bold">Nuestra Dirección</h5>
                         <p><i class="fas fa-map-marker-alt"></i> 
-                            <a href="https://www.google.com/maps?q=Brandsen 805, C1161AAQ Cdad. Autónoma de Buenos Aires" target="_blank" class="text-white">Brandsen 805, C1161AAQ, CABA </a>
+                            <a id="id-direccion" href="https://www.google.com/maps?q=Brandsen 805, C1161AAQ Cdad. Autónoma de Buenos Aires" target="_blank" class="text-white">Brandsen 805, C1161AAQ, CABA </a>
                         </p>
                     </div>
                     
@@ -33,29 +33,6 @@
                 </div>
             </div>
         </footer>
-
-        <style> 
-            a {
-                text-decoration: none;
-            }
-
-            .bg-light-dark {
-                background-color: #333; /* Negro más claro */
-            }
-            
-            .bg-light-dark a {
-                color: #ccc; /* Opcional: Cambiar el color de los enlaces a un gris más claro */
-            }
-
-            .bg-light-dark a:hover {
-                color: #fff; /* Opcional: Cambiar el color al pasar el mouse */
-            }
-
-            .bg-light-dark .mx-2 {
-                margin-left: 10px;
-                margin-right: 10px;
-            }
-        </style>
 
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="{{ asset('js/swiper.js') }}" defer></script>

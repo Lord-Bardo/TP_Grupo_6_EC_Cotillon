@@ -109,34 +109,34 @@
     }
     
     .btn-pastel {
-        background: linear-gradient(90deg, #fcb3c7, #ffb6c1); /* Degradado pastel */
-        color: #fff; /* Texto blanco */
-        font-size: 1.2rem; /* Tamaño del texto */
-        font-weight: bold; /* Texto en negrita */
-        padding: 0.75rem 1.5rem; /* Espaciado interno */
-        border: none; /* Sin bordes */
-        border-radius: 50px; /* Bordes completamente redondeados */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-        transition: all 0.3s ease; /* Transición suave para hover */
-        cursor: pointer; /* Mano al pasar el cursor */
+        background: linear-gradient(90deg, #fcb3c7, #ffb6c1); 
+        color: #fff; 
+        font-size: 1.2rem; 
+        font-weight: bold; 
+        padding: 0.75rem 1.5rem; 
+        border: none; 
+        border-radius: 50px; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        transition: all 0.3s ease; 
+        cursor: pointer;
     }
 
     .btn-pastel:hover {
-        background: linear-gradient(90deg, #ff9da3, #ffa3ad); /* Degradado más oscuro al pasar el cursor */
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Incrementa la sombra al hover */
-        transform: translateY(-3px); /* Efecto de levantamiento */
+        background: linear-gradient(90deg, #ff9da3, #ffa3ad); 
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+        transform: translateY(-3px); 
     }
 
     .btn-pastel:active {
-        transform: translateY(1px); /* Efecto de presión */
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Sombra reducida */
+        transform: translateY(1px); 
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); 
     }
 
     /* Centrar el botón */
     .form-group + .btn-pastel {
-        display: block; /* Lo convertimos en bloque */
-        margin: 2rem auto 0; /* Margen arriba y centrado */
-        width: fit-content; /* Tamaño ajustado al contenido */
+        display: block; 
+        margin: 2rem auto 0; 
+        width: fit-content;
     }
 
     .fixed-size-img {

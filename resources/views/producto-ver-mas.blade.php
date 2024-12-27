@@ -48,8 +48,8 @@
     }
 
     body {
-        background-color: #fdfcfc; /* Fondo pastel suave */
-        color: #333; /* Texto oscuro para contraste */
+        background-color: #fdfcfc; 
+        color: #333; 
     }
 
     .container {
@@ -57,82 +57,17 @@
         padding: 20px;
     }
 
-    /* Secciones del producto */
-    .product-image {
-        border-radius: 10px;
-        max-height: 400px;
-        object-fit: contain;
-        background-color: #ffffff;
-        padding: 10px;
-    }
-
-    .product-title {
-        font-size: 2.5rem;
-        color: #84b0bd; /* Verde pastel */
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-price {
-        color: #e46363; /* Rojo pastel */
-        font-weight: bold;
-    }
 
     .text-pastel {
-        color: #6ca3a4; /* Azul pastel */
+        color: #6ca3a4; 
     }
 
-    /* Contenedor para ocultar la flecha */
-    .select-wrapper {
-        position: relative;
-        display: inline-block;
-    }
-
-    /* Estilos para el select de cantidad sin flecha */
-    .quantity-select {
-        appearance: none; /* Otros navegadores */
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        padding: 8px 12px;
-        font-size: 1.1rem;
-        background-color: #ffffff;
-        cursor: pointer; /* Establece el cursor como puntero */
-        width: 100%;
-        padding-right: 30px; /* Ajusta el padding para que no se vea la flecha */
-    }
-
-    /* Opcional: personaliza el fondo del select */
-    .quantity-select::after {
-        content: ''; /* No muestra pseudo-elemento */
-    }
-
-    /* Estilos para los botones */
-    .add-to-cart-btn, .buy-now-btn {
-        background-color: #81cdf0; /* Azul pastel */
-        color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        transition: all 0.3s ease;
-    }
-
-    .add-to-cart-btn:hover, .buy-now-btn:hover {
-        background-color: #81d4fa;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .add-to-cart-btn:active, .buy-now-btn:active {
-        background-color: #4fc3f7;
-        transform: scale(0.98);
-    }
-
-    /* Estilo para alinear los botones */
     .d-flex {
         display: flex;
     }
 
     .gap-2 {
-        gap: 1rem; /* Espacio entre los botones */
+        gap: 1rem; 
     }
 
     /* Ajustes para dispositivos móviles */

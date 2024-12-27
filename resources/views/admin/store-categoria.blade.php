@@ -55,18 +55,18 @@
     }
 
     .text-pastel {
-        color: #8bd3f7; /* Color pastel verde agua */
+        color: #8bd3f7; 
     }
 
     /* Clase para el botón pastel */
     .btn-pastel {
-        background-color: #8bd3f7; /* Verde pastel */
+        background-color: #8bd3f7; 
         color: white;
         border: none;
     }
 
     .btn-pastel:hover {
-        background-color: #b8def0; /* Color más oscuro al pasar el mouse */
+        background-color: #b8def0; 
     }
 </style>
 

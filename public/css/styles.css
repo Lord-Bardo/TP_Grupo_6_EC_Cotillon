@@ -1,10 +1,10 @@
-    /* .header-gral {
+    .header-user {
         position: fixed; 
         top: 0; 
         left: 0; 
         width: 100%; 
         z-index: 1000; 
-    } */
+    }
 
     .navbar .nav-link {
         color: #ffffff !important; /* Blanco puro */
@@ -29,16 +29,27 @@
         margin-left: auto; /* Mueve el formulario completamente a la derecha */
         margin-right: 20px;
     }
+
     .search-form input {
         border-radius: 0.25rem 0 0 0.25rem;
-        border: 1px solid #4e504f;
+        border: 1px solid #db92c5;
+        border-right: none;
     }
+
+    .form-control:focus {
+        border-color: #FFC0CB !important; /* Rosa pastel */
+        outline: none !important; /* Opcional: quita el contorno predeterminado */
+        box-shadow: 0 0 5px #FFC0CB !important; /* Opcional: agrega un brillo rosado alrededor */
+    }
+    
     .search-form button {
         border-radius: 0 0.25rem 0.25rem 0;
+        border: 1px solid #db92c5 !important;
         background-color: #eb9ac0;
         color: white;
-        border: none;
+        border-left: none;
     }
+
     .search-form button:hover {
         background-color: #ffcbdb;
         transition: background-color 0.3s ease;
@@ -96,7 +107,7 @@
         display: none; /* Esto elimina la flecha */
     }
 
-    /* LO USA EL ABOUT-US*/
+    /* LO USA EL ABOUT-US -> Ojo con estas que se usan por todos lados */ 
 
     .btn-pastel {
         background-color: #b3e5fc; /* Azul pastel */
@@ -185,7 +196,10 @@
     }
 
     /* LO USA EL FOOTER */
-    
+    #id-direccion {
+        text-decoration: none;
+    }
+
     .bg-light-dark {
         background-color: #333; /* Negro más claro */
     }
@@ -203,12 +217,6 @@
         margin-right: 10px;
     }
 
-    .card-img-top {
-        width: 100%;
-        max-height: 150px; 
-        object-fit: cover; 
-    } 
-
     /* Estilos para el header */
     .bg-pastel {
         background-color: #8eb5ca; /* Tonalidad pastel melón */
@@ -220,5 +228,143 @@
         overflow-x: hidden; /* Evita el scroll horizontal 
     } */
 
+    /* PRODUCTOS VER MAS */
+    .add-to-cart-btn:hover, .buy-now-btn:hover {
+        background-color: #81d4fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
+    .add-to-cart-btn:active, .buy-now-btn:active {
+        background-color: #4fc3f7;
+        transform: scale(0.98);
+    }
+
+    /* Contenedor para ocultar la flecha */
+    .select-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Estilos para el select de cantidad sin flecha */
+    .quantity-select {
+        appearance: none; /* Otros navegadores */
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        font-size: 1.1rem;
+        background-color: #ffffff;
+        cursor: pointer; /* Establece el cursor como puntero */
+        width: 100%;
+        padding-right: 30px; /* Ajusta el padding para que no se vea la flecha */
+    }
+
+    /* Opcional: personaliza el fondo del select */
+    .quantity-select::after {
+        content: ''; /* No muestra pseudo-elemento */
+    }
+
+    /* Estilos para los botones */
+    .add-to-cart-btn, .buy-now-btn {
+        background-color: #81cdf0; /* Azul pastel */
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+    }
     
+    /* USADO CUANDO  NO HAY PRODUCTOS */
+
+    .no-products-message {
+        text-align: center;
+        padding: 50px;
+        border-radius: 10px;
+        margin-top: 30px;
+    }
+
+    .no-products-message p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+
+    .no-products-message .btn-pastel {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+        background-color: #a2cadf;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 30px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .no-products-message .btn-pastel:hover {
+        background-color: #eec8d1;
+    }
+
+    .no-products-message .btn-pastel:active {
+        transform: scale(0.98);
+    }
+
+    /* Secciones del producto */
+     .product-image {
+        border-radius: 10px;
+        max-height: 400px;
+        object-fit: contain;
+        background-color: #ffffff;
+        padding: 10px;
+    }
+
+    .product-title {
+        font-size: 2.5rem;
+        color: #84b0bd; /* Verde pastel */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-price {
+        color: #e46363; /* Rojo pastel */
+        font-weight: bold;
+    }
+
+    /* PROBAR PAGINACION */
+    .pagination .page-item.active .page-link {
+        background-color: #9cd2eb;
+        border-color: #a9dcf3;
+        color: white;
+    }
+
+    .pagination .page-item.active .page-link:hover {
+        background-color: #81d4fa;
+        border-color: #81d4fa;
+    }
+
+    .pagination .page-link {
+        color: black; /* Default text color */
+        font-size: 1rem;
+    }
+
+    .pagination .page-item:hover .page-link {
+        background-color: #f5f5f5; /* Light gray background on hover */
+        color: black;
+    }
+
+    .card-image {
+        width: 100%;
+        object-fit: contain;
+        padding: 1rem;
+        max-height: 200px;
+    }
+
+    .card-image-cat {
+        width: 100%;
+        max-height: 150px; 
+        object-fit: cover; 
+    } 
+    
+    .card-price {
+        font-size: 1.5rem; 
+        font-weight: bold; 
+        color: #e6a7cb; 
+        margin: 0; 
+    }

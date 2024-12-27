@@ -17,16 +17,15 @@
 
 </head>
 <body class="d-flex flex-column vh-100">
-    <header>
+    <header class="header-user">
         <nav class="navbar navbar-expand-lg navbar-dark bg-pastel mb-0">
             <div class="d-flex w-100 justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand me-3" href="{{ route('welcome') }}">
                         <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" style="width: 30px; height: 30px;">
                     </a>
-                    <a class="nav-link me-3" href="{{ route('welcome') }}">Home</a>
-                    <a class="nav-link me-3" href="{{ route('index_cat') }}">All categories</a>
-                    <a class="nav-link me-3" href="{{ route('about-us') }}">About Us</a>
+                    <a class="nav-link me-3" href="{{ route('index_cat') }}">Categorias</a>
+                    <a class="nav-link me-3" href="{{ route('about-us') }}">Nosotros</a>
                     @if(auth()->check() && auth()->user()->role == 'admin')
                         <a class="nav-link" href="{{ route('admin.abm-list') }}" style="color: white;">ABM</a>
                     @endif
@@ -61,17 +60,6 @@
             </div>
         </nav>
     </header>
-    
-<style>
-    /* Esto tiene que estar aca, sino me rompe en margin-top en otros lados */
-    header {
-        position: fixed; 
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        z-index: 1000; 
-    }
-</style>
 
 
 

@@ -11,7 +11,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <a href="{{ route('productos_por_categoria', $categoria->id_categoria) }}">
-                            <img src="{{ asset($categoria->url_categoria) }}" class="card-img-top" alt="{{ $categoria->nombre_categoria }}">
+                            <img src="{{ asset($categoria->url_categoria) }}" class="card-img-top card-image-cat" alt="{{ $categoria->nombre_categoria }}">
                         </a> 
                         <div class="card-body">
                             <h5 class="card-title">{{ $categoria->nombre_categoria }}</h5>
@@ -61,30 +61,5 @@
         </div>
     @endif
 </main>
-
-<!-- ESTO ESTA REPETIDO CON PRODUCTO, HABIRA QUE PASARLO A UN .CSS GENERICO -->
-
-<style> 
-    .pagination .page-item.active .page-link {
-        background-color: #9cd2eb;
-        border-color: #a9dcf3;
-        color: white;
-    }
-
-    .pagination .page-item.active .page-link:hover {
-        background-color: #81d4fa;
-        border-color: #81d4fa;
-    }
-
-    .pagination .page-link {
-        color: black; /* Default text color */
-        font-size: 1rem;
-    }
-
-    .pagination .page-item:hover .page-link {
-        background-color: #f5f5f5; /* Light gray background on hover */
-        color: black;
-    }
-</style>
 
 @include('footer') 
