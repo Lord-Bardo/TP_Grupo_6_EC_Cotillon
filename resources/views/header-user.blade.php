@@ -18,46 +18,47 @@
 </head>
 <body class="d-flex flex-column vh-100">
     <header class="header-user">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-pastel mb-0">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                    <a class="navbar-brand me-3" href="{{ route('welcome') }}">
-                        <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" style="width: 40px; height: 40px;">
-                    </a>
-                    <a class="nav-link me-3" href="{{ route('index_cat') }}">Categorias</a>
-                    <a class="nav-link me-3" href="{{ route('about-us') }}">Nosotros</a>
-                    @if(auth()->check() && auth()->user()->role == 'admin')
-                        <a class="nav-link" href="{{ route('admin.abm-list') }}" style="color: white;">ABM</a>
+        <nav class="navbar container d-flex flex-md-row flex-column justify-content-between align-items-center">
+
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-3" href="{{ route('welcome') }}">
+                    <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" class="nav-logo">
+                </a>
+                <a class="nav-link me-3" href="{{ route('index_cat') }}">Categorias</a>
+                <a class="nav-link me-3" href="{{ route('about-us') }}">Nosotros</a>
+                
+                @if(auth()->check())
+                    @if(auth()->user()->role == 'admin')
+                        <a class="nav-link me-3" href="{{ route('admin.abm-list') }}" style="color: white;">ABM</a>
                     @endif
-                </div>
-                <div class="d-flex align-items-center">
-                    @if(auth()->check())
-                        <div class="dropdown">
-                            <button class="btn btn-outline-light" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ auth()->user()->username}}
-                            </button>
-                            
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">Perfil</a>
-                                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">Cerrar sesión</button>
-                                </form>
-                            </div>
-                        </div>
-                    @else
-                        <!-- Si no está logueado, mostrar botón de Login -->
-                        <a href="{{ route('user-log.r_view_login_remake') }}" class="btn btn-outline-light mr-3">Ingresá</a>
-                    @endif
-    
-                    <form class="search-form" action="{{ route('search_products') }}" method="GET">
-                        <input class="form-control" type="search" name="producto" value="{{ request('producto') }}" placeholder="Buscar productos..." aria-label="Search">
-                        
-                        <button class="btn btn-success" type="submit">
-                            <i class="fas fa-search"></i>
+
+                    <div class="dropdown">
+                        <button class="nav-link mbtn btn-outline-light fw-bold" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ auth()->user()->username}}
                         </button>
-                    </form>
-                </div>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">Perfil</a>
+                            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                            </form>
+                        </div>
+                    </div>   
+                @else
+                    <!-- Si no está logueado, mostrar botón de Login -->
+                    <a href="{{ route('user-log.r_view_login_remake') }}" class="nav-link me-3">Ingresá</a>
+                @endif
+            </div>
+
+            <div class="d-flex align-items-center">
+                <form class="search-form" action="{{ route('search_products') }}" method="GET">
+                    <input class="form-control" type="search" name="producto" value="{{ request('producto') }}" placeholder="Buscar productos..." aria-label="Search">
+
+                    <button class="btn btn-success" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
             </div>
         </nav>
     </header>

@@ -18,7 +18,7 @@
 
         <nav class="container d-flex flex-sm-row flex-column justify-content-between align-items-center">
             <div class="d-flex align-items-center justify-content-center">
-                <a class="navbar-brand" href="{{ route('welcome') }}">
+                <a class="mr-3" href="{{ route('welcome') }}">
                     <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" class="nav-logo">
                 </a>
                 <h1 class="m-0">EC-Cotillon</h1>

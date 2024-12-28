@@ -65,11 +65,4 @@
         </div>
     </main>
 
-    <style>
-    </style>
-
 @include ('user-log.footer-log-in')
-
-
-    
-      

@@ -1,6 +1,6 @@
 @include('header-user')
 
-<main class="container flex-grow-1" style="margin-top: 100px;">
+<main class="container flex-grow-1 margin-top-100">
     <h1 class="mb-3">Productos en {{ $categoria->nombre_categoria }}</h1>
 
     @if($productos->isEmpty())

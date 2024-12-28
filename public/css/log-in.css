@@ -11,14 +11,14 @@
 
 /* HEADER */
 .nav-header {
-    height: 60px;
+    height: 66px;
     width: 100%;
     padding: 1rem 0;
-    margin-bottom: 15px;
+    margin-bottom: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ebc9d8;
+    background-color: #ebd1dc;
 }
 
 .nav-header h1 {
@@ -37,13 +37,13 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #ffffff, var(--secondary-color)); 
+    background: linear-gradient(to bottom, #ffffff, var(--secondary-color));
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Asegura que al menos cubra el viewport -> el gradiente siempre ocupa toda la pantalla*/
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100vh; 
-    margin: 0;
 }
 
 /* FOOTER */

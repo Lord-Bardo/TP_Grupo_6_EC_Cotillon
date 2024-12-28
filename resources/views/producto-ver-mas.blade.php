@@ -1,6 +1,6 @@
 @include('header-user')
 
-<main class="container flex-grow-1" style="margin-top: 100px;">
+<main class="container flex-grow-1 margin-top-100">
     <div class="row d-flex justify-content-center">
         <div class="image-section col-6 d-flex justify-content-center align-items-center">
             <img src="{{ asset($producto->url_producto) }}" alt="{{$producto->nombre_producto}}" class="img-fluid product-image">

@@ -1,9 +1,9 @@
 @include('header-user')
 
-<main class="container flex-grow-1" style="margin-top: 100px;">
+<main class="container flex-grow-1 margin-top-100">
     
     <div class="row align-items-center mb-5">
-        <div class="col-md-6 text-center">
+        <div class="col-md-6 text-center mb-3">
             <img src="{{ asset('images/oso-trasparente.png') }}" alt="Mission Image" 
                  class="img-fluid rounded-circle shadow animated-oso" 
                  id="oso">
@@ -15,7 +15,7 @@
     </div>
 
     <div class="row align-items-center mb-5">
-        <div class="col-md-6 order-md-2 text-center">
+        <div class="col-md-6 order-md-2 text-center mb-3">
             <img src="{{ asset('images/pingu-transparente.png') }}" alt="Founding Story Image" class="img-fluid rounded-circle shadow">
         </div>
         <div class="col-md-6 order-md-1 text-center text-md-left">

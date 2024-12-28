@@ -1,9 +1,24 @@
     .header-user {
-        position: fixed; 
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        z-index: 1000; 
+        min-height: 10px;
+        padding: 0;
+        margin-bottom: 1rem;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #a2cadf;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .margin-top-100 {
+        margin-top: 100px;
+    }
+
+    .nav-logo {
+        max-height: 40px;
     }
 
     .navbar .nav-link {
@@ -27,7 +42,6 @@
         display: flex;
         align-items: center;
         margin-left: auto; /* Mueve el formulario completamente a la derecha */
-        margin-right: 20px;
     }
 
     .search-form input {

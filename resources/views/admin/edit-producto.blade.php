@@ -1,6 +1,6 @@
 @include('header-user')
 
-<main class="container flex-grow-1" style="margin-top: 100px;">
+<main class="container flex-grow-1 margin-top-100>
     <h1 class="text-center text-info mb-4">Editar Producto</h1> <!-- Cambiado a azul más claro -->
 
     @if (session('success'))

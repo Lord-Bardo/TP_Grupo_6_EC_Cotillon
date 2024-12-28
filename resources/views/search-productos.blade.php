@@ -1,6 +1,6 @@
 @include('header-user')
 
-<main class="container flex-grow-1" style="margin-top: 100px;">
+<main class="container flex-grow-1 margin-top-100">
     <div class="row">
         <!-- Barra lateral -->
         <aside class="col-lg-3 col-md-4 mb-4">
