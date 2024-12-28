@@ -9,6 +9,7 @@ use function Ramsey\Uuid\v1;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Producto;
+use COM;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -44,17 +45,27 @@ class UserController extends Controller
     public function restaurar_password(Request $request) {
         // Validar los datos del formulario
         $data = $request->validate([
-            'reset_username' => 'required|string|max:255'
+            'reset_username_or_email' => 'required|string|max:255'
         ], [
             "required" => "Este campo es obligatorio!"
         ]);
 
-        $usuario = User::where('username', $data['reset_username'])->first();
+        // Verificar si el valor ingresado es un correo electrónico
+        $field = filter_var($data['reset_username_or_email'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        $usuario = User::where($field, $data['reset_username_or_email'])->first();
 
         if(!$usuario) {
-            return redirect(route('user-log.olvidar_contrasena'))->withErrors([
-                'reset_error' => 'No se encontró un usuario con ese nombre.'
-            ])->withInput();
+            if($field === 'email') {
+                return redirect(route('user-log.olvidar_contrasena'))->withErrors([
+                    'reset_error' => 'No se encontró un usuario con ese email.'
+                ])->withInput();
+            }
+            else {
+                return redirect(route('user-log.olvidar_contrasena'))->withErrors([
+                    'reset_error' => 'No se encontró un usuario con ese nombre.'
+                ])->withInput();
+            }
         }
 
         $token = Str::random(6);  /* Podriamos poner otra funcion */
@@ -78,21 +89,31 @@ class UserController extends Controller
         // return redirect(route('user-log.codigo-verificacion', ['usuario' => $usuario]))->with('success', 'El código ha sido enviado!'); 
     }
 
-    /* 
-    public function reenviar_codigo($email){
-        // necesitamos el usuario
-        $codigo_unico = Str::random(6); 
+    public function reenviarCodigo($usuario_id) {
+        // Buscar al usuario
+        $usuario = User::findOrFail($usuario_id);
 
-        // Enviar el correo
-        Mail::send('user-log.email-reset-password', ['codigo' => $codigo_unico], function ($user) use ($usuario) {
-            $user->to($mail)
+        // Generar o reutilizar el código de verificación
+        $token_nuevo = Str::random(6); 
+
+        DB::table('password_reset_tokens')->where('username', $usuario->username)->delete();
+
+        DB::table('password_reset_tokens')->insert([
+            'username' => $usuario->username,
+            'token' => $token_nuevo,
+        ]);
+
+        // 
+        Mail::send('user-log.email-reset-password', ['codigo' => $token_nuevo], function ($user) use ($usuario) {
+            $user->to($usuario->email)
                     ->subject('Recuperar contraseña');
         });
-
-        // Redirigir con un mensaje de éxito
-        return redirect(route('user-log.codigo-verificacion', ['codigo' => $codigo_unico]))->with('success', 'El código ha sido enviado!'); 
+        
+        session()->flash('success_reenviar', 'El código de verificación ha sido reenviado correctamente.');
+        
+        // Redirigir  con un mensaje de éxito
+        return view('user-log.codigo-verificacion', ['usuario' => $usuario]);
     }
-    */
 
     public function ingresar_codigo(User $usuario) {
         return view('user-log.codigo-verificacion', ['usuario' => $usuario]);
@@ -201,20 +222,24 @@ class UserController extends Controller
 
     public function authenticate(Request $request) {
         $datos = $request->validate([
-            'login_username' => 'required|string',  
+            'login_username_or_email' => 'required|string',  
             'login_password' => 'required|string',  
         ], [
             "required" => "Este campo es obligatorio!"
         ]);
+    
+        // Verificar si el valor ingresado es un correo electrónico
+        $field = filter_var($datos['login_username_or_email'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        if (auth()->attempt(['username' => $datos['login_username'], 'password' => $datos['login_password']])) {
-            // Salio OK!
+        // Intentar autenticar al usuario
+        if (auth()->attempt([$field => $datos['login_username_or_email'], 'password' => $datos['login_password']])) {
+            // Salió OK!
             return redirect()->route('welcome');
         } else {
             // Malio sal!
             return back()->withErrors([
                 'login_error' => 'Nombre de usuario o contraseña incorrectos.',
-            ])->withInput();  // Conservar los datos ingresados (No funciona!)
+            ])->withInput();  // Conservar los datos ingresados
         }
     }
 

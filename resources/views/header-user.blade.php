@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
+    <title>EC-Cotillon</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -51,7 +51,8 @@
                     @endif
     
                     <form class="search-form" action="{{ route('search_products') }}" method="GET">
-                        <input class="form-control" type="search" name="producto" placeholder="Buscar productos..." aria-label="Search">
+                        <input class="form-control" type="search" name="producto" value="{{ request('producto') }}" placeholder="Buscar productos..." aria-label="Search">
+                        
                         <button class="btn btn-success" type="submit">
                             <i class="fas fa-search"></i>
                         </button>

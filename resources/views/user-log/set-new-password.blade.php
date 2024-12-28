@@ -48,7 +48,7 @@
                 </div>
 
                 <!-- Botón de Establecer Contraseña -->
-                <button type="submit" id="boton" class="btn btn-dark btn-block mt-4">Establecer Contraseña</button>
+                <button type="submit" id="boton" class="btn btn-block mt-4">Establecer Contraseña</button>
 
                 <!-- Enlace a Login -->
                 <div class="mt-3 text-center">
@@ -175,12 +175,19 @@
 
     .btn:hover {
         background-color: #f0dae5;
+        color: #fff;
         transform: scale(1.05);
     }
 
     .btn:active {
         background-color: #f8c6df;
         transform: scale(1);
+    }
+
+    .btn:focus {
+        background-color: #fad2e6 !important; /* Mantén el color original */
+        transform: scale(1) !important; /* Evita cambios en el tamaño */
+        box-shadow: none !important; /* Elimina el foco por defecto */
     }
 
     /* Forgot password link */

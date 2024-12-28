@@ -12,17 +12,24 @@
             <h2 id="welcomeText">Ingresa el código de verificación</h2>
 
             <!-- Mensaje -->
-            @if (session('success'))
+            @if (session('success_reenviar'))
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                    {{ session('success_reenviar') }}
                 </div>
-            @endif
+            @else
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
 
-            @if ($errors->has('code_error'))
-                <div class="alert alert-danger">
-                    {{ $errors->first('code_error') }}
-                </div>
+                @if ($errors->has('code_error'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('code_error') }}
+                    </div>
+                @endif
             @endif
+            
 
             <form action="{{ route('user-log.verificar_codigo', $usuario->id_usuario) }}" method="POST" id="verifyCodeForm">
                 @csrf
@@ -42,7 +49,7 @@
 
                 <!-- Enlace a Login -->
                 <div class="mt-3 text-center">
-                    <p class="text-dark">¿No recibiste el código? <a href="#" class="text-info">Reenviar el código</a></p>
+                    <p class="text-dark">¿No recibiste el código? <a href="{{ route('user-log.reenviar_codigo', ['usuario' => $usuario->id_usuario]) }}" class="text-info">Reenviar el código</a></p>
                 </div>
             </form>
         </div>

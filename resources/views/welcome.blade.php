@@ -8,11 +8,13 @@
                     <img src="{{ asset('images/promo-cotillon.png') }}" alt="Promoción Cotillón">
                 </div>
             </div>
-
+            
             <div class="swiper-slide">
-                <img src="{{ asset('images/carrousel2.png') }}" alt="Promoción Cotillón">
-            </div>
-        
+                <a href="{{ route('productos_por_categoria', ['id' => 11]) }}">
+                    <img src="{{ asset('images/slider-pasteleria.png') }}" alt="Promoción Cotillón">
+                </a>
+            </div> 
+
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
                     <img src="{{ asset('images/carrousel-navidad.png') }}" alt="Promoción Cotillón">

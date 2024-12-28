@@ -138,7 +138,7 @@ class ProductoController extends Controller
     public function productosPorCategoria($id)
     {
 
-        $productos = Producto::where('id_categoria', $id)->paginate(6);
+        $productos = Producto::where('id_categoria', $id)->paginate(3);
 
         $categoria = Categoria::findOrFail($id);
 
@@ -150,16 +150,49 @@ class ProductoController extends Controller
     }
 
     public function search(Request $request) {
+        // Captura el término de búsqueda
         $producto = $request->input('producto');
 
+        // Inicializa la consulta base
+        $query = Producto::query();
+
+        // Filtro por nombre del producto
         if ($producto) {
-            $productos = Producto::where('nombre_producto', 'like', "%$producto%")->paginate(6);
-        } else {
-            $productos = Producto::paginate(6);
+            $query->where('nombre_producto', 'like', "%$producto%");
         }
 
-        return view ('search-productos', [
+        // Filtro por categorías
+        if ($request->has('categorias')) {
+            $categorias = $request->input('categorias');
+            $query->whereIn('id_categoria', $categorias);
+        }
+
+        // Filtro por rango de precio
+        if ($request->has('precio_min') && $request->input('precio_min') !== null) {
+            $precioMin = $request->input('precio_min');
+        }
+        else {
+            $precioMin = 0; // Si no hay valor, toma 0
+        }
+
+        if ($request->has('precio_max') && $request->input('precio_max') !== null) {
+            $precioMax = $request->input('precio_max');
+        }
+        else {
+            $precioMax = 10000; // Si no hay valor, toma 10000
+        }
+
+        $query->whereBetween('precio', [$precioMin, $precioMax]);
+
+        // Paginación
+        $productos = $query->paginate(6);
+
+        // Pasar datos adicionales como categorías para los filtros
+        $categorias = Categoria::all();
+
+        return view('search-productos', [
             'productos' => $productos,
+            'categorias' => $categorias
         ]);
     }
 

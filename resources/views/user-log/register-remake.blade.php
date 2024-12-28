@@ -4,7 +4,7 @@
         <div id="loginCard" class="row">
             <div id="cardLeft" class="col-6">
                 <div id="imageCover">
-                    <img src="{{ asset('images/register.png') }}" alt="Decorative Furniture Image" id="decorativeImage">
+                    <img src="{{ asset('images/sing-up.png') }}" alt="Decorative Furniture Image" id="decorativeImage">
                 </div>
             </div>
             <div id="cardRight" class="col-6">
@@ -47,27 +47,28 @@
                         @enderror
                     </div>
 
-                    <!-- Contraseña -->
-                    <div id="inputGroupPassword">
-                        <label for="register_password" id="labelPassword">Contraseña</label>
-                        <input type="password" name="register_password" id="register_password" placeholder="Crea una contraseña">
+                    <div id="inputGroupPassword" class="d-flex justify-content-between">
+                        <!-- Contraseña -->
+                        <div class="w-48">
+                            <label for="register_password" id="labelPassword">Contraseña</label>
+                            <input type="password" name="register_password" id="register_password" placeholder="Crear contraseña">
 
-                        @error('register_password')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                            @error('register_password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
+                        <!-- Confirmar Contraseña -->
+                        <div class="w-48">
+                            <label for="register_password_confirmation" id="labelConfirmPassword">Confirmar contraseña</label>
+                            <input type="password" name="register_password_confirmation" id="register_password_confirmation" placeholder="Confirmar contraseña">
+
+                            @error('register_password_confirmation')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
 
-                    <!-- Confirmar Contraseña -->
-                    <div id="inputGroupConfirmPassword">
-                        <label for="register_password_confirmation" id="labelConfirmPassword">Confirmar Contraseña</label>
-                        <input type="password" name="register_password_confirmation" id="register_password_confirmation" placeholder="Confirma tu contraseña">
-
-                        @error('register_password_confirmation')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        
-                    </div>
 
                     <!-- Botón de Registro -->
                     <button type="submit" id="boton" class="btn btn-dark btn-block mt-4">Registrarse</button>
@@ -178,7 +179,22 @@
             border: 1px solid #ccc;
             margin-top: 5px;
         }
-    
+
+        /* Estilo para los campos de contraseña y confirmar contraseña en una fila */
+        #inputGroupPassword {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px; /* Espacio entre los campos */
+        }
+
+        #inputGroupPassword .w-48 {
+            width: 48%; /* Asigna un ancho del 48% a cada input */
+        }
+
+        #register_password, #register_password_confirmation {
+            width: 100%;
+        }
+
         /* Actions */
         #actions {
             text-align: center;

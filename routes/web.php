@@ -25,9 +25,9 @@ Route::post('/contacto', [ContactController::class, 'sendEmail'])->name('contact
 /* ROUTES CATEGORIAS */
 Route::get('/categorias', [CategoriaController::class,  'index_cat'])->name('index_cat');
 
-/* ABM CATEGORIAS */
 Route::get('/categorias/{id}/productos', [ProductoController::class, 'productosPorCategoria'])->name('productos_por_categoria');
 
+/* ABM CATEGORIAS */
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin/categorias', [CategoriaController::class, 'adminIndex'])->name('admin.categorias');
     Route::get('/admin/categorias/create', [CategoriaController::class, 'create'])->name('admin.categorias.create');
@@ -81,13 +81,22 @@ Route::get('/user-log/restaurar_password', [UserController::class, 'restaurar_pa
 Route::post('/user-log/restaurar_password', [UserController::class, 'restaurar_password'])->name('user-log.restaurar_password');
 
 // Route::get('/user-log/verificar_codigo/{usuario}', [UserController::class, 'ingresar_codigo'])->name('user-log.verificar_codigo');
+
 Route::post('/user-log/verificar_codigo/{usuario}', [UserController::class, 'verificar_codigo'])->name('user-log.verificar_codigo');
+
+// El GET lo necesito para el reenviar codigo
+Route::get('/user-log/verificar_codigo/{usuario}', [UserController::class, 'verificar_codigo'])->name('user-log.verificar_codigo');
 
 Route::get('/user-log/ingresar_codigo/{usuario}', [UserController::class, 'ingresar_codigo'])->name('user-log.ingresar_codigo');
 
 Route::get('/user-log/set-new-password/{usuario}', [UserController::class, 'showSetNewPasswordForm'])->name('user-log.set_new_password');
 
 Route::post('/user-log/set-new-password/{usuario}', [UserController::class, 'setNewPassword'])->name('user-log.set_new_password');
+
+/* ACLARACION : Aca podria poner una ruta directa para el reenvio, pero la anido ya que por ahora solo esta asociado al login */
+
+Route::get('/user-log/verificar_codigo/reenvio/{usuario}', [UserController::class, 'reenviarCodigo'])->name('user-log.reenviar_codigo');
+
 
 // Tambien tiene sentido que esto hubiera sido un post-login
 Route::post('/user-log/authenticate', [UserController::class, 'authenticate'])->name('user-log.authenticate');

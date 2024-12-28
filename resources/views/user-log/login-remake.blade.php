@@ -27,8 +27,8 @@
                 <form action="{{ route('user-log.authenticate') }}" method="POST" id="loginForm">
                     <!-- Input group for username or email -->
                     <div id="inputGroupUsername">
-                        <label for="login_username" id="labelUsername">Username</label>
-                        <input type="text" id="username" name="login_username" placeholder="Ingrese un usuario">
+                        <label for="login_username_or_email" id="labelUsername">Usuario o email</label>
+                        <input type="text" id="username" name="login_username_or_email" placeholder="Ingrese un usuario">
 
                         @error('login_username')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -38,7 +38,7 @@
                     <!-- Input group for password -->
 
                     <div id="inputGroupPassword">
-                        <label for="login_password" id="labelPassword">Password</label>
+                        <label for="login_password" id="labelPassword">Contraseña</label>
                         <input type="password" id="password" name="login_password" placeholder="Ingrese una constraseña">
 
                         @error('login_password')
@@ -52,11 +52,11 @@
 
                         <button type="submit" id="boton" class="btn">Ingresá</button>
 
-                        <a href="{{ route('user-log.olvidar_contrasena') }}" id="forgotPassword">Olvidaste tu contraseña?</a>
+                        <a href="{{ route('user-log.olvidar_contrasena') }}" id="forgotPassword" class="text-info">Olvidaste tu contraseña?</a>
                     </div>
 
                     <div id="createAccount" class="d-flex align-items-center justify-content-center">
-                        <p id="accountText">No tenes cuenta? <a href="{{ route('user-log.r_view_register_remake') }}" id="registerLink">Registrate</a></p>
+                        <p id="accountText">No tenes cuenta? <a href="{{ route('user-log.r_view_register_remake') }}" id="registerLink" class="text-info">Registrate</a></p>
                     </div>
                 </form>
             </div>
@@ -184,6 +184,7 @@
     
         .btn:hover {
             background-color: #f0dae5;
+            color: #fff;
             transform: scale(1.05);
         }
     
@@ -196,7 +197,6 @@
         #forgotPassword {
             display: inline-block;
             color: #7cbdfa;
-            text-decoration: none;
             margin-left: 15px;
         }
     
@@ -208,7 +208,6 @@
     
         #registerLink {
             color: #7cbdfa;
-            text-decoration: none;
         }
         
     </style>
