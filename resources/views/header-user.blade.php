@@ -22,7 +22,7 @@
             <div class="d-flex w-100 justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand me-3" href="{{ route('welcome') }}">
-                        <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" style="width: 30px; height: 30px;">
+                        <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" style="width: 40px; height: 40px;">
                     </a>
                     <a class="nav-link me-3" href="{{ route('index_cat') }}">Categorias</a>
                     <a class="nav-link me-3" href="{{ route('about-us') }}">Nosotros</a>

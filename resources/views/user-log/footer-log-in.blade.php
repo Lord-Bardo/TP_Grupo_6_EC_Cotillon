@@ -1,6 +1,6 @@
-<!-- Footer -->
-        <footer class="border-top text-center small text-muted py-3">
-            <p class="m-0">Copyright &copy; 2024 Nuestra Empresa. Todos los derechos reservados.</p>
+        <!-- Footer -->
+        <footer class="text-center small text-muted py-3">
+            <p class="m-0">Copyright &copy; 2024 EC-Cotillon. Todos los derechos reservados.</p>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

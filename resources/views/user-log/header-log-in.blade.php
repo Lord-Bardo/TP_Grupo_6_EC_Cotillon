@@ -10,23 +10,22 @@
     
     <link rel="stylesheet" href="{{ asset('css/log-in.css') }}">
 </head>
-<body></body>
-    <!-- Navbar básica -->
-    <header>
-        <nav class="navbar navbar-dark bg-pastel">
-            <div class="d-flex align-items-center">
-                <a class="navbar-brand ml-0" href="{{ route('welcome') }}">
-                    <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" style="width: 30px; height: 30px;">
+<body>
+    <!-- Header -->
+    <header class="nav-header">
+        
+        {{-- Cuando se llega a sm, el p desaparece y el nav pasa de ubicar sus elementos por row a column, de forma tal que al ser align-items-center (al ser < sm ordena el eje principal) se centra la imagen y el h1 --}}
+
+        <nav class="container d-flex flex-sm-row flex-column justify-content-between align-items-center">
+            <div class="d-flex align-items-center justify-content-center">
+                <a class="navbar-brand" href="{{ route('welcome') }}">
+                    <img src="{{ asset('images/ec-cotillon-logo.png') }}" alt="Logo" class="nav-logo">
                 </a>
+                <h1 class="m-0">EC-Cotillon</h1>
             </div>
+            
+            <p class="d-sm-block d-none m-0">Todo para tus fiestas en un solo lugar</p>
         </nav>
     </header>
-
-<style>
-    .bg-pastel {
-        background-color: #f8c7de; 
-        color: #e46363; */
-    }
-</style>
 
    
