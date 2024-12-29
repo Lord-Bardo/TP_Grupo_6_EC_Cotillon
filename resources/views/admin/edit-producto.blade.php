@@ -22,7 +22,7 @@
         <div class="form-group mb-3">
             <label for="url_producto" class="font-weight-bold">Imagen del Producto</label>
             <input type="file" class="form-control" id="url_producto" name="url_producto" accept="image/*" onchange="previewImage(event)">
-            
+
             @error('url_producto')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -34,7 +34,7 @@
                         <img src="{{ asset($producto->url_producto) }}" alt="Imagen del Producto" class="img-fluid" style="max-width: 150px; max-height: 150px;">
                     </div>
                 @endif
-    
+
                 <div class="col-6 mt-3 new-image" id="preview-container">
                     <p>Imagen nueva:</p>
                     <img id="nueva_imagen" src="#" alt="Imagen nueva" class="img-fluid" style="max-width: 150px; max-height: 150px;">
@@ -47,6 +47,7 @@
         <div class="form-group mb-3">
             <label for="nombre_producto" class="font-weight-bold">Nombre del Producto</label>
             <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="{{ old('nombre_producto', $producto->nombre_producto) }}">
+
             @error('nombre_producto')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -55,6 +56,7 @@
         <div class="form-group mb-3">
             <label for="descripcion_producto" class="font-weight-bold">Descripción</label>
             <textarea class="form-control" id="descripcion_producto" name="descripcion_producto" required>{{ old('descripcion_producto', $producto->descripcion_producto) }}</textarea>
+
             @error('descripcion_producto')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -63,6 +65,7 @@
         <div class="form-group mb-3">
             <label for="precio" class="font-weight-bold">Precio</label>
             <input type="number" class="form-control" id="precio" name="precio" value="{{ old('precio', $producto->precio) }}" required>
+
             @error('precio')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -71,6 +74,7 @@
         <div class="form-group mb-3">
             <label for="stock" class="font-weight-bold">Stock</label>
             <input type="number" class="form-control" id="stock" name="stock" value="{{ old('stock', $producto->stock) }}" required>
+
             @error('stock')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -107,20 +111,20 @@
     }
 
     .text-info {
-        color: #5bc0de !important; 
+        color: #5bc0de !important;
     }
 
     .pastel-primary {
-        background-color: #5bc0de !important; 
+        background-color: #5bc0de !important;
         color: #fff !important;
         font-size: 1.2rem;
         padding: 0.75rem;
-        border: none; 
+        border: none;
     }
 
     .pastel-primary:hover {
-        background-color: #46a1c4 !important; 
-        transition: background-color 0.3s ease; 
+        background-color: #46a1c4 !important;
+        transition: background-color 0.3s ease;
     }
 </style>
 

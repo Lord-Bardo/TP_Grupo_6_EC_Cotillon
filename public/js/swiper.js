@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 800,
 
         autoplay: {
-            delay: 3000, 
-            disableOnInteraction: false, 
+            delay: 3000,
+            disableOnInteraction: false,
         },
 
         pagination: {

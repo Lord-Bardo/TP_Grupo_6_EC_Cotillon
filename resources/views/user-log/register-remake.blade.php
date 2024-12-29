@@ -1,6 +1,6 @@
 @include ('user-log.header-log-in')
 
-<main class="mainContainer container">
+    <main class="mainContainer container">
         <div class="loginCard row">
             <div class="cardLeft col-6 d-sm-block d-none">
                 <div class="imageCover">

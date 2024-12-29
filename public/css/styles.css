@@ -17,6 +17,13 @@
         margin-top: 100px;
     }
 
+    /* Media query para que cuando se achique la pantalla por debajo de md se aumente el margin-top */
+    @media (max-width: 767px) {
+        .margin-top-100 {
+            margin-top: 140px;
+        }
+    }
+
     .nav-logo {
         max-height: 40px;
     }
@@ -55,7 +62,7 @@
         outline: none !important; /* Opcional: quita el contorno predeterminado */
         box-shadow: 0 0 5px #FFC0CB !important; /* Opcional: agrega un brillo rosado alrededor */
     }
-    
+
     .search-form button {
         border-radius: 0 0.25rem 0.25rem 0;
         border: 1px solid #db92c5 !important;
@@ -121,7 +128,7 @@
         display: none; /* Esto elimina la flecha */
     }
 
-    /* LO USA EL ABOUT-US -> Ojo con estas que se usan por todos lados */ 
+    /* LO USA EL ABOUT-US -> Ojo con estas que se usan por todos lados */
 
     .btn-pastel {
         background-color: #b3e5fc; /* Azul pastel */
@@ -217,7 +224,7 @@
     .bg-light-dark {
         background-color: #333; /* Negro más claro */
     }
-    
+
     .bg-light-dark a {
         color: #ccc; /* Opcional: Cambiar el color de los enlaces a un gris más claro */
     }
@@ -236,10 +243,10 @@
         background-color: #8eb5ca; /* Tonalidad pastel melón */
         color: #e46363; /* Texto oscuro para contraste */
     }
-    
+
     /* No se mb como funciona esto, pero hace que se mantenga en todo momento */
     /* body, html {
-        overflow-x: hidden; /* Evita el scroll horizontal 
+        overflow-x: hidden; /* Evita el scroll horizontal
     } */
 
     /* PRODUCTOS VER MAS */
@@ -287,7 +294,7 @@
         padding: 10px 20px;
         transition: all 0.3s ease;
     }
-    
+
     /* USADO CUANDO  NO HAY PRODUCTOS */
 
     .no-products-message {
@@ -372,13 +379,13 @@
 
     .card-image-cat {
         width: 100%;
-        max-height: 150px; 
-        object-fit: cover; 
-    } 
-    
+        max-height: 150px;
+        object-fit: cover;
+    }
+
     .card-price {
-        font-size: 1.5rem; 
-        font-weight: bold; 
-        color: #e6a7cb; 
-        margin: 0; 
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #e6a7cb;
+        margin: 0;
     }

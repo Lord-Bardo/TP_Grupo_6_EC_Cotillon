@@ -1,11 +1,11 @@
 @include('header-user')
 
 <main class="container flex-grow-1 margin-top-100">
-    
+
     <div class="row align-items-center mb-5">
         <div class="col-md-6 text-center mb-3">
-            <img src="{{ asset('images/oso-trasparente.png') }}" alt="Mission Image" 
-                 class="img-fluid rounded-circle shadow animated-oso" 
+            <img src="{{ asset('images/oso-trasparente.png') }}" alt="Mission Image"
+                 class="img-fluid rounded-circle shadow animated-oso"
                  id="oso">
         </div>
         <div class="col-md-6 text-center text-md-left">
@@ -29,7 +29,7 @@
     <div class="text-center mb-5">
         <h2 class="font-weight-bold text-pastel">Nuestro Equipo</h2>
     </div>
-    
+
     <div class="row text-center">
 
         <div class="col-md-3 mb-4">
@@ -39,7 +39,7 @@
             <h5 class="font-weight-bold">Facundo Bove Hernandez</h5>
             <p class="text-muted">Estudiante de Ingenieria en Sistemas</p>
         </div>
-    
+
         <div class="col-md-3 mb-4">
             <div class="d-flex justify-content-center">
                 <img src="{{ asset('images/chad.png') }}" alt="Integrante 2" class="img-fluid rounded-circle mb-3 fixed-size-img">
@@ -47,7 +47,7 @@
             <h5 class="font-weight-bold">Juan Garrone</h5>
             <p class="text-muted">Estudiante de Ingenieria en Sistemas</p>
         </div>
-    
+
         <div class="col-md-3 mb-4">
             <div class="d-flex justify-content-center">
                 <img src="{{ asset('images/mati.png') }}" alt="Integrante 2" class="img-fluid rounded-circle mb-3 fixed-size-img">
@@ -55,7 +55,7 @@
             <h5 class="font-weight-bold">Matias Tort</h5>
             <p class="text-muted">Estudiante de Ingenieria en Sistemas</p>
         </div>
-    
+
         <div class="col-md-3 mb-4">
             <div class="d-flex justify-content-center">
                 <img src="{{ asset('images/fabri.png') }}" alt="Integrante 2" class="img-fluid rounded-circle mb-3 fixed-size-img">
@@ -67,29 +67,33 @@
 
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h2 class="font-weight-bold text-center mb-4">Contactanos</h2>
-            <form action="{{ route('contacto.send') }}" method="POST">
+            <h2 class="font-weight-bold text-center mb-3">Contactanos</h2>
+            {{-- Agrego el atributo novalidate al form para desactivar la validación automática del navegador.
+            Se ve q tiene un JS q valida los campos del formulario antes de enviarlo y no muestra nuestro cartelito de error.
+            Al desactivar la validacion, el formulario si o si se envia al backend y se valida ahi. --}}
+            {{-- PODRIAMOS HACER LA VALIDACION ENTERA CON JS. PORQUE CUANDO SE ENVIA SE RECARGA LA PAGINA Y TE MANDA AL PRINCIPIO --}}
+            <form action="{{ route('contacto.send') }}" method="POST" novalidate>
                 @csrf
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre">
-                
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" value="{{ old('nombre') }}">
+
                     @error('nombre')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Tu correo electrónico" >
-                
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Tu correo electrónico" value="{{ old('email') }}">
+
                     @error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="mensaje">Mensaje</label>
-                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." ></textarea>
-                
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí...">{{ old('mensaje') }}</textarea>
+
                     @error('mensaje')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -105,37 +109,37 @@
 <!-- Estilos específicos -->
 <style>
     body {
-        background-color: #f8f9fa; 
+        background-color: #f8f9fa;
     }
-    
+
     .btn-pastel {
-        background: linear-gradient(90deg, #fcb3c7, #ffb6c1); 
-        color: #fff; 
-        font-size: 1.2rem; 
-        font-weight: bold; 
-        padding: 0.75rem 1.5rem; 
-        border: none; 
-        border-radius: 50px; 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-        transition: all 0.3s ease; 
+        background: linear-gradient(90deg, #fcb3c7, #ffb6c1);
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 50px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
         cursor: pointer;
     }
 
     .btn-pastel:hover {
-        background: linear-gradient(90deg, #ff9da3, #ffa3ad); 
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
-        transform: translateY(-3px); 
+        background: linear-gradient(90deg, #ff9da3, #ffa3ad);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px);
     }
 
     .btn-pastel:active {
-        transform: translateY(1px); 
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); 
+        transform: translateY(1px);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     }
 
     /* Centrar el botón */
     .form-group + .btn-pastel {
-        display: block; 
-        margin: 2rem auto 0; 
+        display: block;
+        margin: 2rem auto 0;
         width: fit-content;
     }
 

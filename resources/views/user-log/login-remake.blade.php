@@ -17,7 +17,7 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                
+
                 @if ($errors->has('login_error'))
                     <div class="alert alert-danger">
                         {{ $errors->first('login_error') }}
@@ -44,7 +44,6 @@
                         @error('login_password')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-
                     </div>
 
                     <div id="actions" class="mb-3">
@@ -66,3 +65,4 @@
     </main>
 
 @include ('user-log.footer-log-in')
+

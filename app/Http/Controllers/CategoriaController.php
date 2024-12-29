@@ -22,13 +22,13 @@ class CategoriaController extends Controller
         $parametros = [
             "categorias" => $categorias
         ];
-        
+
         return view('categorias', $parametros);
     }
 
     public function adminIndex()
     {
-        $categorias = Categoria::all(); 
+        $categorias = Categoria::all();
         return view('admin.abm-categorias', compact('categorias'));
     }
 
@@ -72,7 +72,7 @@ class CategoriaController extends Controller
             "image" => "El archivo debe ser una imagen!"
         ]);
 
-        // Manejar la imagen 
+        // Manejar la imagen
         $urlImagen = null;
         if ($request->hasFile('url_categoria')) {
             // Guardar la imagen en la carpeta 'images/categorias'
@@ -83,9 +83,9 @@ class CategoriaController extends Controller
             // Generar la URL relativa para almacenar en la base de datos
             $urlImagen = 'images/categorias/' . $nombreArchivo;
         }
- 
+
         $datos["url_categoria"] = $urlImagen;
-        
+
         Categoria::create($datos);
 
         return redirect()->route('admin.categorias')->with('success', 'Categoría agregada exitosamente.');
@@ -97,11 +97,11 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
- 
+
     public function edit($id_categoria)
     {
-        $categoria = Categoria::findOrFail($id_categoria); 
-        return view('admin.edit-categoria', compact('categoria')); 
+        $categoria = Categoria::findOrFail($id_categoria);
+        return view('admin.edit-categoria', compact('categoria'));
     }
 
     public function update(Request $request, $id_categoria)
@@ -199,23 +199,23 @@ class CategoriaController extends Controller
         return response()->stream($callback, 200, $headers);
     }
 
-    /* 
+
     public function exportExcel() {
         // Obtener los datos de la base de datos
         $categorias = Categoria::all();
-    
+
         // Crear una nueva hoja de cálculo
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
-    
+
         // Encabezados de las columnas
         $headers = ['Nombre', 'Descripción'];
-    
+
         // Escribir los encabezados en la primera fila
         foreach ($headers as $index => $header) {
             $sheet->setCellValue(chr(65 + $index) . '1', $header);  // Usar A1, B1, C1, etc.
         }
-    
+
         // Escribir los datos
         $row = 2; // Comenzamos desde la fila 2
         foreach ($categorias as $categoria) {
@@ -223,21 +223,20 @@ class CategoriaController extends Controller
             $sheet->setCellValue('B' . $row, $categoria->descripcion_categoria); // Columna B
             $row++;
         }
-    
+
         // Crear un escritor para el archivo Excel
         $writer = new Xlsx($spreadsheet);
-    
+
         // Nombre del archivo Excel
         $fileName = "listado_categorias.xlsx";
-    
+
         // Crear un archivo temporal en disco
         $tempFilePath = storage_path('app/public/listado_categorias.xlsx');
-    
+
         // Guardar el contenido del archivo temporal
         $writer->save($tempFilePath);
-    
+
         // Enviar el archivo como respuesta para descargar
         return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
-        */
 }

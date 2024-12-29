@@ -11,10 +11,10 @@
 
 /* HEADER */
 .nav-header {
-    height: 66px;
+    min-height: 10px;
     width: 100%;
-    padding: 1rem 0;
-    margin-bottom: 1.2rem;
+    padding: 0.5rem 0;
+    margin-bottom: 44px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,14 +53,24 @@ footer {
     font-size: 14px;
 }
 
-/* Styling the body to center content with a background gradient */
-.mainContainer {
+/* Styling the body to center content with a background gradient LO COMENTE Y NO ESTABA COMENTADO ----------------------*/
+/* ESTA AL DOPE */
+/* .mainContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 992px;
     padding: 20px;
+} */
+
+/* Container to center the login card on the page LE SAQUE EL PADDING ----------------------*/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 992px;
 }
 
 /* Login card that holds both the image and the form */
@@ -79,17 +89,6 @@ footer {
     width: 50%;
 }
 
-/* Container to center the login card on the page */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 992px;
-    padding: 20px;
-}
-
-
 /* Styling the image to cover the entire left side */
 .imageCover {
     width: 100%;
@@ -100,7 +99,7 @@ footer {
 }
 
 .decorativeImage {
-    width: 80%;
+    max-width: 90%;
     height: auto;
 }
 
@@ -175,13 +174,13 @@ footer {
     transform: scale(1);
 }
 
-/* Styling the Create Account section  -> Estas son medias raras porque 
+/* Styling the Create Account section  -> Estas son medias raras porque
 no las esta tomando */
 
 .create-account {
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
-    text-transform: uppercase;    
+    text-transform: uppercase;
     text-align: center;
     margin-top: 20px;
 }

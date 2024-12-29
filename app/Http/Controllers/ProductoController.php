@@ -12,24 +12,23 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductoController extends Controller
-{   
-    /* ESTO A MI NO ME FUNCIONA, PERO MATI LO TIENE OK 
+{
     public function exportExcel() {
         // Obtener los datos de la base de datos
         $productos = Producto::all();
-    
+
         // Crear una nueva hoja de cálculo
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
-    
+
         // Encabezados de las columnas
         $headers = ['Nombre', 'Descripción', 'Precio', 'Stock'];
-    
+
         // Escribir los encabezados en la primera fila
         foreach ($headers as $index => $header) {
             $sheet->setCellValue(chr(65 + $index) . '1', $header);  // Usar A1, B1, C1, etc.
         }
-    
+
         // Escribir los datos
         $row = 2; // Comenzamos desde la fila 2
         foreach ($productos as $producto) {
@@ -39,24 +38,24 @@ class ProductoController extends Controller
             $sheet->setCellValue('D' . $row, $producto->stock); // Columna D
             $row++;
         }
-    
+
         // Crear un escritor para el archivo Excel
         $writer = new Xlsx($spreadsheet);
-    
+
         // Nombre del archivo Excel
         $fileName = "listado_productos.xlsx";
-    
+
         // Crear un archivo temporal en disco
         $tempFilePath = storage_path('app/public/listado_productos.xlsx');
-    
+
         // Guardar el contenido del archivo temporal
         $writer->save($tempFilePath);
-    
+
         // Enviar el archivo como respuesta para descargar
         return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
-    */
-    
+
+
     public function exportPDF() {
         $productos = Producto::all();
 
@@ -114,17 +113,17 @@ class ProductoController extends Controller
         return response()->stream($callback, 200, $headers);
     }
 
-    
+
     public function index()
     {
-        
+
         $productos = Producto::paginate(3);
 
         return view('welcome', [
             'productos' => $productos,
         ]);
     }
-    
+
     public function admin_productos_index()
     {
         $productos = Producto::all();
@@ -133,7 +132,7 @@ class ProductoController extends Controller
             'productos' => $productos,
         ]);
     }
-    
+
     // Deprecated
     public function productosPorCategoria($id)
     {
@@ -217,8 +216,8 @@ class ProductoController extends Controller
             "descripcion_producto.max" => "La cantidad máxima de caracteres son 255!",
             "image" => "El archivo debe ser una imagen!"
         ]);
-        
-        // Manejar la imagen 
+
+        // Manejar la imagen
         $urlImagen = null;
         if ($request->hasFile('url_producto')) {
             // Guardar la imagen en la carpeta 'images/productos'
@@ -234,25 +233,25 @@ class ProductoController extends Controller
 
         // Buscamos la categoria asociada al id_categoria
         $categoria = Categoria::find($request->id_categoria);
-        
+
         if (!$categoria) {
             return redirect()->back()->with('warning', 'La categoría seleccionada no existe.');
         }
-    
+
         Producto::create($datos);
-    
+
         return redirect()->route('admin.productos')->with('success', 'Producto agregado exitosamente.');
     }
-    
+
     public function edit($id_producto) {
         $producto = Producto::findOrFail($id_producto);
         $categorias = Categoria::all();
-    
+
         return view('admin.edit-producto', compact('producto', 'categorias'));
     }
 
     public function update(Request $request, $id_producto) {
-        
+
         $producto = Producto::findOrFail($id_producto);
 
         $datos = $request->validate([
@@ -270,7 +269,7 @@ class ProductoController extends Controller
             "image" => "El archivo debe ser una imagen!"
         ]);
 
-    
+
         // Manejar la imagen (si se sube una nueva)
         if ($request->hasFile('url_producto')) {
             // Eliminar la imagen anterior si existe
@@ -326,8 +325,8 @@ class ProductoController extends Controller
      */
     public function destroy($id_producto)
     {
-        $producto = Producto::findOrFail($id_producto); 
-        $producto->delete(); 
+        $producto = Producto::findOrFail($id_producto);
+        $producto->delete();
 
         // Obtener la ruta de la imagen desde la base de datos
         $imagenRuta = public_path($producto->url_producto);

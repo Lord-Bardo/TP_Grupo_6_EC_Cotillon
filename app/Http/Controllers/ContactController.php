@@ -21,7 +21,7 @@ class ContactController extends Controller
 
         // Enviar el correo
         Mail::send('email-contact', $data, function ($message) use ($data) {
-            $message->to('ec.cotillon@gmail.com') // Tu correo
+            $message->to('ec.cotillon@gmail.com')
                     ->subject('Nuevo mensaje de contacto');
         });
 

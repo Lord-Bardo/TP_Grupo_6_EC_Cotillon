@@ -28,7 +28,7 @@ Route::get('/categorias', [CategoriaController::class,  'index_cat'])->name('ind
 Route::get('/categorias/{id}/productos', [ProductoController::class, 'productosPorCategoria'])->name('productos_por_categoria');
 
 /* ABM CATEGORIAS */
-Route::middleware(['role:admin'])->group(function () {
+Route::middleware([\App\Http\Middleware\CheckRole::class . ':admin'])->group(function () {
     Route::get('/admin/categorias', [CategoriaController::class, 'adminIndex'])->name('admin.categorias');
     Route::get('/admin/categorias/create', [CategoriaController::class, 'create'])->name('admin.categorias.create');
     Route::get('/admin/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('admin.categorias.edit');
@@ -44,7 +44,7 @@ Route::middleware(['role:admin'])->group(function () {
 /* ROUTES PRODUCTO */
 //Route::resource("producto", ProductoController::class);
 
-Route::middleware(['role:admin'])->group(function () {
+Route::middleware([\App\Http\Middleware\CheckRole::class . ':admin'])->group(function () {
     // Exportar productos
     Route::get('/admin/productos/export/excel', [ProductoController::class, 'exportExcel'])->name('admin.productos.export.excel');
     Route::get('/admin/productos/export/pdf', [ProductoController::class, 'exportPDF'])->name('admin.productos.export.pdf');
@@ -54,11 +54,11 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin/productos/{id}/edit', [ProductoController::class, 'edit'])->name('admin.productos.edit');
     Route::put('/admin/productos/{id}', [ProductoController::class, 'update'])->name('admin.productos.update');
     Route::delete('/admin/productos/{id}', [ProductoController::class, 'destroy'])->name('admin.productos.destroy');
-    
+
     // Crear y almacenar productos
     Route::get('/admin/productos/create', [ProductoController::class, 'create'])->name('admin.productos.create');
     Route::post('/admin/productos', [ProductoController::class, 'store'])->name('admin.productos.store');
-    
+
     // Índice de productos
     Route::get('/admin/productos', [ProductoController::class, 'admin_productos_index'])->name('admin.productos');
 });
