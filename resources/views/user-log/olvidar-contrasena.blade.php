@@ -1,6 +1,6 @@
 @include ('user-log.header-log-in')
 
-<main class="mainContainer container">
+<main class="container">
     <div class="loginCard row"> 
         <div class="cardLeft col-6 d-sm-block d-none">
             <div class="imageCover">
@@ -27,13 +27,13 @@
             <form action="{{ route('user-log.restaurar_password') }}" method="POST" id="resetPasswordForm">
                 @csrf
                 <div id="inputGroupUsername">
-                        <label for="reset_username_or_email" id="labelUsername">Usuario o email</label>
-                        <input type="text" id="reset_username" name="reset_username_or_email" placeholder="Ingrese un usuario">
+                    <label for="reset_username_or_email" id="labelUsername">Usuario o email</label>
+                    <input type="text" id="reset_username" name="reset_username_or_email" placeholder="Ingrese un usuario o email" autocomplete="off" value="{{ old('reset_username_or_email') }}">
 
-                        @error('reset_username')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    @error('reset_username_or_email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
                 
                 <!-- Botón de Recuperación -->
                 <button type="submit" id="boton" class="btn btn-block mt-4">Recuperar Contraseña</button>

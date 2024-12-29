@@ -47,7 +47,9 @@ class UserController extends Controller
         $data = $request->validate([
             'reset_username_or_email' => 'required|string|max:255'
         ], [
-            "required" => "Este campo es obligatorio!"
+            "required" => "Este campo es obligatorio!",
+            "string" => 'El campo debe ser una cadena de texto válida.',
+            "max" => 'El campo no puede superar los 255 caracteres.',
         ]);
 
         // Verificar si el valor ingresado es un correo electrónico

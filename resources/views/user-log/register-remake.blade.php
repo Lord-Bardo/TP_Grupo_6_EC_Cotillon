@@ -1,6 +1,6 @@
 @include ('user-log.header-log-in')
 
-    <main class="mainContainer container">
+    <main class="container">
         <div class="loginCard row">
             <div class="cardLeft col-6 d-sm-block d-none">
                 <div class="imageCover">
@@ -40,7 +40,7 @@
 
                     <div id="inputGroupEmail">
                         <label for="register_email" id="labelEmail">Email</label>
-                        <input type="text" id="register_email" name="register_email" placeholder="Ingrese un email">
+                        <input type="text" id="register_email" name="register_email" placeholder="Ingrese un email" value="{{ old('register_email') }}">
 
                         @error('register_email')
                             <div class="alert alert-danger">{{ $message }}</div>

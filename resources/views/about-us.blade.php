@@ -1,6 +1,11 @@
 @include('header-user')
 
 <main class="container flex-grow-1 margin-top-100">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="row align-items-center mb-5">
         <div class="col-md-6 text-center mb-3">
@@ -68,10 +73,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h2 class="font-weight-bold text-center mb-3">Contactanos</h2>
+
             {{-- Agrego el atributo novalidate al form para desactivar la validación automática del navegador.
             Se ve q tiene un JS q valida los campos del formulario antes de enviarlo y no muestra nuestro cartelito de error.
             Al desactivar la validacion, el formulario si o si se envia al backend y se valida ahi. --}}
             {{-- PODRIAMOS HACER LA VALIDACION ENTERA CON JS. PORQUE CUANDO SE ENVIA SE RECARGA LA PAGINA Y TE MANDA AL PRINCIPIO --}}
+            
             <form action="{{ route('contacto.send') }}" method="POST" novalidate>
                 @csrf
                 <div class="form-group mb-2">

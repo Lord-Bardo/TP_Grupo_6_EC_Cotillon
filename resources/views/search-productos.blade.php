@@ -26,11 +26,11 @@
                     <h5 class="mt-2 mb-1">Precio:</h5>
                     <div class="mb-1">
                         <label for="precio_min">Precio mínimo:</label>
-                        <input type="number" name="precio_min" value="{{ request('precio_min') }}" placeholder="0">
+                        <input type="number" name="precio_min" value="{{ request('precio_min') >= 0 ? request('precio_min') : 0 }}" placeholder="0">
                     </div>
                     <div>
                         <label for="precio_max">Precio máximo:</label>
-                        <input type="number" name="precio_max" value="{{ request('precio_max') }}" placeholder="10000">
+                        <input type="number" name="precio_max" value="{{ request('precio_max') <= $precioMax ? request('precio_max') : $precioMax }}" placeholder= {{ $precioMax }}>
                     </div>
 
                     <!-- Botones -->

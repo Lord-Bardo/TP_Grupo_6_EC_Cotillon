@@ -1,6 +1,6 @@
 @include ('user-log.header-log-in')
 
-<main class="mainContainer container">
+<main class="container">
     <div class="loginCard row">
         <div class="cardLeft col-6 d-sm-block d-none">
             <div class="imageCover">
@@ -37,7 +37,7 @@
                 <!-- Código de Verificación -->
                 <div id="inputGroupCode">
                     <label for="verification_code" id="labelCode">Código de Verificación</label>
-                    <input type="text" id="verification_code" name="verification_code" placeholder="Ingresa el código de verificación">
+                    <input type="text" id="verification_code" name="verification_code" placeholder="Ingresa el código de verificación" autocomplete="off" value="{{ old('verification_code') }}">
 
                     @error('verification_code')
                         <div class="alert alert-danger">{{ $message }}</div>

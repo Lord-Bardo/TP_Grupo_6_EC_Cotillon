@@ -53,17 +53,6 @@ footer {
     font-size: 14px;
 }
 
-/* Styling the body to center content with a background gradient LO COMENTE Y NO ESTABA COMENTADO ----------------------*/
-/* ESTA AL DOPE */
-/* .mainContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 992px;
-    padding: 20px;
-} */
-
 /* Container to center the login card on the page LE SAQUE EL PADDING ----------------------*/
 .container {
     display: flex;

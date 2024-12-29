@@ -199,9 +199,10 @@ class CategoriaController extends Controller
         return response()->stream($callback, 200, $headers);
     }
 
-
+/* 
     public function exportExcel() {
         // Obtener los datos de la base de datos
+        /* 
         $categorias = Categoria::all();
 
         // Crear una nueva hoja de cálculo
@@ -239,4 +240,6 @@ class CategoriaController extends Controller
         // Enviar el archivo como respuesta para descargar
         return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
+   */     
 }
+

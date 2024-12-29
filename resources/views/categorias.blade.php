@@ -11,6 +11,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <a href="{{ route('productos_por_categoria', $categoria->id_categoria) }}">
+                             <!--  -->
                             <img src="{{ asset($categoria->url_categoria) }}" class="card-img-top card-image-cat" alt="{{ $categoria->nombre_categoria }}">
                         </a> 
                         <div class="card-body">
