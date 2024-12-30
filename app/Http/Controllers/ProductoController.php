@@ -12,7 +12,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductoController extends Controller
-{
+{   
+    /* 
     public function exportExcel() {
         // Obtener los datos de la base de datos
         $productos = Producto::all();
@@ -54,6 +55,7 @@ class ProductoController extends Controller
         // Enviar el archivo como respuesta para descargar
         return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
+        */
 
     public function exportPDF() {
         $productos = Producto::all();
@@ -112,7 +114,26 @@ class ProductoController extends Controller
         return response()->stream($callback, 200, $headers);
     }
 
+    public function index(Request $request) {
 
+        $productos = Producto::paginate(3);
+
+        if ($request->ajax()) {
+            // Devuelve una respuesta JSON con las dos partes: productos y paginación
+
+            return response()->json([
+                'productos' => view('productos_js', ['productos' => $productos])->render(),
+                'paginacion' => view('productos_paginacion', ['productos' => $productos])->render(),
+            ]);
+        }
+
+        return view('welcome', [
+            'productos' => $productos,
+        ]);
+    }
+
+
+    /* old index
     public function index()
     {
 
@@ -122,6 +143,7 @@ class ProductoController extends Controller
             'productos' => $productos,
         ]);
     }
+    */
 
     public function admin_productos_index()
     {

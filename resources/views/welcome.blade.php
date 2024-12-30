@@ -30,55 +30,12 @@
         <div class="swiper-scrollbar"></div>
     </div>
     
-    <div class="row mt-5">
-        @foreach($productos as $producto)
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ asset($producto->url_producto) }}" class="card-img-top card-image" alt="{{ $producto->nombre_producto }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $producto->nombre_producto }}</h5>
-                        <p class="card-price mb-2">${{ $producto->precio }}</p>
-                        <p class="card-text">{{ $producto->descripcion_producto }}</p>
-                        <a href="{{ route('producto.show', $producto->id_producto) }}" class="btn btn-pastel">Ver más</a>
-                    </div>
-                </div>
-            </div>
-        @endforeach
+    <div id="contenedor-productos">
+        @include('productos_js', ['productos' => $productos])
     </div>
 
-    <!-- Paginación -->
-    <div class="d-flex justify-content-center mt-4">
-        <nav>
-            <ul class="pagination">
-
-                @if ($productos->onFirstPage())
-                    <li class="page-item disabled">
-                        <span class="page-link">Anterior</span>
-                    </li>
-                @else
-                    <li class="page-item">
-                        <a href="{{ $productos->previousPageUrl() }}" class="page-link">Anterior</a>
-                    </li>
-                @endif
-
-                @for ($i = 1; $i <= $productos->lastPage(); $i++)
-                    <li class="page-item {{ $i == $productos->currentPage() ? 'active pastel-page' : '' }}">
-                        <a href="{{ $productos->url($i) }}" class="page-link">{{ $i }}</a>
-                    </li>
-                @endfor
-
-                @if ($productos->hasMorePages())
-                    <li class="page-item">
-                        <a href="{{ $productos->nextPageUrl() }}" class="page-link">Siguiente</a>
-                    </li>
-                @else
-                    <li class="page-item disabled">
-                        <span class="page-link">Siguiente</span>
-                    </li>
-                @endif
-
-            </ul>
-        </nav>
+    <div id="contenedor-paginacion">
+        @include('productos_paginacion', ['productos' => $productos])
     </div>
 </main>
 
@@ -107,5 +64,47 @@
         transform: scale(0.98);
     } 
 </style>
+
+<script>
+    var parrafosJQuery = $('p');
+
+    console.log("Hola me estoy actualizando antes del event listener");
+
+   document.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && e.target.closest('.pagination')) {
+        e.preventDefault(); // Previene la acción predeterminada del enlace (navegar a la URL del enlace).
+
+        const url = e.target.href; // Obtiene la URL del enlace que se clickeó.
+
+        fetch(url, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest', // Indica que la solicitud es una petición AJAX.
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Agrega el token CSRF.
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json(); // Procesa la respuesta como JSON.
+        })
+        .then(data => {
+            // Actualizar productos
+            document.getElementById('contenedor-productos').innerHTML = data.productos;
+
+            // Actualizar paginación
+            document.getElementById('contenedor-paginacion').innerHTML = data.paginacion;
+
+            // Actualizar la URL del navegador
+            window.history.pushState(null, '', url);
+        })
+        .catch(error => {
+            console.error('Error al cargar los productos:', error);
+        });
+    }
+});
+
+    console.log("Hola me estoy actualizando despies del event listener");
+</script>
 
 @include('footer')
