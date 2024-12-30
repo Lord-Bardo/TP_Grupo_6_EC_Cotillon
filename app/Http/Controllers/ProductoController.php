@@ -13,7 +13,6 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductoController extends Controller
 {
-    /* 
     public function exportExcel() {
         // Obtener los datos de la base de datos
         $productos = Producto::all();
@@ -55,9 +54,6 @@ class ProductoController extends Controller
         // Enviar el archivo como respuesta para descargar
         return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
-
-    */
-
 
     public function exportPDF() {
         $productos = Producto::all();
@@ -139,11 +135,9 @@ class ProductoController extends Controller
     // Deprecated
     public function productosPorCategoria($id)
     {
-
-        $productos = Producto::where('id_categoria', $id)->paginate(3);
-
         $categoria = Categoria::findOrFail($id);
 
+        $productos = Producto::where('id_categoria', $id)->paginate(3);
 
         return view('productos-filtrados', [
             'productos' => $productos,
@@ -179,7 +173,7 @@ class ProductoController extends Controller
 
         // Busco el precio maximo para el filtro
         $precioMax = Producto::max('precio');
-        
+
         if ($request->has('precio_max') && $request->input('precio_max') !== null) {
             $precioMax = min($request->input('precio_max'), $precioMax); // Si no hay valor, toma el maximo posible
         }

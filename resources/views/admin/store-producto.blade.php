@@ -14,14 +14,14 @@
             {{ session('warning') }}
         </div>
     @endif
-        
+
     <form action="{{ route('admin.productos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        
+
         <div class="form-group mb-3">
             <label for="url_producto" class="font-weight-bold">Imagen</label>
             <input type="file" class="form-control" id="url_producto" name="url_producto" accept="image/*" onchange="previewImage(event)">
-           
+
             @error('url_producto')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -33,7 +33,7 @@
 
         <div class="form-group mb-3">
             <label for="nombre_producto" class="font-weight-bold">Nombre del Producto</label>
-            <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="{{ old('nombre_producto') }}">
+            <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="{{ old('nombre_producto') }}" autocomplete="off">
             @error('nombre_producto')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -91,14 +91,14 @@
     .new-image {
         display: none;
     }
-    
+
     .text-pastel {
-        color: #8bd3f7; 
+        color: #8bd3f7;
     }
 
     /* Clase para el botón pastel */
     .btn-pastel {
-        background-color: #8bd3f7; 
+        background-color: #8bd3f7;
         color: white;
         border: none;
     }

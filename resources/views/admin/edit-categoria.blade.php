@@ -45,7 +45,7 @@
 
         <div class="form-group mb-3">
             <label for="nombre_categoria" class="font-weight-bold">Nombre de la Categoría</label>
-            <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria" value="{{ old('nombre_categoria', $categoria->nombre_categoria) }}">
+            <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria" value="{{ old('nombre_categoria', $categoria->nombre_categoria) }}" autocomplete="off">
 
             @error('nombre_categoria')
                 <div class="alert alert-danger">{{ $message }}</div>

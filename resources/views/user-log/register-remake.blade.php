@@ -30,7 +30,7 @@
                     <!-- Nombre de Usuario -->
                     <div id="inputGroupUsername">
                         <label for="register_username" id="labelUsername">Nombre de Usuario</label>
-                        <input type="text" name="register_username" id="register_username" placeholder="Elige un nombre de usuario" value="{{ old('register_username') }}">
+                        <input type="text" name="register_username" id="register_username" placeholder="Elige un nombre de usuario" value="{{ old('register_username') }}" autocomplete="off">
 
                         @error('register_username')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -40,7 +40,7 @@
 
                     <div id="inputGroupEmail">
                         <label for="register_email" id="labelEmail">Email</label>
-                        <input type="text" id="register_email" name="register_email" placeholder="Ingrese un email" value="{{ old('register_email') }}">
+                        <input type="text" id="register_email" name="register_email" placeholder="Ingrese un email" value="{{ old('register_email') }}" autocomplete="off">
 
                         @error('register_email')
                             <div class="alert alert-danger">{{ $message }}</div>
