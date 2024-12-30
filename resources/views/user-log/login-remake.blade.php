@@ -31,7 +31,7 @@
                         <input type="text" id="username" name="login_username_or_email" placeholder="Ingrese un usuario o email" value="{{ old('login_username_or_email') }}"
                         autocomplete="off">
 
-                        @error('login_username')
+                        @error('login_username_or_email')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -50,7 +50,7 @@
                                 </button>
                             </div>
                         </div>
-                    
+
                         @error('login_password')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -81,14 +81,14 @@
             width: 100%;
             height: calc(100% - 1px);
             border: 1px solid #ced4da;
-            background-color: #f8f9fa; 
-            border-radius: 4px; 
+            background-color: #f8f9fa;
+            border-radius: 4px;
         }
 
         #inputGroupPassword button:hover {
-            background-color: #e2e6ea; 
+            background-color: #e2e6ea;
         }
-        
+
     </style>
 
 
@@ -98,10 +98,10 @@
         const button = event.target;
 
         const icon = document.getElementById('password-icon');
-        
+
         const type = passwordInput.type === 'password' ? 'text' : 'password';
         passwordInput.type = type;
-        
+
         // Cambiar el ícono dependiendo del estado
         icon.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
     }

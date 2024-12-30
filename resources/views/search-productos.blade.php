@@ -30,7 +30,7 @@
                     </div>
                     <div>
                         <label for="precio_max">Precio máximo:</label>
-                        <input type="number" name="precio_max" value="{{ request('precio_max') <= $precioMax ? request('precio_max') : $precioMax }}" placeholder= {{ $precioMax }}>
+                        <input type="number" name="precio_max" value="{{ request('precio_max') <= $precioMax ? request('precio_max') : $precioMax }}" placeholder={{ $precioMax }}>
                     </div>
 
                     <!-- Botones -->

@@ -192,7 +192,7 @@ class ProductoController extends Controller
         }
 
         // Busco el precio maximo para el filtro
-        $precioMax = Producto::max('precio');
+        $precioMax = $query->max('precio');
 
         if ($request->has('precio_max') && $request->input('precio_max') !== null) {
             $precioMax = min($request->input('precio_max'), $precioMax); // Si no hay valor, toma el maximo posible
