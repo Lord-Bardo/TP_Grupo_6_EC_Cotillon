@@ -8,20 +8,20 @@
                     <img src="{{ asset('images/promo-cotillon.png') }}" alt="Promoción Cotillón">
                 </div>
             </div>
-            
+
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
                     <!-- <a href="{{ route('productos_por_categoria', ['id' => 11]) }}">
                         <img src="{{ asset('images/slider-pasteleria.png') }}" alt="Promoción Cotillón">
                     </a> -->
-                    
+
                     <form action="{{ route('search_products') }}" method="GET" class="hidden-form">
                         @csrf
                         <input type="hidden" name="categorias[]" value="{{ 11 }}">
 
                         <button type="submit" class="hidden-button">
                             <img src="{{ asset('images/slider-pasteleria.png') }}" alt="Promoción Cotillón">
-                        </button>  
+                        </button>
                     </form>
                 </div>
             </div>
@@ -32,15 +32,15 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="swiper-pagination"></div>
-        
+
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
-        
+
         <div class="swiper-scrollbar"></div>
     </div>
-    
+
     <div id="contenedor-productos">
         @include('productos_js', ['productos' => $productos])
     </div>
@@ -55,13 +55,18 @@
     .hidden-form {
         height: 100%; /* Asegúrate de que ocupe todo el slide */
         width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .hidden-button {
         width: 100%;
         height: 100%;
+        background: none; /* Para que el botón sea transparente */
+        border: none; /* Para que no tenga borde */
+        padding: 0;
     }
-    
+
     body {
         background: linear-gradient(to bottom, #a2cadf, #ffffff 80%);
         background-repeat: no-repeat;
@@ -69,7 +74,7 @@
 
     /* Estilo pastel para el botón 'Ver más' */
     .btn-pastel {
-        background-color: #eb9ac0; 
+        background-color: #eb9ac0;
         color: white;
         border: none;
         font-size: 1.2rem;
@@ -77,25 +82,13 @@
     }
 
     .btn-pastel:hover {
-        background-color: #eb9ac0; 
+        background-color: #eb9ac0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .btn-pastel:active {
         background-color: #eb9ac0;
         transform: scale(0.98);
-    }
-
-
-    .hidden-form {
-        margin: 0;
-        padding: 0;
-    }
-
-    .hidden-button {
-        background: none; /* Para que el botón sea transparente */
-        border: none; /* Para que no tenga borde */
-        padding: 0;
     }
 
 </style>

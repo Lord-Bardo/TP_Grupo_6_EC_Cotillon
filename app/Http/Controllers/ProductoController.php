@@ -12,8 +12,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductoController extends Controller
-{   
-    /* 
+{
     public function exportExcel() {
         // Obtener los datos de la base de datos
         $productos = Producto::all();
@@ -55,7 +54,6 @@ class ProductoController extends Controller
         // Enviar el archivo como respuesta para descargar
         return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
-        */
 
     public function exportPDF() {
         $productos = Producto::all();

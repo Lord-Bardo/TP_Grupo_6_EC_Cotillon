@@ -78,12 +78,12 @@
             Se ve q tiene un JS q valida los campos del formulario antes de enviarlo y no muestra nuestro cartelito de error.
             Al desactivar la validacion, el formulario si o si se envia al backend y se valida ahi. --}}
             {{-- PODRIAMOS HACER LA VALIDACION ENTERA CON JS. PORQUE CUANDO SE ENVIA SE RECARGA LA PAGINA Y TE MANDA AL PRINCIPIO --}}
-            
+
             <form action="{{ route('contacto.send') }}" method="POST" novalidate>
                 @csrf
                 <div class="form-group mb-2">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" value="{{ old('nombre') }}">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" value="{{ old('nombre') }}" autocomplete="off">
 
                     @error('nombre')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="form-group mb-2">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Tu correo electrónico" value="{{ old('email') }}">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Tu correo electrónico" value="{{ old('email') }}" autocomplete="off">
 
                     @error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
