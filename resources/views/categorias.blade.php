@@ -10,9 +10,19 @@
             @foreach($categorias as $categoria)
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <a href="{{ route('productos_por_categoria', $categoria->id_categoria) }}">
+
+                        {{-- <a href="{{ route('productos_por_categoria', $categoria->id_categoria) }}">
                             <img src="{{ asset($categoria->url_categoria) }}" class="card-img-top card-image-cat" alt="{{ $categoria->nombre_categoria }}">
-                        </a>
+                        </a> --}}
+                        
+                        <form action="{{ route('search_products') }}" method="GET" class="hidden-form">
+                            @csrf
+                            <input type="hidden" name="categorias[]" value="{{ $categoria->id_categoria }}">
+
+                            <button type="submit" class="hidden-button w-100">
+                                <img src="{{ asset($categoria->url_categoria) }}" class="card-img-top card-image-cat" alt="{{ $categoria->nombre_categoria }}">
+                            </button>
+                        </form>
                         <div class="card-body">
                             <h5 class="card-title">{{ $categoria->nombre_categoria }}</h5>
                             <!-- Descripción de la categoría -->
@@ -61,5 +71,18 @@
         </div>
     @endif
 </main>
+
+<style>
+    .hidden-form {
+        margin: 0;
+        padding: 0;
+    }
+
+    .hidden-button {
+        background: none; /* Para que el botón sea transparente */
+        border: none; /* Para que no tenga borde */
+        padding: 0;
+    }
+</style>
 
 @include('footer')

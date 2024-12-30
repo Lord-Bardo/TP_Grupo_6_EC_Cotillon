@@ -10,10 +10,21 @@
             </div>
             
             <div class="swiper-slide">
-                <a href="{{ route('productos_por_categoria', ['id' => 11]) }}">
-                    <img src="{{ asset('images/slider-pasteleria.png') }}" alt="Promoción Cotillón">
-                </a>
-            </div> 
+                <div class="swiper-zoom-container">
+                    <!-- <a href="{{ route('productos_por_categoria', ['id' => 11]) }}">
+                        <img src="{{ asset('images/slider-pasteleria.png') }}" alt="Promoción Cotillón">
+                    </a> -->
+                    
+                    <form action="{{ route('search_products') }}" method="GET" class="hidden-form">
+                        @csrf
+                        <input type="hidden" name="categorias[]" value="{{ 11 }}">
+
+                        <button type="submit" class="hidden-button">
+                            <img src="{{ asset('images/slider-pasteleria.png') }}" alt="Promoción Cotillón">
+                        </button>  
+                    </form>
+                </div>
+            </div>
 
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
@@ -40,6 +51,17 @@
 </main>
 
 <style>
+    /* Clases para el 2do slider */
+    .hidden-form {
+        height: 100%; /* Asegúrate de que ocupe todo el slide */
+        width: 100%;
+    }
+
+    .hidden-button {
+        width: 100%;
+        height: 100%;
+    }
+    
     body {
         background: linear-gradient(to bottom, #a2cadf, #ffffff 80%);
         background-repeat: no-repeat;
@@ -62,7 +84,20 @@
     .btn-pastel:active {
         background-color: #eb9ac0;
         transform: scale(0.98);
-    } 
+    }
+
+
+    .hidden-form {
+        margin: 0;
+        padding: 0;
+    }
+
+    .hidden-button {
+        background: none; /* Para que el botón sea transparente */
+        border: none; /* Para que no tenga borde */
+        padding: 0;
+    }
+
 </style>
 
 <script>

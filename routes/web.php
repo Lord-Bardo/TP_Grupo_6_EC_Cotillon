@@ -24,7 +24,7 @@ Route::post('/contacto', [ContactController::class, 'sendEmail'])->name('contact
 
 /* ROUTES CATEGORIAS */
 Route::get('/categorias', [CategoriaController::class,  'index_cat'])->name('index_cat');
-
+// Deprecated
 Route::get('/categorias/{id}/productos', [ProductoController::class, 'productosPorCategoria'])->name('productos_por_categoria');
 
 /* ABM CATEGORIAS */
